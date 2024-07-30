@@ -2,8 +2,7 @@
 int sum();
 int main(){
 	sum();
-	sum();
-	sum();
+	return 0;
 }
 int sum(){
 	int a, b, sum;
