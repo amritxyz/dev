@@ -1,0 +1,15 @@
+#!/bin/bash
+echo "-> Searching for PDF files..."
+find . -type f -name "*.pdf" | nl
+echo -n "-> Enter the number of the file to open: "
+read number
+
+# Find the file based on the selected number
+file=$(find . -type f -name "*.pdf" | sed -n "${number}p")
+
+# Check if a file was selected
+if [ -n "$file" ]; then
+    zathura "$file"
+else
+    echo "-> Invalid selection."
+fi
