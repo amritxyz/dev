@@ -39,9 +39,9 @@ int main(){
 	/*...............*/
 	int choice;
 	printf("1) SUM\n");
-	printf("1) SUB\n");
-	printf("1) MUL\n");
-	printf("1) DEV\n");
+	printf("2) SUB\n");
+	printf("3) MUL\n");
+	printf("4) DEV\n");
 	printf("Enter your choice (1/2/3/4) : ");
 	scanf("%d", &choice);
 
