@@ -1,3 +1,4 @@
+/* WAP to check whether the entered number is palindrome or not */
 #include <stdio.h>
 
 int reverseNumber(int n) {
