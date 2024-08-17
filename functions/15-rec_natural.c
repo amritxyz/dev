@@ -9,8 +9,10 @@ int natural(int a){
 	}
 }
 int main(){
-	int a=5;
-	printf("the num of natural numbers up to %d = %d\n", a, natural(a));
+	int a;
+	printf("Sum of natural numbers up to: ");
+	scanf("%d", &a);
+	printf("The sum of natural numbers up to %d = %d\n", a, natural(a));
 	return a;
 }
 
