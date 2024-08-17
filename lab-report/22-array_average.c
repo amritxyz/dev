@@ -18,8 +18,8 @@ int main() {
 
     average = (float)sum / 5;
 
-    printf("Total sum of the 5 numbers is: %d\n", sum);
-    printf("The average of the 5 numbers is: %.2f\n", average);
+    printf("Total sum of the 5 subjects is: %d\n", sum);
+    printf("The average of the 5 subjects is: %.2f\n", average);
 
     return 0;
 }
