@@ -6,7 +6,7 @@ int main() {
     int sum = 0;
     float average;
 
-    printf("Enter 5 integers:\n");
+    printf("Enter 5 subject marks:\n");
     for (int i = 0; i < 5; i++) {
         printf("Subject %d: ", i + 1);
         scanf("%d", &arr[i]);
