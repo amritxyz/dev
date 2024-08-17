@@ -1,3 +1,4 @@
+/* WAP to get Reverse of number n */
 #include <stdio.h>
 
 int reverseNumber(int n) {
