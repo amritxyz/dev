@@ -1,11 +1,17 @@
+/* WAP to convert Celsius to Fahrenheit */
 #include"stdio.h"
-float c2f(float);
-float c2f(float n){
-	return ((9*n)/5)+32;
+
+float c2f(float c){
+	return ((9*c)/5)+32;
 }
+
 int main(){
-	float n=37.6;
-	printf("F = %f\n", c2f(n));
+	float c;
+
+	printf("Enter celsius: ");
+	scanf("%f", &c);
+	printf("F = %.2f\n", c2f(c));
+
 	return 0;
 }
 
