@@ -1,12 +1,19 @@
 #!/bin/sh
 
-#printf "Your Name: "
-#read name
-#printf "\n"
+printf "Your Name: "
+read name
+printf "\n"
 
 # Check if the input is empty
+#if [ -z "$name" ]; then
+#    name="$USER"
+#fi
+#printf "> Hello, $name!\n"
+
 if [ -z "$name" ]; then
     name="$USER"
+elif [ $name = "anupam" ]; then
+    name="Gandu"
 fi
 printf "> Hello, $name!\n"
 
