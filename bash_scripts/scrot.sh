@@ -7,4 +7,4 @@ if [ ! -d "$TARGET_DIR" ]; then
 fi
 
 # Take the screenshot and move it to the target directory
-scrot 'arch-%Y-%m-%d_screenshot.png' -e 'mv $f '"$TARGET_DIR"
+scrot -s 'void-%Y-%m-%d_screenshot_$wx$h.png' -e 'mv $f '"$TARGET_DIR"
