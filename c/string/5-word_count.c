@@ -10,7 +10,7 @@ int main(){
 			w++;
 		i++;
 	}
-	printf("The number of words: %d", w);
+	printf("The number of words: %d\n", w);
 	return 0;
 }
 

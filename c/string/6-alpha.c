@@ -1,3 +1,4 @@
+/* WAP to count and print The Vowels and Consonants in the user defined word */
 #include<stdio.h>
 #include<string.h>
 int main(){
