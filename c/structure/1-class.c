@@ -1,3 +1,4 @@
+// WAP cteate 5 students record id, name, address, five subjects marks, find the total and average only those records are displays
 // WAP create a
 
 #include<stdio.h>
