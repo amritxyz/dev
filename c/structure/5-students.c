@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define NUM_STUDENTS 1
+#define NUM_STUDENTS 2
 #define NUM_SUBJECTS 5
 
 struct marks {
@@ -19,24 +19,28 @@ int main() {
     float total, average;
     struct students s1[NUM_STUDENTS];
 
-    // Input student records
     for (i = 0; i < NUM_STUDENTS; i++) {
         printf("Enter the student's ID: ");
+	fflush(stdout);
         scanf("%d", &s1[i].id);
         printf("Enter the student's name: ");
+	fflush(stdout);
         scanf("%s", s1[i].name);
         printf("Enter the student's address: ");
+	fflush(stdout);
         scanf("%s", s1[i].add);
         /* scanf(" %[^\n]s", s1[i].add); */
 
         // Input marks for subjects
         for (j = 0; j < NUM_SUBJECTS; j++) {
             printf("Enter mark for subject %d: ", j + 1);
+	    fflush(stdout);
             scanf("%f", &s1[i].M1.subjects[j]);
         }
     }
 
-    // Calculate and display results
+    printf("\nStudent ID\tName\t\tAddress\t\t", s1[i].id, s1[i].name, s1[i].add);
+    printf("Total\t\tAverage\t\tPosition\n", total, average);
     for (i = 0; i < NUM_STUDENTS; i++) {
         total = 0;
         for (j = 0; j < NUM_SUBJECTS; j++) {
@@ -44,15 +48,15 @@ int main() {
         }
         average = total / NUM_SUBJECTS;
 
-        printf("\nStudent ID: %d\nName: %s\nAddress: %s\n", s1[i].id, s1[i].name, s1[i].add);
-        printf("Total: %.2f\nAverage: %.2f\n", total, average);
+        printf("%d\t\t%s\t\t%s\t\t", s1[i].id, s1[i].name, s1[i].add);
+        printf("%.2f\t\t%.2f\t\t", total, average);
 
         if (average > 80) {
-            printf("Position: Topper\n");
+            printf("Topper\n");
         } else if (average > 60) {
-            printf("Position: 1st Division\n");
+            printf("1st Division\n");
         } else {
-            printf("Position: Failed\n");
+            printf("Failed\n");
         }
     }
 

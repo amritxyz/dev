@@ -5,6 +5,7 @@ int main(int argc, char *argv[]) {
 	else {
 		fprintf(stderr, "Usage: %s <name>\n", argv[0]);
 		return 1;
-	} return 0;
+	}
+	return 0;
 }
 

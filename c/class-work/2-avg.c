@@ -4,9 +4,10 @@
 int main() {
 	int i = 1, a, m, total;
 	printf("Enter the number of subjects: ");
+	fflush(stdout);
 	scanf("%d", &a);
 	do {
-		printf("Enter the marks\n");
+		printf("Enter the marks");
 		scanf("%d", &m);
 		total+=m;
 		i++;
