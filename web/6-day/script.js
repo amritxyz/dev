@@ -86,20 +86,80 @@
 // myFunction();
 
 // Function with no parameters and no return type
-function abc() {
-	console.log("Hello");
-}
-abc();
+// function abc() {
+// 	console.log("Hello");
+// }
+// abc();
 
-// Function with no parameter & no return
-funtion bcd(a,b) {
-	console.log(a + b);
-}
+// // Function with no parameter & no return
+// funtion bcd(a,b) {
+// 	console.log(a + b);
+// }
 
-// Function with no parameter but return
-bcd(5, 4);
-	funtion cde() {
-		let a = 4;
-		let b = 6
-		return a + b;
+// // Function with no parameter but return
+// bcd(5, 4);
+// 	funtion cde() {
+// 		let a = 4;
+// 		let b = 6
+// 		return a + b;
+// 	}
+
+// For loop in JavaScript
+
+// console.log("Hello, World!");
+// for(let i=0; i<5; i++){
+// 	console.log("Hello, World!");
+// }
+
+// let a = ["a", "b", "c", "d", "e"]
+// for (i = 0; i < a.length; i++)
+// 	console.log(a[i]);
+
+// let obj = {name:"Hari",address:"Butwal"};
+
+// for (item in obj)
+// 	console.log(obj[item]);
+
+
+// let language = "JavaScript";
+
+// let text = "";
+// for (let x of language) {
+//   text += x + "\n";
+// }
+// console.log(text);
+
+// const cars = ["BMW", "Volvo", "Mini"];
+
+// let text = "";
+// for (let x of cars) {
+//   text += x + "\n";
+// }
+// console.log(text);
+
+let a = [
+	"a",
+	"b",
+	"c",
+	"d",
+	"e",
+	"f",
+	"g",
+	"h"];
+let search = prompt("Enter the alphabet you want to search: ");
+let found = false;
+
+for (let i=0; i<a.length; i++){
+	if (a[i] == search){
+		alert("The alphabet is found");
+		console.log("The index is " +i);
+		found = true;
+		break;
 	}
+
+	if (!found){
+		alert("The alphabet is not found");
+		break;
+	}
+}
+console.log("The index is " +i);
