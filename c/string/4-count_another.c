@@ -5,6 +5,7 @@ int main(){
 	int i=0;
 	printf("Enter your name: ");
 	fgets(a, sizeof(a), stdin);
+
 	printf("Total chars: %d", strlen(a));
 	return 0;
 }
