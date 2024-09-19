@@ -1,5 +1,5 @@
 #include<stdio.h>
-int main(int argc, char *argv[]) {
+int main(int argc, char **argv) {
 	if (argc == 2)
 		printf("Knock, knock, %s\n", argv[1]);
 	else {
