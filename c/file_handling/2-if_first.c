@@ -5,7 +5,7 @@ int main() {
 	ptr = fopen("Amrit.", "r");
 	int num;
 	if(ptr == NULL) {
-		printf("Sorry the file doesn't exists!\n");
+		fprintf(stderr, "Sorry the file doesn't exists!\n");
 		return 1;
 	}
 	else {
