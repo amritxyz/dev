@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <string.h> // Include for strcmp function
+#include <string.h>
 
 #define NUM_STUDENTS 2
 #define NUM_SUBJECTS 5
@@ -41,7 +41,7 @@ int main() {
 
     printf("\nStudent ID\tName\t\tAddress\t\tTotal\t\tAverage\t\tPosition\n");
     for (i = 0; i < NUM_STUDENTS; i++) {
-        // Check if address is "Butwal"
+        /* Check if address is "Butwal" */
         if (strcasecmp(s1[i].add, "Butwal") == 0) {
             total = 0;
             for (j = 0; j < NUM_SUBJECTS; j++) {

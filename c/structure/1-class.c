@@ -21,4 +21,3 @@ int main(){
 	scanf("%s", &s1.add);
 	printf("Your Id: %d\nYour Name: %s\nYour salary: %.2f\nYour Address: %s\n", s1.emp_id, s1.emp_name, s1.salary, s1.add);
 }
-
