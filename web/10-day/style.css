@@ -1,0 +1,44 @@
+*{
+	margin: 0;
+	padding: 0;
+	background-color: rgb(255, 255, 255);
+}
+body{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+#main{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+#main1{
+	border: 10px solid rgb(14, 56, 127);
+	border-radius: 10%;
+	margin: 1rem;
+	padding: 1rem;
+}
+#name{
+	border: none;
+	outline: 2px solid rgb(22, 135, 167);
+}
+#email{
+	border: none;
+	outline: 2px solid rgb(22, 135, 167);
+}
+#address{
+	border: none;
+	outline: 2px solid rgb(22, 135, 167);
+}
+#submit{
+	border: none;
+	outline: 1px solid rgb(47, 64, 106);
+	border-radius: 5px;
+	padding: 5px 5px;
+	background-color: rgb(173, 182, 205);
+	color: white;
+}
