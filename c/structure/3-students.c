@@ -18,20 +18,16 @@ int main(){
 	int i;
 	float total, average;
 	struct students s1[100];
-	for (i=0; i<5; i++){
+	for (i=0; i<2; i++){
 		printf("Enter the students id: ");
-		fflush(stdout);
 		scanf("%d", &s1[i].id);
 		printf("Enter the students name: ");
-		fflush(stdout);
 		scanf("%s", &s1[i].name);
 		printf("Enter students address: ");
-		fflush(stdout);
 		scanf("%s", &s1[i].add);
 	//}
-	for (i=0; i<5; i++){
+	for (i=0; i<2; i++){
 		printf("sub no. %d: ", i+1);
-		fflush(stdout);
 		scanf("%f", &s1[i].M1.m1, &s1[i].M1.m2, &s1[i].M1.m3, &s1[i].M1.m4, &s1[i].M1.m5);
 	}
 	}

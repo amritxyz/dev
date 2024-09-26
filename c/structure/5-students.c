@@ -21,26 +21,22 @@ int main() {
 
     for (i = 0; i < NUM_STUDENTS; i++) {
         printf("Enter the student's ID: ");
-	fflush(stdout);
         scanf("%d", &s1[i].id);
         printf("Enter the student's name: ");
-	fflush(stdout);
         scanf("%s", s1[i].name);
         printf("Enter the student's address: ");
-	fflush(stdout);
         scanf("%s", s1[i].add);
         /* scanf(" %[^\n]s", s1[i].add); */
 
         // Input marks for subjects
         for (j = 0; j < NUM_SUBJECTS; j++) {
             printf("Enter mark for subject %d: ", j + 1);
-	    fflush(stdout);
             scanf("%f", &s1[i].M1.subjects[j]);
         }
     }
 
-    printf("\nStudent ID\tName\t\tAddress\t\t", s1[i].id, s1[i].name, s1[i].add);
-    printf("Total\t\tAverage\t\tPosition\n", total, average);
+    printf("\nStudent ID\tName\t\tAddress\t\t");
+    printf("Total\t\tAverage\t\tPosition\n");
     for (i = 0; i < NUM_STUDENTS; i++) {
         total = 0;
         for (j = 0; j < NUM_SUBJECTS; j++) {
