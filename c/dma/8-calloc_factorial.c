@@ -1,4 +1,4 @@
-/* WAP to print fatorial upto number n using calloc */
+/* WAP to print fatorial of number n using calloc */
 
 #include <stdio.h>
 #include <stdlib.h>
