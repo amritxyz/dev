@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+/* body {
+    transition: 0.5s;
+} */
+#toggle-container {
+    width: 120px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    background-color: #00d5ff;
+    border-radius: 30px;
+    position: relative;
+    border: 2px solid #ff0000;
+}
+
+.toggle-bar {
+    width: 50px;
+    height: 50px;
+    background-color: #000000;
+    border-radius: 50%;
+    position: relative;
+    left: 1%;
+    transition: 0.5s;
+    border: 2px solid #fff;
+}
