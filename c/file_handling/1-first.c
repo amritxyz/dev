@@ -2,9 +2,9 @@
 int main(){
 	FILE *ptr;
 	ptr = fopen("Amrit", "r");
-	int num;
-	fscanf(ptr,"%d", &num);
-	printf("The value of num is %d\n", num);
+	char c[50];
+	fscanf(ptr,"%s", &c);
+	printf("1st word is: %s\n", c);
 	fclose(ptr);
 	return 0;
 }

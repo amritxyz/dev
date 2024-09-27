@@ -2,17 +2,18 @@
 
 int main() {
 	FILE *ptr;
-	int num;
+	int c[50];
 	ptr = fopen("Amrit", "r");
 	if(ptr == NULL) {
 		fprintf(stderr, "Sorry the file doesn't exists!\n");
 		return 1;
 	}
 	else {
-		fscanf(ptr,"%d", &num);
-		printf("The value of num is %d\n", num);
-		fclose(ptr);
-		return 0;
+		while(fscanf(ptr, "%s", c)!=EOF){
+			printf("%s ", c);
+		}
+		printf("\n");
 	}
+	return 0;
 }
 

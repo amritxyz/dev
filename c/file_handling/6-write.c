@@ -3,7 +3,7 @@
 
 int main() {
     FILE *file;
-    char filename[] = "Amrit";
+    char filename[] = "void";
     char text[] = "Hello, this is a test file.\n";
     char buffer[255];
 
@@ -24,7 +24,7 @@ int main() {
         return EXIT_FAILURE;
     }
 
-    printf("Reading from file:\n");
+    printf("Reading from file: %s\n", filename);
     while (fgets(buffer, sizeof(buffer), file) != NULL) {
         printf("%s", buffer); // Print each line
     }
