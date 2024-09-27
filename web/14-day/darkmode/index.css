@@ -2,27 +2,31 @@
     margin: 0;
     padding: 0;
 }
-/* body {
-    transition: 0.5s;
-} */
-#toggle-container {
-    width: 120px;
-    height: 55px;
+#nav {
+    background-color: green;
     display: flex;
     align-items: center;
-    background-color: #00d5ff;
+    justify-content: end;
+}
+#toggle-container {
+    width: 60px;
+    height: 27.5px;
+    display: flex;
+    align-items: center;
+    background-color: black;
     border-radius: 30px;
     position: relative;
-    border: 2px solid #ff0000;
+    border: 2px solid black;
+    transition: 0.7s;
 }
 
 .toggle-bar {
-    width: 50px;
-    height: 50px;
-    background-color: #000000;
+    width: 25px;
+    height: 25px;
+    background-color: white;
     border-radius: 50%;
     position: relative;
     left: 1%;
     transition: 0.5s;
-    border: 2px solid #fff;
+    border: 2px solid black;
 }
