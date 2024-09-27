@@ -2,7 +2,7 @@
 #include <string.h>
 
 #define NUM_STUDENTS 2
-#define NUM_SUBJECTS 5
+#define NUM_SUBJECTS 3
 
 struct marks {
     float subjects[NUM_SUBJECTS];
