@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+#nav {
+    background-color: green;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+#toggle-container {
+    width: 60px;
+    height: 27.5px;
+    display: flex;
+    align-items: center;
+    background-color: black;
+    border-radius: 30px;
+    position: relative;
+    border: 2px solid black;
+    transition: 0.7s;
+}
+.toggle-bar {
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    border-radius: 50%;
+    position: relative;
+    left: 1%;
+    transition: 0.5s;
+    border: 2px solid black;
+}

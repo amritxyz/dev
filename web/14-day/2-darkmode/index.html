@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Hell</title>
+        <link rel="stylesheet" href="./index.css" />
+    </head>
+    <body>
+        <nav id="nav">
+            <div id="toggle-container" onclick="toggle()">
+                <div class="toggle-bar"></div>
+            </div>
+        </nav>
+        <section>
+            <p>
+                When I was done dying,<br />
+                my conscious regained<br />
+                So I began the struggle,<br />
+                a nothingness strained<br />
+                - Dan Deacon<br />
+            </p>
+        </section>
+	<script>
+		var body = document.querySelector("body");
+		var nav = document.querySelector("#nav");
+		var bar = document.querySelector(".toggle-bar");
+		var container = document.querySelector("#toggle-container");
+
+		function toggle() {
+			if (bar.style.left == "54%") {
+				nav.style.transition = "0.7s";
+				nav.style.backgroundColor = "green";
+				bar.style.left = "1%";
+				bar.style.backgroundColor = "white";
+				container.style.backgroundColor = "black";
+				container.style.border = "2px solid black";
+				body.style.backgroundColor = "white";
+				body.style.color = "black";
+				body.style.transition = "0.5s";
+			} else {
+				nav.style.transition = "0.7s";
+				nav.style.backgroundColor = "blue";
+				bar.style.left = "54%";
+				bar.style.backgroundColor = "black";
+				bar.style.border= "1px solid black";
+				container.style.backgroundColor = "white";
+				container.style.border = "2px solid white";
+				body.style.backgroundColor = "black";
+				body.style.color = "white";
+				body.style.transition = "0.5s";
+			}
+		}
+	</script>
+    </body>
+</html>
