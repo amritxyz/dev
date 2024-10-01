@@ -1,0 +1,7 @@
+sudo pacman -S virtualbox virtualbox-host-modules-arch
+
+sudo modprobe vboxdrv
+sudo modprobe vboxnetadp
+sudo modprobe vboxnetflt
+
+sudo usermod -aG vboxusers $(whoami)
