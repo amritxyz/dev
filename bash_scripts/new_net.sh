@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Define configuration file location
 CONF_DIR="/etc/NetworkManager/conf.d"

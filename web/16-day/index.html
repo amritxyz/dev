@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Hell</title>
+		<link rel="stylesheet" href="index.css">
+	</head>
+	<body>
+
+		<div id="main_form">
+			<form id="boxForm">
+				<label>Length: <input type="text" id="length"></label><br>
+				<label>Breadth: <input type="text" id="breadth"></label><br>
+				<label>Height: <input type="text" id="height"></label><br>
+				<button type="submit">Calculate Volume</button>
+			</form>
+		</div>
+
+		<div id="error"></div>
+		<div id="result"></div>
+
+		<script>
+			let main_form = document.querySelector("#main_form");
+			<!-- main_form.style.display = "flex"; -->
+			<!-- main_form.style.justifyContent = "center"; -->
+			<!-- main_form.style.alignItems = "center"; -->
+
+			document.getElementById('boxForm').addEventListener('submit', function(event) {
+				event.preventDefault();
+				let length = document.getElementById('length').value;
+				let breadth = document.getElementById('breadth').value;
+				let height = document.getElementById('height').value;
+				let errorDiv = document.getElementById('error');
+				let resultDiv = document.getElementById('result');
+
+				errorDiv.textContent = '';
+				resultDiv.textContent = '';
+				if (!length || !breadth || !height) {
+					errorDiv.textContent = 'All fields are required!';
+					return;
+				}
+				if (isNaN(length) || isNaN(breadth) || isNaN(height)) {
+					errorDiv.textContent = 'Please enter valid numbers!';
+					return;
+				}
+
+				let volume = length * breadth * height;
+				resultDiv.textContent = `Volume of the box: ${volume}`;
+			});
+
+		</script>
+	</body>
+</html>

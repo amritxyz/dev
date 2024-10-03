@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 echo "-> Searching for PDF files..."
 find . -type f -name "*.pdf" | nl
 echo -n "-> Enter the number of the file to open: "

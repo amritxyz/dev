@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Path to the pacman.conf file
 PACMAN_CONF="/etc/pacman.conf"

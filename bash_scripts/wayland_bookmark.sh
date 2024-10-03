@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # sudo pacman wofi xclip
 
@@ -21,7 +21,7 @@ fi
 
 # Alternative Approach Using 'wl-clipboard'
 
-#!/bin/bash
+#!/bin/sh
 
 #	# Path to your bookmarks file
 #	BOOKMARK_FILE="$HOME/.local/share/snippets"
