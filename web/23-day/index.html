@@ -6,32 +6,71 @@
 	</head>
 
 	<body>
-		<table style="text-align: center;"border="collapsed">
-			<tr>
-				<th> SN </th>
-				<th> Country </th>
-				<th> Capital </th>
-				<th> Region </th>
-				<th> Population </th>
-				<th> Area </th>
-				<th> Flags </th>
-			</tr>
-			<tr>
-				<td> 1 </td>
-				<td> Nepal </td>
-				<td> Kathmandu </td>
-				<td> Asia </td>
-				<td> 1,64,94,504 </td>
-				<td> 1,47,181 </td>
-				<td> |> </td>
+		<table>
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Country</th>
+					<th>Capital</th>
+					<th>Region</th>
+					<th>Population</th>
+					<th>Area</th>
+					<th>Flag</th>
+				</tr>
+			</thead>
+			<tbody class="data-row">
+			</tbody>
 		</table>
+
 	</body>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			renderData();
+		});
 
-	<script src="script.js">
-		const renderData = async () =>
-		{
-			const data = await fetchData()
-			const dataRow = document.querySelector( 'data-row' )
+		const fetchData = async () => {
+			const URL = "https://restcountries.com/v3.1/all";
+			try {
+				const response = await fetch(URL);
+				const data = await response.json();
+				if (response.ok) {
+					console.log(data);
+					return data;
+				} else {
+					console.log("Error", response);
+					return [];
+				}
+			} catch (err) {
+				console.log(err);
+				return [];
+			}
+		};
+		const renderData = async () => {
+			const data = await fetchData();
+			const dataRow = document.querySelector('.data-row');
+			let sn = 1;
+			for (let item of data) {
+				const country = item.name.common;
+				const flag = item.flags.png;
+
+				const { capital, region, population, area } = item;
+
+				const row = document.createElement('tr');
+				row.innerHTML = `
+				<td>${sn}</td>
+				<td>${country}</td>
+				<td>${capital}</td>
+				<td>${region}</td>
+				<td>${population}</td>
+				<td>${area}</td>
+				<td>
+				<img src="${flag}" width="50px"/>
+				</td>
+					`;
+				dataRow.appendChild(row);
+				sn++;
+			}
+		};
+		renderData();
 	</script>
-
 </html>
