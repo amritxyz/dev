@@ -1,5 +1,7 @@
 #include <stdio.h>
-int main() {
+
+int main()
+{
 	int marks[5];
 	int total = 0;
 	float avg;

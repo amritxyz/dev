@@ -1,8 +1,11 @@
 #include <stdio.h>
-int main() {
+
+int main(void)
+{
     int num[5];
     int i, even=0, odd=0;
     float avg;
+
     printf("Enter 5 Numbers :\n");
     for (i = 0; i < 5; ++i) {
         printf("Number %d: ", i + 1);
