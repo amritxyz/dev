@@ -4,25 +4,25 @@
 #include <stdlib.h>
 
 unsigned long long factorial(int n) {
-    if (n == 0) return 1;
-    return n * factorial(n - 1);
+	if (n == 0) return 1;
+	return n * factorial(n - 1);
 }
 
 int main() {
-    int number;
-    printf("Enter a positive integer: ");
-    scanf("%d", &number);
+	int number;
+	printf("Enter a positive integer: ");
+	scanf("%d", &number);
 
-    unsigned long long *result = (unsigned long long *)malloc(sizeof(unsigned long long));
-    if (result == NULL) {
-        printf("Memory allocation failed.\n");
-        return 1;
-    }
+	unsigned long long *result = (unsigned long long *)malloc(sizeof(unsigned long long));
+	if (result == NULL) {
+		printf("Memory allocation failed.\n");
+		return 1;
+	}
 
-    *result = factorial(number);
-    printf("Factorial of %d = %llu\n", number, *result);
+	*result = factorial(number);
+	printf("Factorial of %d = %llu\n", number, *result);
 
-    free(result);
-    return 0;
+	free(result);
+	return 0;
 }
 
