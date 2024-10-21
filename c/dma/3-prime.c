@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int isPrime(int num) {
+int
+isPrime(int num)
+{
 	int i;
 	for (i = 2; i * i <= num; i++) {
 		if (num % i == 0) {
@@ -11,7 +13,8 @@ int isPrime(int num) {
 	return 1;
 }
 
-int main() {
+int main()
+{
 	int num, count = 0;
 	printf("Enter a number: ");
 	scanf("%d", &num);
