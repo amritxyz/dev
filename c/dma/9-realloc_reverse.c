@@ -4,7 +4,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-void reverseString(char *str) {
+void
+reverseString(char *str)
+{
 	int length = strlen(str);
 	char *reversed = (char *)malloc(sizeof(char)); // Start with minimal allocation
 	if (reversed == NULL) {
@@ -26,7 +28,8 @@ void reverseString(char *str) {
 	free(reversed);
 }
 
-int main() {
+int main()
+{
 	char str[100];
 	printf("Enter a string: ");
 	scanf("%99s", str); // Limit input to prevent overflow

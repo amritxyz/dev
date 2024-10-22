@@ -3,7 +3,9 @@
 #define SIZE 5
 
 // Function to reverse an array
-void reverseArray(int arr[], int size) {
+void
+reverseArray(int arr[], int size)
+{
 	for (int i = 0; i < size / 2; i++) {
 		int temp = arr[i];
 		arr[i] = arr[size - i - 1];
@@ -11,7 +13,8 @@ void reverseArray(int arr[], int size) {
 	}
 
 
-int main() {
+int main()
+{
 	int arr[SIZE];
 
 	printf("Enter %d integers:\n", SIZE);

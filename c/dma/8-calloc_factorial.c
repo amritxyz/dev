@@ -3,12 +3,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-unsigned long long factorial(int n) {
+unsigned long long
+factorial(int n)
+{
 	if (n == 0) return 1;
 	return n * factorial(n - 1);
 }
 
-int main() {
+int main()
+{
 	int number;
 	printf("Enter a positive integer: ");
 	scanf("%d", &number);
