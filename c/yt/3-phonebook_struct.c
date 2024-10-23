@@ -1,12 +1,14 @@
 #include<stdio.h>
 #include<string.h>
 
-typedef struct{
+typedef struct {
 	char names[50];
 	char numbers[20];
-}person;
+} person;
 
-int main(void){
+int
+main(void)
+{
 	person people[4];
 	strcpy(people[0].names, "Amrit");
 	strcpy(people[0].numbers, "9867244404");
@@ -17,6 +19,7 @@ int main(void){
 
 	char name[50];
 	printf("Name: ");
+	fflush(stdout);
 	fgets(name, sizeof(name), stdin);
 	name[strcspn(name, "\n")] = '\0';
 
