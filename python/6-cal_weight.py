@@ -1,3 +1,3 @@
-weight_pl = input('Enter your weight(pounds): ')
-weight_kl = float(weight_pl) / 1.6
-print(weight_kl)
+weight_lbs = input('Enter your weight (lbs): ')
+weight_kg = int(weight_lbs) * 0.45
+print(weight_kg)
