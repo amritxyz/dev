@@ -1,7 +1,9 @@
 #include<stdio.h>
 #include<string.h>
 
-int main(int argc, char **argv) {
+int
+main(int argc, char **argv)
+{
     char file_name[256];
 
     if (argc == 1) {
@@ -9,7 +11,8 @@ int main(int argc, char **argv) {
         fflush(stdout);
         fgets(file_name, sizeof(file_name), stdin);
         file_name[strcspn(file_name, "\n")] = 0;
-    } else {
+    }
+    else {
         strcpy(file_name, argv[1]);
     }
 
@@ -19,7 +22,8 @@ int main(int argc, char **argv) {
     if(ptr == NULL) {
         printf("Sorry the file doesn't exist!\n");
         return 1;
-    } else {
+    }
+    else {
         int num;
         fscanf(ptr, "%d", &num);
         printf("The value of num is %d\n", num);
