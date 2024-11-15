@@ -1,9 +1,11 @@
+/* stopwatch or digital watch */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
 
-int main()
+int main(void)
 {
 	int hour, minute, second;
 	hour = minute = second = 0;
@@ -32,6 +34,5 @@ int main()
 		}
 		sleep(1);
 	}
-	return 0;
 }
 
