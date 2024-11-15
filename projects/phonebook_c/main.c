@@ -36,11 +36,13 @@ displayContacts(FILE *file)
 
 	rewind(file);  // Go to the beginning of the file to read the contacts
 
+	printf("-------------------------------------------");
 	printf("\nPhonebook:\n");
 	while (fscanf(file, "%49[^,],%14[^\n]\n", name, phone_number) == 2) {
 		printf("\nName: %s\n", name);
 		printf("Phone Number: %s\n", phone_number);
 	}
+	printf("-------------------------------------------\n");
 }
 
 /* display the menu and get the user's choice */
