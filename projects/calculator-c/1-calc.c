@@ -43,13 +43,16 @@ int main(){
 	printf("3) MUL\n");
 	printf("4) DEV\n");
 	printf("Enter your choice (1/2/3/4) : ");
+	fflush(stdout);
 	scanf("%d", &choice);
 
 	/* Get numbers from users */
 	float a, b;
 	printf("Enter first number: ");
+	fflush(stdout);
 	scanf("%f", &a);
 	printf("Enter second number: ");
+	fflush(stdout);
 	scanf("%f", &b);
 
 	/* Switch case */
