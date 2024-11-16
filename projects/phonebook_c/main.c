@@ -15,14 +15,14 @@ addContact(FILE *file)
 
 	printf("\nEnter Name: ");
 	fflush(stdout);
-	getchar();  // To consume the leftover newline character from previous input
+	getchar();  /* To consume the leftover newline character from previous input */
 	fgets(new_contact.name, sizeof(new_contact.name), stdin);
-	new_contact.name[strcspn(new_contact.name, "\n")] = 0;  // Remove newline at the end
+	new_contact.name[strcspn(new_contact.name, "\n")] = 0;  /* Remove newline at the end */
 
 	printf("Enter Phone Number: ");
 	fflush(stdout);
 	fgets(new_contact.phone_number, sizeof(new_contact.phone_number), stdin);
-	new_contact.phone_number[strcspn(new_contact.phone_number, "\n")] = 0;  // Remove newline
+	new_contact.phone_number[strcspn(new_contact.phone_number, "\n")] = 0;  /* Remove newline */
 
 	fprintf(file, "%s,%s\n", new_contact.name, new_contact.phone_number);
 	printf("\nContact added successfully!\n");
@@ -34,15 +34,15 @@ displayContacts(FILE *file)
 {
 	char name[50], phone_number[15];
 
-	rewind(file);  // Go to the beginning of the file to read the contacts
+	rewind(file);  /* Go to the beginning of the file to read the contacts */
 
-	printf("-------------------------------------------");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 	printf("\nPhonebook:\n");
 	while (fscanf(file, "%49[^,],%14[^\n]\n", name, phone_number) == 2) {
 		printf("\nName: %s\n", name);
 		printf("Phone Number: %s\n", phone_number);
 	}
-	printf("-------------------------------------------\n");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 }
 
 /* display the menu and get the user's choice */
@@ -72,7 +72,7 @@ handleChoice(int choice, FILE *file)
 			displayContacts(file);
 			break;
 		case 3:
-			fclose(file);  // Close the file before exiting
+			fclose(file);  /* Close the file before exiting */
 			printf("Exiting program.\n");
 			exit(0);
 		default:
@@ -93,8 +93,8 @@ main()
 
 	int choice;
 	while (1) {
-		choice = displayMenu();  // Display the menu and get the choice
-		handleChoice(choice, file);  // Handle the chosen option
+		choice = displayMenu();  /* Display the menu and get the choice */
+		handleChoice(choice, file);  /* Handle the chosen option */
 	}
 
 	return 0;
