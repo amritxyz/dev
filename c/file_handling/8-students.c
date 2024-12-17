@@ -27,15 +27,19 @@ int main() {
 
 	for (i = 0; i < NUM_STUDENTS; i++) {
 		printf("Enter the student's ID: ");
+		fflush(stdout);
 		scanf("%d", &s1[i].id);
 		printf("Enter the student's name: ");
+		fflush(stdout);
 		scanf("%s", s1[i].name);
 		printf("Enter the student's address: ");
+		fflush(stdout);
 		scanf("%s", s1[i].add);
 
 	/* subjects */
 		for (j = 0; j < NUM_SUBJECTS; j++) {
 			printf("Enter mark for subject %d: ", j + 1);
+			fflush(stdout);
 			scanf("%f", &s1[i].M1.subjects[j]);
 		}
 	}
@@ -66,4 +70,3 @@ int main() {
 
 	return 0;
 }
-
