@@ -20,7 +20,7 @@
 #include <time.h>
 #include <unistd.h>
 
-void
+static void
 clear_screen_and_move_cursor(int row, int col)
 {
 	/* Move the cursor to the desired row and column */
