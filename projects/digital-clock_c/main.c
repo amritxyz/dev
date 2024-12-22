@@ -30,7 +30,8 @@ clear_screen_and_move_cursor(int row, int col)
 	fflush(stdout);
 }
 
-int main(void)
+int
+main(void)
 {
 	int hour, minute, second;
 	hour = minute = second = 0;
