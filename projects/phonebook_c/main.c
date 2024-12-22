@@ -20,10 +20,10 @@
 #include <string.h>
 
 /* Prototypes */
-static void addContact(FILE *);
-static void displayContacts(FILE *);
-static int displayMenu();
-static void handleChoice(int , FILE *);
+static void add_contact(FILE *);
+static void display_contacts(FILE *);
+static int display_menu(void);
+static void handle_choice(int , FILE *);
 
 struct Contact {
 	char name[50];
@@ -32,7 +32,7 @@ struct Contact {
 
 /* add a new contact to the phonebook file */
 static void
-addContact(FILE *file)
+add_contact(FILE *file)
 {
 	struct Contact new_contact;
 
@@ -47,8 +47,6 @@ addContact(FILE *file)
 	fgets(new_contact.phone_number, sizeof(new_contact.phone_number), stdin);
 	new_contact.phone_number[strcspn(new_contact.phone_number, "\n")] = 0;  /* Remove newline */
 
-	fprintf(file, "%s,%s\n", new_contact.name, new_contact.phone_number);
-
 	/*error handling while writing to file*/
 	if (fprintf(file, "%s,%s\n", new_contact.name, new_contact.phone_number) < 0) {
 		printf("Error writing to file.\n");
@@ -60,7 +58,7 @@ addContact(FILE *file)
 
 /* display all contacts in the phonebook file */
 static void
-displayContacts(FILE *file)
+display_contacts(FILE *file)
 {
 	char name[50], phone_number[15];
 
@@ -77,7 +75,7 @@ displayContacts(FILE *file)
 
 /* display the menu and get the user's choice */
 static int
-displayMenu()
+display_menu()
 {
 	int choice;
 	printf("\nPhonebook Menu:\n");
@@ -92,14 +90,14 @@ displayMenu()
 
 /* handle the user's choice */
 static void
-handleChoice(int choice, FILE *file)
+handle_choice(int choice, FILE *file)
 {
 	switch (choice) {
 		case 1:
-			addContact(file);
+			add_contact(file);
 			break;
 		case 2:
-			displayContacts(file);
+			display_contacts(file);
 			break;
 		case 3:
 			fclose(file);  /* Close the file before exiting */
@@ -123,8 +121,8 @@ main()
 
 	int choice;
 	while (1) {
-		choice = displayMenu(); /* Display the menu and get the choice */
-		handleChoice(choice, file); /* Handle the chosen option */
+		choice = display_menu(); /* Display the menu and get the choice */
+		handle_choice(choice, file); /* Handle the chosen option */
 	}
 
 	return 0;
