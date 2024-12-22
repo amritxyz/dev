@@ -20,6 +20,8 @@
 #include <time.h>
 #include <unistd.h>
 
+static void clear_screen_and_move_cursor(int, int);
+
 static void
 clear_screen_and_move_cursor(int row, int col)
 {
