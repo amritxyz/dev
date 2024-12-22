@@ -52,7 +52,7 @@ addContact(FILE *file)
 	/*error handling while writing to file*/
 	if (fprintf(file, "%s,%s\n", new_contact.name, new_contact.phone_number) < 0) {
 		printf("Error writing to file.\n");
-		return;
+		exit(1);
 	}
 
 	printf("\nContact added successfully!\n");
