@@ -19,13 +19,19 @@
 #include <stdlib.h>
 #include <string.h>
 
+/* Declaration */
+static void addContact(FILE *);
+static void displayContacts(FILE *);
+static int displayMenu();
+static void handleChoice(int , FILE *);
+
 struct Contact {
 	char name[50];
 	char phone_number[15];
 };
 
 /* add a new contact to the phonebook file */
-void
+static void
 addContact(FILE *file)
 {
 	struct Contact new_contact;
@@ -42,11 +48,18 @@ addContact(FILE *file)
 	new_contact.phone_number[strcspn(new_contact.phone_number, "\n")] = 0;  /* Remove newline */
 
 	fprintf(file, "%s,%s\n", new_contact.name, new_contact.phone_number);
+
+	/*error handling while writing to file*/
+	if (fprintf(file, "%s,%s\n", new_contact.name, new_contact.phone_number) < 0) {
+		printf("Error writing to file.\n");
+		return;
+	}
+
 	printf("\nContact added successfully!\n");
 }
 
 /* display all contacts in the phonebook file */
-void
+static void
 displayContacts(FILE *file)
 {
 	char name[50], phone_number[15];
@@ -63,7 +76,7 @@ displayContacts(FILE *file)
 }
 
 /* display the menu and get the user's choice */
-int
+static int
 displayMenu()
 {
 	int choice;
@@ -78,7 +91,7 @@ displayMenu()
 }
 
 /* handle the user's choice */
-void
+static void
 handleChoice(int choice, FILE *file)
 {
 	switch (choice) {
@@ -110,8 +123,8 @@ main()
 
 	int choice;
 	while (1) {
-		choice = displayMenu();  /* Display the menu and get the choice */
-		handleChoice(choice, file);  /* Handle the chosen option */
+		choice = displayMenu(); /* Display the menu and get the choice */
+		handleChoice(choice, file); /* Handle the chosen option */
 	}
 
 	return 0;
