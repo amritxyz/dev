@@ -19,7 +19,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-/* Declaration */
+/* Prototypes */
 static void addContact(FILE *);
 static void displayContacts(FILE *);
 static int displayMenu();
