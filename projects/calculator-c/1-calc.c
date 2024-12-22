@@ -16,44 +16,50 @@
  */
 
 #include<stdio.h>
+#include <stdlib.h>
 
-// prototypes
-void sum(float a, float b);
-void sub(float a, float b);
-void mul(float a, float b);
-void dev(float a, float b);
-
-// function declaration
+/* prototypes */
+static void sum(float, float);
+static void sub(float, float);
+static void mul(float, float);
+static void dev(float, float);
 
 /* SUM */
-void sum(float a, float b){
+static
+void sum(float a, float b)
+{
 	printf("%.2f", a+b);
 }
 
 /* SUB */
-void sub(float a, float b){
+static
+void sub(float a, float b)
+{
 	printf("%.2f", a-b);
 }
 
 /* MUL */
-void mul(float a, float b){
+static
+void mul(float a, float b)
+{
 	printf("%.2f", a*b);
 }
 
 /* DEV */
-void dev(float a, float b){
+static
+void dev(float a, float b)
+{
 	if (b!=0){
 		printf("%.2f", a/b);
-	}
-	else {
+	} else {
 		printf("Error: Division by zero is not allowed.\n");
-
-}
+		exit(1);
+	}
 }
 
 /* Main Function */
-int main(){
-	/*...............*/
+int
+main() {
 	int choice;
 	printf("1) SUM\n");
 	printf("2) SUB\n");
@@ -73,7 +79,7 @@ int main(){
 	scanf("%f", &b);
 
 	/* Switch case */
-	switch (choice){
+	switch (choice) {
 		case 1:
 			sum(a, b);
 			break;
