@@ -20,10 +20,10 @@
 #include <string.h>
 
 /* Prototypes */
-static void add_contact(FILE *);
-static void display_contacts(FILE *);
-static int display_menu(void);
-static void handle_choice(int , FILE *);
+static void	add_contact(FILE *);
+static void	display_contacts(FILE *);
+static int	display_menu(void);
+static void	handle_choice(int , FILE *);
 
 struct Contact {
 	char name[50];
