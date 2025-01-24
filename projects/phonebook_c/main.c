@@ -19,16 +19,16 @@
 #include <stdlib.h>
 #include <string.h>
 
+struct Contact {
+	char name[50];
+	char phone_number[15];
+};
+
 /* Prototypes */
 static void	add_contact(FILE *);
 static void	display_contacts(FILE *);
 static int	display_menu(void);
 static void	handle_choice(int , FILE *);
-
-struct Contact {
-	char name[50];
-	char phone_number[15];
-};
 
 /* add a new contact to the phonebook file */
 static void
