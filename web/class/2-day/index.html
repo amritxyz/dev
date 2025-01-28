@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<!--Start_Head_Starts-->
+	<head>
+		<title>hell</title>
+		<link rel="stylesheet" href="style.css">
+		<style>
+		td {
+			padding: 2px;
+			border: 1px solid #ccc;
+		}
+		.comment-box {
+			width: 40%;
+			height: 100px;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			resize: none;
+		}
+		.submit-button {
+			margin-top: 10px;
+			padding: 10px 15px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 5px;
+		}
+		.submit-button {
+			margin-top: 10px;
+			padding: 10px 15px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 5px;
+		}
+		.submit-button:hover {
+			background-color: #45a049;
+		}
+		input {
+			padding: 2% 12%;
+			font-size: bold;
+		}
+		.select {
+			padding: 2% 10%;
+		}
+		.photo {
+			padding: 2% 10%;
+		}
+		</style>
+	</head>
+	<!--End_Head_End-->
+
+	<!--Start_Body_Start-->
+	<body>
+
+		<fieldset>
+			<legend align='center'>
+				Student Registration Form
+			</legend>
+
+			<!--Start_Table-->
+			<table bgcolor='yellow' align='center' border='1' cellspacing='5' bordercolor='red'>
+				<caption> Admission Form </caption>
+				<tr>
+					<td> Roll No </td>
+					<td> <input type='number' name='roll' placeholder='Enter your roll no'> </td>
+				</tr>
+
+				<tr>
+					<td> Student's Full Name </td>
+					<td> <input type='text' name='name' placeholder='Input student name'> </td>
+				</tr>
+
+				<tr>
+					<td> Student's Address </td>
+					<td> <input type='text' name='name' placeholder='Input student address'> </td>
+				</tr>
+
+				<tr>
+					<td> Roll No </td>
+					<td> <input type='phone' name='name' placeholder='Input student phonenumber'> </td>
+				</tr>
+
+				<tr>
+					<td> Gender </td>
+					<td>
+						<input type='radio' name='gender'> Male
+						<input type='radio' name='gender'> Female
+						<input type='radio' name='gender'> Others
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<label>
+							Students DOB
+						</label>
+					</td>
+					<td>
+						<input type='date' name='name'>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<label> Studnet's Faculty </label>
+					</td>
+					<td>
+						<input type='checkbox' name='check'>AI
+						<input type='checkbox' name='check'>DBA
+						<input type='checkbox' name='check'>NSA
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<label> Upload Students Image </label>
+					</td>
+					<td>
+						<input type='file' name='photo' placeholder='photo' class='photo'>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<label for='faculty'> Select Faculty </label>
+					</td>
+					<td>
+						<select name='faculty' class='select'>
+							<option> Select </option>
+							<option> BCA </option>
+							<option> BBA </option>
+							<option> BBS </option>
+						</select>
+					</td>
+				</tr>
+
+				<tr>
+					<td colspan='2'>
+						<textarea type='comment-box' placeholder="Write your comment" class='comment-box'> </textarea>
+						<label> Write your comment </label>
+					</td>
+				</tr>
+				<tr>
+					<td colspan='2'>
+						<button class="submit-button" type="button">Submit</button>
+						<button class="submit-button" type="button">Reset</button>
+					</td>
+				</tr>
+
+			</table>
+			<!--End_Table-->
+
+		</fieldset>
+	</body>
+	<!--End_Body_End-->
+
+	<!--Start_JavaScript_Start-->
+	<script src="script.js">
+
+	</script>
+	<!--End_JavaScript_End-->
+
+</html>
