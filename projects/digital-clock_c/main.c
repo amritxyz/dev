@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2024 Nyx Void
- * https://nyx-void.github.io
+ * Copyright (C) 2024 amritxyz
+ * https://amritxyz.github.io
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
