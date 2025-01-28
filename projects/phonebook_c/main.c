@@ -19,10 +19,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct Contact {
+typedef struct Contact {
 	char name[50];
 	char phone_number[15];
-};
+} new_contact;
 
 /* Prototypes */
 static void	add_contact(FILE *);
@@ -34,8 +34,6 @@ static void	handle_choice(int , FILE *);
 static void
 add_contact(FILE *file)
 {
-	struct Contact new_contact;
-
 	printf("\nEnter Name: ");
 	fflush(stdout);
 	getchar();  /* To consume the leftover newline character from previous input */
