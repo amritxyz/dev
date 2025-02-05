@@ -2,8 +2,8 @@
 #include <stdlib.h>
 
 struct node {
-	int	data;
-	struct	node *link;
+	int data;
+	struct node *link;
 }
 
 void print_data(struct *);
