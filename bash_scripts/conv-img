@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Check if the correct number of arguments is provided
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 input.jpg output.png"
+    exit 1
+fi
+
+# Convert the image
+convert "$1" -resize 800x600 -quality 85 "$2"
