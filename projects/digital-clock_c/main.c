@@ -76,5 +76,5 @@ main(void)
 		sleep(1);
 	}
 
-	return 0;
+	return EXIT_FAILURE;
 }

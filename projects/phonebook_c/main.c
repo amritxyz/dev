@@ -73,7 +73,7 @@ display_contacts(FILE *file)
 
 /* display the menu and get the user's choice */
 static int
-display_menu()
+display_menu(void)
 {
 	int choice;
 	printf("\nPhonebook Menu:\n");
