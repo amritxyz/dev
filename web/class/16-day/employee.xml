@@ -1,0 +1,13 @@
+<butwal>
+  <employee id="1">
+    <username>Amrit</username>
+    <post>Social Media</post>
+    <salary>50000</salary>
+    <gender>Male</gender>
+    <address>
+      <temporary>Kathmandu</temporary>
+      <permanent>Butwal</permanent>
+    </address>
+    <password>GoodBye</password>
+  </employee>
+</butwal>
