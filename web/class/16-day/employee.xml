@@ -1,13 +1,15 @@
-<butwal>
-  <employee id="1">
-    <username>Amrit</username>
-    <post>Social Media</post>
+<?xml version="1.0" encoding="UTF-8"?>
+<Butwal xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="schema.xsd">
+  <employee>
+    <ID>12345</ID>
+    <username>abcdefgh</username>
+    <post>Chairman</post>
     <salary>50000</salary>
     <gender>Male</gender>
-    <address>
-      <temporary>Kathmandu</temporary>
-      <permanent>Butwal</permanent>
+    <address>  
+      <temporary>Butwal</temporary>
+      <permanent>Sunwal</permanent>
     </address>
-    <password>GoodBye</password>
+    <password>p@ssw0rd</password>
   </employee>
-</butwal>
+</Butwal>

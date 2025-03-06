@@ -1,40 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  
-  <xs:element name="butwal">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element name="employee">
-          <xs:complexType>
+    <xs:element name="Butwal">
+        <xs:complexType>
             <xs:sequence>
-              <xs:element name="username" type="xs:string"/>
-              <xs:element name="post" type="xs:string"/>
-              
-              <!--salary-->
-              <xs:element name="salary">
-                <xs:simpleType>
-                  <xs:restriction base="xs:int">
-                    <xs:minInclusive value="25000"/>
-                    <xs:maxInclusive value="50000"/>
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              
-              <xs:element name="gender" type="xs:string"/>
-              <xs:element name="address">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element name="temporary" type="xs:string"/>
-                    <xs:element name="permanent" type="xs:string"/>
-                  </xs:sequence>
-                </xs:complexType>
-              </xs:element>
-              <xs:element name="password" type="xs:string"/>
+                <xs:element name="employee">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="ID" type="xs:string"/>
+                            
+                            <xs:element name="username">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:minLength value="8"/>
+                                        <xs:maxLength value="12"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+
+                            <xs:element name="post">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:minLength value="5"/>
+                                        <xs:maxLength value="8"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+
+                            <xs:element name="salary">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:int">
+                                        <xs:minInclusive value="25000"/>
+                                        <xs:maxInclusive value="50000"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+
+                            <xs:element name="gender">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="Male"/>
+                                        <xs:enumeration value="Female"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+
+                            <xs:element name="address">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="temporary" type="xs:string"/>
+                                        <xs:element name="permanent" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <xs:element name="password">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:minLength value="6"/>
+                                        <xs:maxLength value="15"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
             </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  
+        </xs:complexType>
+    </xs:element>
 </xs:schema>
