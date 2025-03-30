@@ -10,6 +10,11 @@ sudo mariadb-install-db --user=void --basedir=/usr --datadir=/var/lib/mysql
 sudo systemctl enable mariadb
 sudo systemctl start mariadb
 
+# SomeTime
+# sudo chown -R mysql:mysql /var/lib/mysql
+# sudo chmod -R 755 /var/lib/mysql
+
+#
 # Login with user and password
 #	$ sudo mysql -u root -p
 
@@ -22,7 +27,9 @@ sudo systemctl start mariadb
 # --------------------------------------------------------------------------- #
 
 # Uninstall
-
+#
+# sudo pacman -Rncsu mariadb
+# sudo pacman -Scc
 # sudo systemctl stop mariadb
 # sudo systemctl disable mariadb
 # sudo rm -rf /var/cache/pacman/pkg/jemalloc* /var/cache/pacman/pkg/mariadb*
