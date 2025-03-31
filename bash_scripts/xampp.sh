@@ -8,6 +8,6 @@ sudo pacman -S inetutils
 
 # Post Installation
 cd /opt/
-wget https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/8.2.12/xampp-linux-x64-8.2.12-0-installer.run
+sudo wget https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/8.2.12/xampp-linux-x64-8.2.12-0-installer.run
 sudo chown $USER:$USER /opt/xampp-linux-x64-8.2.12-0-installer.run
 sudo /opt/xampp-linux-x64-8.2.12-0-installer.run
