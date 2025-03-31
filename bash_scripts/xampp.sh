@@ -1,10 +1,12 @@
 #!/bin/sh
 
 # Install Dependencies First
-sudo pacman -S lib32-gcc-libs lib32-glibc lib32-libgcrypt
+sudo pacman -S lib32-gcc-libs lib32-glibc
 sudo pacman -S libxcrypt-compat
 sudo pacman -S net-tools
 sudo pacman -S inetutils
+# Optional
+# sudo pacman -S lib32-libgcrypt
 
 # Post Installation
 cd /opt/
