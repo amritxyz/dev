@@ -20,8 +20,8 @@
 #include <string.h>
 
 struct Contact {
-	char name[50];
-	char phone_number[15];
+    char *name;
+    char *phone_number;
 };
 
 /* Prototypes */
@@ -35,25 +35,44 @@ static void
 add_contact(FILE *file)
 {
 	struct Contact new_contact;
+	char temp_name[50], temp_phone[15];
 
 	printf("\nEnter Name: ");
 	fflush(stdout);
 	getchar();  /* To consume the leftover newline character from previous input */
-	fgets(new_contact.name, sizeof(new_contact.name), stdin);
-	new_contact.name[strcspn(new_contact.name, "\n")] = 0;  /* Remove newline at the end */
+	fgets(temp_name, sizeof(temp_name), stdin);
+	temp_phone[strcspn(temp_phone, "\n")] = 0;  /* Remove newline at the end */
 
 	printf("Enter Phone Number: ");
 	fflush(stdout);
-	fgets(new_contact.phone_number, sizeof(new_contact.phone_number), stdin);
-	new_contact.phone_number[strcspn(new_contact.phone_number, "\n")] = 0;  /* Remove newline */
+	fgets(temp_phone, sizeof(temp_phone), stdin);
+	temp_phone[strcspn(temp_phone, "\n")] = 0;  /* Remove newline */
+
+	/* Allocate memory dynamically */
+	new_contact.name = malloc(strlen(temp_name) + 1);
+	new_contact.phone_number = malloc(strlen(temp_phone) + 1);
+
+	if (!new_contact.name || !new_contact.phone_number) {
+		printf("Memory allocation failed.\n");
+		exit(1);
+	}
+
+	strcpy(new_contact.name, temp_name);
+	strcpy(new_contact.phone_number, temp_phone);
 
 	/*error handling while writing to file*/
 	if (fprintf(file, "%s,%s\n", new_contact.name, new_contact.phone_number) < 0) {
 		printf("Error writing to file.\n");
+		free(new_contact.name);
+		free(new_contact.phone_number);
 		exit(1);
 	}
 
 	printf("\nContact added successfully!\n");
+
+	/* free allocated memory */
+	free(new_contact.name);
+	free(new_contact.phone_number);
 }
 
 /* display all contacts in the phonebook file */
