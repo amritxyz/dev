@@ -1,10 +1,11 @@
 #!/bin/sh
 
 # Install Dependencies First
-sudo xbps-install -Su libgcc-32bit glibc-32bit
-sudo xbps-install -Su libxcrypt-compat
-sudo xbps-install -Su net-tools
-sudo xbps-install -Su inetutils
+sudo xbps-install -Su void-repo-multilib
+sudo xbps-install -S libgcc-32bit glibc-32bit
+sudo xbps-install -S libxcrypt-compat
+sudo xbps-install -S net-tools
+sudo xbps-install -S inetutils
 
 # Post Installation
 cd /opt/
