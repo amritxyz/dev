@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Sync Mirrors Before Installation
+sudo pacman -Sy
+
 # Install Dependencies First
 sudo pacman -S lib32-gcc-libs lib32-glibc
 sudo pacman -S libxcrypt-compat
