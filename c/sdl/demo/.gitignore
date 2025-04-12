@@ -1,0 +1,4 @@
+*.o
+*.obj
+*.out
+main
