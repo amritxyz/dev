@@ -18,39 +18,35 @@
 #include<stdio.h>
 #include <stdlib.h>
 
-/* prototypes */
-static void sum(float, float);
-static void sub(float, float);
-static void mul(float, float);
-static void dev(float, float);
+#include "calculator.h"
 
 /* SUM */
-static
-void sum(float a, float b)
+int
+sum(float a, float b)
 {
-	printf("%.2f", a+b);
+	return a+b;
 }
 
 /* SUB */
-static
-void sub(float a, float b)
+int
+sub(float a, float b)
 {
-	printf("%.2f", a-b);
+	return a-b;
 }
 
 /* MUL */
-static
-void mul(float a, float b)
+int
+mul(float a, float b)
 {
-	printf("%.2f", a*b);
+	return a*b;
 }
 
 /* DEV */
-static
-void dev(float a, float b)
+int
+dev(float a, float b)
 {
 	if (b!=0){
-		printf("%.2f", a/b);
+		return a/b;
 	} else {
 		printf("Error: Division by zero is not allowed.\n");
 		exit(1);
@@ -69,6 +65,11 @@ main() {
 	fflush(stdout);
 	scanf("%d", &choice);
 
+	if (choice < 1 || choice > 4) {
+		printf("Error: Invalid choice! Please enter a number between 1 and 4.\n");
+		exit(1);
+	}
+
 	/* Get numbers from users */
 	float a, b;
 	printf("Enter first number: ");
@@ -78,26 +79,26 @@ main() {
 	fflush(stdout);
 	scanf("%f", &b);
 
+	float result;
 	/* Switch case */
 	switch (choice) {
 		case 1:
-			sum(a, b);
+			result = sum(a, b);
 			break;
 		case 2:
-			sub(a, b);
+			result = sub(a, b);
 			break;
 		case 3:
-			mul(a, b);
+			result = mul(a, b);
 			break;
 		case 4:
-			dev(a, b);
+			result = dev(a, b);
 			break;
 		default:
 			printf("Invalid choice!\n");
-			break;
+			exit(1);
 	}
+	printf("Result = %.2f\n", result);
 
-	/* Next line */
-	printf("\n");
 	return 0;
 }
