@@ -10,7 +10,6 @@
 #define NUM_POINTS 10000
 #define BINS 40
 
-// Function prototypes
 void draw_histogram(SDL_Renderer* renderer, int win_w, int win_h, int hist[BINS][BINS], int max_count);
 
-#endif // HISTOGRAM_H
+#endif
