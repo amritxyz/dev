@@ -22,7 +22,7 @@
 #include "main.h"
 
 /* add a new contact to the phonebook file */
-	void
+void
 add_contact(FILE *file)
 {
 	struct Contact new_contact;
@@ -67,7 +67,7 @@ add_contact(FILE *file)
 }
 
 /* display all contacts in the phonebook file */
-	void
+void
 display_contacts(FILE *file)
 {
 	char name[50], phone_number[15];
@@ -84,7 +84,7 @@ display_contacts(FILE *file)
 }
 
 /* display the menu and get the user's choice */
-	int
+int
 display_menu(void)
 {
 	int choice;
@@ -99,7 +99,7 @@ display_menu(void)
 }
 
 /* handle the user's choice */
-	void
+void
 handle_choice(int choice, FILE *file)
 {
 	switch (choice) {
@@ -119,7 +119,7 @@ handle_choice(int choice, FILE *file)
 	}
 }
 
-	int
+int
 main()
 {
 	/* Open the file in read/write mode, create if it doesn't exist */
