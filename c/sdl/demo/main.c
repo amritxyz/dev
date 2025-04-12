@@ -1,12 +1,6 @@
 #include <SDL2/SDL.h>
-#include <stdlib.h>
 #include <time.h>
-#include <math.h>
-
-#define WIDTH 800
-#define HEIGHT 800
-#define NUM_POINTS 10000
-#define BINS 40
+#include "main.h"
 
 // Function to draw the histogram on the SDL renderer
 void draw_histogram(SDL_Renderer* renderer, int win_w, int win_h, int hist[BINS][BINS], int max_count) {
@@ -36,11 +30,8 @@ void draw_histogram(SDL_Renderer* renderer, int win_w, int win_h, int hist[BINS]
 
 int main() {
     SDL_Init(SDL_INIT_VIDEO);
-
     SDL_Window* window = SDL_CreateWindow("2D Histogram",
-        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-        WIDTH, HEIGHT, SDL_WINDOW_RESIZABLE);
-
+        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, SDL_WINDOW_RESIZABLE);
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
     // Initialize histogram bins

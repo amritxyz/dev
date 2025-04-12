@@ -8,15 +8,20 @@ TARGET = main
 
 # Source files
 SRC = main.c
+OBJ = main.o
 
 # Default target
 all: $(TARGET)
 
-$(TARGET): $(SRC)
-	$(CC) $(CFLAGS) -o $(TARGET) $(SRC) $(LDFLAGS)
+$(TARGET): $(OBJ)
+	$(CC) $(OBJ) -o $(TARGET) $(LDFLAGS)
+
+# Compile source into object
+$(OBJ): main.c main.h
+	$(CC) $(CFLAGS) -c main.c
 
 # Clean build artifacts
 clean:
-	rm -f $(TARGET) *.o
+	rm -f $(TARGET) $(OBJ)
 
 .PHONY: all clean
