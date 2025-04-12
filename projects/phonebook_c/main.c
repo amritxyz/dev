@@ -19,19 +19,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct Contact {
-    char *name;
-    char *phone_number;
-};
-
-/* Prototypes */
-static void	add_contact(FILE *);
-static void	display_contacts(FILE *);
-static int	display_menu(void);
-static void	handle_choice(int , FILE *);
+#include "main.h"
 
 /* add a new contact to the phonebook file */
-static void
+	void
 add_contact(FILE *file)
 {
 	struct Contact new_contact;
@@ -76,7 +67,7 @@ add_contact(FILE *file)
 }
 
 /* display all contacts in the phonebook file */
-static void
+	void
 display_contacts(FILE *file)
 {
 	char name[50], phone_number[15];
@@ -93,7 +84,7 @@ display_contacts(FILE *file)
 }
 
 /* display the menu and get the user's choice */
-static int
+	int
 display_menu(void)
 {
 	int choice;
@@ -108,7 +99,7 @@ display_menu(void)
 }
 
 /* handle the user's choice */
-static void
+	void
 handle_choice(int choice, FILE *file)
 {
 	switch (choice) {
@@ -128,7 +119,7 @@ handle_choice(int choice, FILE *file)
 	}
 }
 
-int
+	int
 main()
 {
 	/* Open the file in read/write mode, create if it doesn't exist */
