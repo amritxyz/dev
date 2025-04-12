@@ -27,30 +27,31 @@ public class Calculator {
     }
 
     private void initialize() {
-        // Create the frame
-        frame = new JFrame();
+        // Frame setup
+        frame = new JFrame("Java Calculator");
         frame.setBounds(100, 100, 400, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(new BorderLayout());
 
-        // Create the text field
+        // Display text field
         textField = new JTextField();
         textField.setEditable(false);
-        textField.setFont(new Font("Arial", Font.PLAIN, 24));
+        textField.setFont(new Font("Arial", Font.PLAIN, 28));
         frame.getContentPane().add(textField, BorderLayout.NORTH);
         textField.setColumns(10);
 
-        // Create panel for buttons
+        // Buttons panel
         JPanel panel = new JPanel();
         frame.getContentPane().add(panel, BorderLayout.CENTER);
-        panel.setLayout(new GridLayout(4, 4, 10, 10));
+        panel.setLayout(new GridLayout(5, 4, 10, 10));
 
-        // Create buttons
+        // Buttons layout
         String[] buttonLabels = {
             "7", "8", "9", "/",
             "4", "5", "6", "*",
             "1", "2", "3", "-",
-            "0", ".", "=", "+"
+            "0", ".", "=", "+",
+            "C"
         };
 
         for (String label : buttonLabels) {
@@ -61,50 +62,50 @@ public class Calculator {
         }
     }
 
-    // ActionListener to handle button clicks
+    // Handle button clicks
     private class ButtonClickListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
 
-            // Handle numbers and decimal point
-            if (command.charAt(0) >= '0' && command.charAt(0) <= '9' || command.equals(".")) {
+            if (command.matches("[0-9.]")) {
                 currentInput += command;
                 textField.setText(currentInput);
-            }
-            // Handle the four operations
-            else if (command.equals("/") || command.equals("*") || command.equals("-") || command.equals("+")) {
-                firstNumber = Double.parseDouble(currentInput);
-                operation = command;
-                currentInput = "";
-            }
-            // Handle the equals button
-            else if (command.equals("=")) {
-                double secondNumber = Double.parseDouble(currentInput);
-                double result = 0;
-
-                switch (operation) {
-                    case "+":
-                        result = firstNumber + secondNumber;
-                        break;
-                    case "-":
-                        result = firstNumber - secondNumber;
-                        break;
-                    case "*":
-                        result = firstNumber * secondNumber;
-                        break;
-                    case "/":
-                        if (secondNumber != 0) {
-                            result = firstNumber / secondNumber;
-                        } else {
-                            textField.setText("Error");
-                            return;
-                        }
-                        break;
+            } else if (command.matches("[+\\-*/]")) {
+                if (!currentInput.isEmpty()) {
+                    firstNumber = Double.parseDouble(currentInput);
+                    operation = command;
+                    currentInput = "";
                 }
+            } else if (command.equals("=")) {
+                try {
+                    double secondNumber = Double.parseDouble(currentInput);
+                    double result = 0;
 
-                currentInput = String.valueOf(result);
-                textField.setText(currentInput);
+                    switch (operation) {
+                        case "+": result = firstNumber + secondNumber; break;
+                        case "-": result = firstNumber - secondNumber; break;
+                        case "*": result = firstNumber * secondNumber; break;
+                        case "/":
+                            if (secondNumber == 0) {
+                                textField.setText("Error: /0");
+                                currentInput = "";
+                                return;
+                            }
+                            result = firstNumber / secondNumber;
+                            break;
+                    }
+
+                    currentInput = String.valueOf(result);
+                    textField.setText(currentInput);
+                } catch (NumberFormatException ex) {
+                    textField.setText("Invalid input");
+                }
+            } else if (command.equals("C")) {
+                currentInput = "";
+                firstNumber = 0;
+                operation = null;
+                textField.setText("");
             }
         }
     }
