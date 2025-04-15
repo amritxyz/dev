@@ -20,6 +20,8 @@
 #include <unistd.h>
 #include <ncurses.h>
 
+#include "main.h"
+
 int main(void)
 {
     int hour = 0, minute = 0, second = 0;
