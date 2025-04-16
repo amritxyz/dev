@@ -33,7 +33,8 @@ else
 
         # Post Installation
         cd /opt/
-        sudo wget https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/8.2.12/xampp-linux-x64-8.2.12-0-installer.run
+        # sudo wget https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/8.2.12/xampp-linux-x64-8.2.12-0-installer.run
+        sudo wget https://gitlab.com/amritxyz/xampp/-/raw/main/xampp-linux-x64-8.2.12-0-installer.run
         sudo chown $USER:$USER /opt/xampp-linux-x64-8.2.12-0-installer.run
         sudo chmod +x /opt/xampp-linux-x64-8.2.12-0-installer.run
         sudo /opt/xampp-linux-x64-8.2.12-0-installer.run
