@@ -1,3 +1,7 @@
+/*
+ * INFO: Adding node as head in circular linked-list
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -6,8 +10,8 @@ struct Node {
     struct Node *link;
 };
 
-    int
-add_at_last(void *data, struct Node *head)
+int
+add_at_beginning(void *data, struct Node *head)
 {
     struct Node *current = head;
     current = head;
@@ -74,7 +78,7 @@ int main(void)
     // fourth one
     int *data4 = malloc(sizeof(int));
     *data4 = 4;
-    add_at_last(data4, head);
+    add_at_beginning(data4, head);
 
     struct Node *temp = head;
     struct Node *next;
@@ -89,7 +93,7 @@ int main(void)
 
     // printf("hell");
     //
-    // add_at_last((int*) 4, head);
+    // add_at_beginning((int*) 4, head);
     //
     // free(head);
     // free(ptr);

@@ -1,3 +1,5 @@
+// INFO: Program for Linear Search #Class_Work_DSA
+
 #include <stdio.h>
 
 static int search(int , int*, int);

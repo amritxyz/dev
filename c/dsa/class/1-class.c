@@ -1,3 +1,8 @@
+/*
+ * NOTE: Incomplete
+ * TODO: Add node as a head in a circular linked list
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 

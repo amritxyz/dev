@@ -1,3 +1,5 @@
+// INFO: Binary Search program #Class_Work_DSA
+
 #include <stdio.h>
 
 // Function for performing binary search
