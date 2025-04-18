@@ -31,5 +31,8 @@ class problem {
 
 		double abs = Math.abs(num);
 		System.out.println("The abs of " + num + ": " + abs);
+
+		double square = Math.pow(num, num);
+		System.out.println("The square of " + num + ": " + abs);
 	}
 }
