@@ -6,7 +6,7 @@ struct Node {
     struct Node *link;
 };
 
-int
+    int
 add_at_last(void *data, struct Node *head)
 {
     struct Node *current = head;
@@ -22,8 +22,11 @@ add_at_last(void *data, struct Node *head)
     new_node->data = data;
     new_node->link = head; // dimag kharab after 30 minutes
     current->link = new_node;
-    // new_node->link = current->link;
-    // new_node->data = data;
+
+    // Swap data with head
+    void *temp = head->data;
+    head->data = new_node->data;
+    new_node->data = temp;
 
     current = head;
 
