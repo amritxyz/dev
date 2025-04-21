@@ -81,7 +81,8 @@ public class StyledForm {
 			public void actionPerformed(ActionEvent e) {
 				String message = String.format("Name: %s\nEmail: %s\nAge: %s",
 						nameField.getText(), emailField.getText(), ageField.getText());
-				JOptionPane.showMessageDialog(frame, message, "Form Submitted", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(frame, message, "Form Submitted",
+						JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 
@@ -96,6 +97,6 @@ public class StyledForm {
 		field.setBackground(bg);
 		field.setForeground(fg);
 		field.setBorder(border);
-		field.setMargin(new Insets(2, 5, 2, 5));  // Adjust margin for better fit
+		field.setMargin(new Insets(2, 5, 2, 5)); // Adjust margin for better fit
 	}
 }

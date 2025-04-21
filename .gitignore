@@ -1,3 +1,9 @@
 a.out
 *.out
 *.class
+*.aux
+*.log
+*.nav
+*.snm
+*.toc
+*.pdf
