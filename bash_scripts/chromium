@@ -1,0 +1,10 @@
+chromium \
+  --disable-features=DesktopPWAs,WebAppInstallPrompt,WebAppManifestIconUpdating,WebAppSettingsPage \
+  --no-pings \
+  --no-default-browser-check \
+  --disable-component-update \
+  --disable-background-networking \
+  --disable-sync \
+  --disable-default-apps \
+  --disable-site-isolation-trials \
+  --force-device-scale-factor=0.95
