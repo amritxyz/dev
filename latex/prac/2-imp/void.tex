@@ -1,0 +1,80 @@
+% \documentclass[14pt, aspectratio 169]{beamer}
+% \usetheme{Madrid}
+% \usepackage[utf8]{inputenc}
+%
+% \setbeamertemplate{navigation symbols}{}
+%
+% \title{Case Tools}
+% \author{Amrit Bhattarai\thanks{Makes these types of slides.}\\Anupam Baral\thanks{Just presents.}}
+%
+% \begin{document}
+%
+% \maketitle
+%
+% \begin{frame}{What are CASE Tools.}
+% 	\only<1>{CASE - Computer-Aided Software Engineering.}\\
+% 	\only<2,3>{Computer-Aided Software Engineering Tools help system analysts to develop and maintain information systems. }
+% 	\only<3>{Tools to help automate the software development lifecycle.}
+% \end{frame}
+%
+% \end{document}
+\documentclass[14pt, aspectratio=169]{beamer}
+\usetheme{metropolis}
+% \usetheme{Boadilla}
+% \usetheme{Berkeley}
+% \usetheme{Copenhagen}
+% \usetheme{AnnArbor}
+% \usetheme{CambridgeUS}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+
+% Remove navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% Define a custom color for emphasis
+\definecolor{emphasis}{RGB}{0, 102, 204}
+
+% Title and author information
+\title{CASE Tools}
+\author{Amrit Bhattarai\thanks{Makes these types of slides.}\\Anupam Baral\thanks{Just presents.}}
+
+\begin{document}
+
+% Title slide
+\maketitle
+
+% First content frame
+\begin{frame}{What are \textbf{CASE Tools}?}
+	\begin{itemize}
+		\item<1-> \textbf{CASE} stands for \textcolor{emphasis}{Computer-Aided Software Engineering}.
+		\item<1-> \textbf{CASE Tools} help system analysts to:
+			\begin{enumerate}
+				\item<2-> Develop information systems.
+				\item<2-> Maintain information systems.
+			\end{enumerate}
+		\item<3-> These tools aim to \textcolor{emphasis}{automate} the software development lifecycle.
+	\end{itemize}
+\end{frame}
+
+% Second content frame
+\begin{frame}{Types of CASE Tools}
+	\begin{columns}
+
+		\column{0.5\textwidth}
+		\textbf{Upper CASE Tools} \pause
+		\begin{itemize}
+			\item Focus on planning and analysis phases. \pause
+			\item Examples: Requirements gathering tools, modeling tools. \pause
+		\end{itemize}
+
+		\column{0.5\textwidth}
+		\textbf{Lower CASE Tools} \pause
+		\begin{itemize}
+			\item Focus on implementation and testing phases. \pause
+			\item Examples: Code generators, debuggers. \pause
+		\end{itemize}
+
+	\end{columns}
+\end{frame}
+
+\end{document}
