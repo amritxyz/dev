@@ -1,0 +1,1 @@
+riverctl input "$(riverctl list-inputs | grep pointer | awk '{print $1}')" tap enabled
