@@ -1,0 +1,182 @@
+#!/bin/sh
+
+RED="\033[0;31m"
+GREEN="\033[0;32m"
+YELLOW="\033[1;33m"
+BLUE="\033[1;34m"
+CYAN="\033[0;36m"
+RESET="\033[0m"
+BOLD="\033[1m"
+CHECK="[OK]"
+CROSS="[FAIL]"
+INFO="[INFO]"
+
+log() {
+	echo -e "${BLUE}[INFO]$(date +'%Y-%m-%d %H:%M:%S')${RESET} $1"
+}
+
+ask() {
+	echo -ne "${CYAN}$1 ${RESET}"
+}
+
+success() {
+	echo -e "${GREEN}${CHECK} $1${RESET}"
+}
+
+warn() {
+	echo -e "${YELLOW}${INFO} $1${RESET}"
+}
+
+fail() {
+	echo -e "${RED}${CROSS} $1${RESET}"
+}
+
+BAK_MAIN_DIR="/opt/void"
+BAK_DIR="/opt/void/bak"
+JSQL_FILE="mysql-connector-j-9.3.0"
+XAMPP_FILE="lampp"
+MUSIC_TAR="music.tar"
+BOOKS_TAR="books.tar"
+MUSIC_DIR="music"
+BOOKS_DIR="books"
+PRACTICE_DIR="practice"
+NOTES_DIR="notes"
+REACT_DIR="react_dev"
+
+if [ -d "$BAK_MAIN_DIR" ] || [ -d "$BAK_DIR" ]; then
+	warn "$BAK_MAIN_DIR or $BAK_DIR already exists. Skipping creation."
+else
+	sudo mkdir "$BAK_MAIN_DIR"
+	sudo chown "$USER:$USER" "$BAK_MAIN_DIR"
+	mkdir -p "$BAK_DIR"
+fi
+
+mkdir -p ~/.local/{share,bin,dox,git-repos,hugo-dir,vids,audio}
+
+# Practice
+cd "$HOME/.local/"
+if [ -d "$PRACTICE_DIR" ]; then
+	warn "$PRACTICE_DIR already exists. Skipping."
+else
+	ask ":: Would you like to get some Practice Dir? [Y/n] "
+	read -r PRACTICE
+	if [ "$PRACTICE" = "Y" ] || [ "$PRACTICE" = "y" ] || [ -z "$PRACTICE" ]; then
+		git clone --depth=1 https://github.com/amritxyz/practice.git "$PRACTICE_DIR"
+		success "Cloned Practice repo."
+	fi
+fi
+
+# Notes
+cd "$HOME/.local/dox/"
+if [ -d "$NOTES_DIR" ]; then
+	warn "$NOTES_DIR already exists. Skipping."
+else
+	ask ":: Would you like to get some Notes? [Y/n] "
+	read -r NOTES
+	if [ "$NOTES" = "Y" ] || [ "$NOTES" = "y" ] || [ -z "$NOTES" ]; then
+		git clone --depth=1 https://github.com/amritxyz/notes.git "$NOTES_DIR"
+		success "Cloned Notes repo."
+	fi
+fi
+
+# React
+cd "/opt/void/"
+if [ -d "$REACT_DIR" ]; then
+	warn "$REACT_DIR already exists. Skipping."
+else
+	ask ":: Would you like to get some React Programming Stuffs? [Y/n] "
+	read -r REACT
+	if [ "$REACT" = "Y" ] || [ "$REACT" = "y" ] || [ -z "$REACT" ]; then
+		git clone --depth=1 https://github.com/amritxyz/react_dev.git "$REACT_DIR"
+		success "Cloned React Dev repo."
+	fi
+fi
+
+# Music
+cd "$HOME/.local/"
+if [ -f "$MUSIC_TAR" ]; then
+	warn "$MUSIC_DIR or $MUSIC_TAR exists. Skipping."
+	ask ":: Would you like to re-download Music Dir? [y/N] "
+	read -r RE_MUSIC
+	if [ "$RE_MUSIC" = "Y" ] || [ "$RE_MUSIC" = "y" ]; then
+		rm -rf "$MUSIC_TAR" "$MUSIC_DIR"
+		wget -q --show-progress -O "$MUSIC_TAR" https://gitlab.com/amritxyz/tars/-/raw/main/music.tar
+		tar -xf "$MUSIC_TAR"
+		mkdir -p "$BAK_DIR"
+		mv "$MUSIC_TAR" "$BAK_DIR"
+		success "Music downloaded and extracted."
+	fi
+else
+	ask ":: Would you like to get some Music? [Y/n] "
+	read -r MUSIC
+	if [ "$MUSIC" = "Y" ] || [ "$MUSIC" = "y" ] || [ -z "$MUSIC" ]; then
+		wget -q --show-progress -O "$MUSIC_TAR" https://gitlab.com/amritxyz/tars/-/raw/main/music.tar
+		tar -xf "$MUSIC_TAR"
+		mkdir -p "$BAK_DIR"
+		mv "$MUSIC_TAR" "$BAK_DIR"
+		success "Music downloaded and extracted."
+	fi
+fi
+
+# Books
+cd "$HOME/.local/dox/"
+if [ -d "$BOOKS_DIR" ] || [ -f "$BOOKS_TAR" ]; then
+	warn "$BOOKS_DIR or $BOOKS_TAR exists. Skipping."
+	ask ":: Would you like to re-download the Books archive? [y/N] "
+	read -r RE_BOOKS
+	if [ "$RE_BOOKS" = "Y" ] || [ "$RE_BOOKS" = "y" ]; then
+		rm -rf "$BOOKS_TAR" "$BOOKS_DIR"
+		wget -q --show-progress -O "$BOOKS_TAR" https://gitlab.com/amritxyz/tars/-/raw/main/books.tar
+		tar -xf "$BOOKS_TAR"
+		mkdir -p "$BAK_DIR"
+		mv "$BOOKS_TAR" "$BAK_DIR"
+		success "Books archive downloaded and extracted."
+	fi
+else
+	ask ":: Would you like to download the Books archive? [Y/n] "
+	read -r BOOKS
+	if [ "$BOOKS" = "Y" ] || [ "$BOOKS" = "y" ] || [ -z "$BOOKS" ]; then
+		wget -q --show-progress -O "$BOOKS_TAR" https://gitlab.com/amritxyz/tars/-/raw/main/books.tar
+		tar -xf "$BOOKS_TAR"
+		mkdir -p "$BAK_DIR"
+		mv "$BOOKS_TAR" "$BAK_DIR"
+		success "Books archive downloaded and extracted."
+	fi
+fi
+
+# MySQL - Java Connector
+cd /opt
+if [ -d "$JSQL_FILE" ]; then
+	warn "$JSQL_FILE already exists. Skipping."
+else
+	ask ":: Would you like to install Java-SQL Connector? [Y/n] "
+	read -r JSQL
+	if [ "$JSQL" = "Y" ] || [ "$JSQL" = "y" ] || [ -z "$JSQL" ]; then
+		sudo wget -q --show-progress https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-j-9.3.0.tar.gz
+		sudo tar -xzf mysql-connector-j-9.3.0.tar.gz
+		sudo rm -rf mysql-connector-j-9.3.0.tar.gz
+		success "Java SQL connector installed."
+	fi
+fi
+
+# XAMPP
+if [ -d "$XAMPP_FILE" ]; then
+	warn "$XAMPP_FILE already exists. Skipping."
+else
+	ask ":: Would you like to install XAMPP server? [Y/n] "
+	read -r XAMPP
+	if [ "$XAMPP" = "Y" ] || [ "$XAMPP" = "y" ] || [ -z "$XAMPP" ]; then
+		sudo pacman -Sy --noconfirm
+		sudo pacman -S --noconfirm lib32-gcc-libs lib32-glibc libxcrypt-compat net-tools inetutils
+		cd /opt/
+		sudo wget -q --show-progress https://gitlab.com/amritxyz/xampp/-/raw/main/xampp-linux-x64-8.2.12-0-installer.run
+		sudo chown "$USER:$USER" /opt/xampp-linux-x64-8.2.12-0-installer.run
+		sudo chmod +x /opt/xampp-linux-x64-8.2.12-0-installer.run
+		sudo /opt/xampp-linux-x64-8.2.12-0-installer.run
+		success "XAMPP installed."
+	fi
+fi
+
+# Java DB Driver path
+# /opt/mysql-connector-j-9.3.0/src/legacy/java/com/mysql/jdbc
+# In Java: Class.forName("com.mysql.cj.jdbc.Driver");
