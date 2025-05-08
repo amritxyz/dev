@@ -6,7 +6,7 @@ struct Node {
 	struct Node *link;
 };
 
-	static void
+static void
 add_node_at_position(void *data, struct Node *head, int position)
 {
 	struct Node *current = head;
