@@ -43,11 +43,18 @@ PRACTICE_DIR="practice"
 NOTES_DIR="notes"
 REACT_DIR="react_dev"
 
-if [ -d "$BAK_MAIN_DIR" ] || [ -d "$BAK_DIR" ]; then
-	warn "$BAK_MAIN_DIR or $BAK_DIR already exists. Skipping creation."
+# /opt/void
+if [ -d "$BAK_MAIN_DIR" ]; then
+	warn "$BAK_MAIN_DIR already exists. Skipping creation."
 else
 	sudo mkdir "$BAK_MAIN_DIR"
 	sudo chown "$USER:$USER" "$BAK_MAIN_DIR"
+fi
+
+# /opt/void/bak
+if [ -d "$BAK_DIR" ]; then
+	warn "$BAK_DIR already exists. Skipping creation."
+else
 	mkdir -p "$BAK_DIR"
 fi
 
