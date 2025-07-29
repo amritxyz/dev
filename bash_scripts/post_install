@@ -151,6 +151,13 @@ else
 	fi
 fi
 
+ask ":: Would you like to install Libre-Office? [Y/n] "
+read -r LO
+if [ "$LO" = "Y" ] || [ "$LO" = "y" ] || [ -z "$LO" ]; then
+	sudo pacman -S libreoffice-fresh
+	success "Libre-office successfully installed."
+fi
+
 # MySQL - Java Connector
 cd /opt
 if [ -d "$JSQL_FILE" ]; then
