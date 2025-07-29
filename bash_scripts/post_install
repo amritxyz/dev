@@ -154,6 +154,13 @@ fi
 ask ":: Would you like to install Libre-Office? [Y/n] "
 read -r LO
 if [ "$LO" = "Y" ] || [ "$LO" = "y" ] || [ -z "$LO" ]; then
+	if [ -d ~/.config/libreoffice/4/user ]; then
+		warn "Libre-office config already exists. Skipping."
+	else
+		mkdir -p ~/.config/libreoffice/4/user/
+		touch ~/.config/libreoffice/4/user/registrymodifications.xcu
+	fi
+	wget -q --show-progress -O ~/.config/libreoffice/4/user/registrymodifications.xcu https://raw.githubusercontent.com/amritxyz/dev/refs/heads/main/xml/registrymodifications.xcu
 	sudo pacman -S libreoffice-fresh
 	success "Libre-office successfully installed."
 fi
