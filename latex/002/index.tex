@@ -1,0 +1,232 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{graphicx}
+\usepackage{enumitem}
+% \usepackage{hyperref} % Highlight / Border to Links
+% \usepackage[hidelinks]{hyperref}
+\usepackage{longtable}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{booktabs}
+
+\usepackage{microtype}
+
+% Font stuffs
+\usepackage{fontspec}
+\setmainfont{DejaVu Serif}
+\setsansfont{DejaVu Serif
+\setmonofont{DejaVu Serif Mono}
+\usepackage{unicode-math}
+
+\usepackage{enumitem}
+\setlist[itemize]{left=2em}
+\setlist[enumerate]{left=2em}
+
+\setlength{\parindent}{2em}
+\usepackage{titlesec}
+
+% Make subsection and subsubsection match in spacing
+\titlespacing{\subsection}   {0pt}{2.0ex plus 1ex minus .2ex}{1.2ex}
+\titlespacing{\subsubsection}{0pt}{2.0ex plus 1ex minus .2ex}{1.2ex}
+
+\usepackage{titlesec}
+\titlespacing*{\subsection}{0pt}{1.8ex plus .8ex minus .2ex}{1.2ex}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Personal Expense Tracker Proposal}
+\lhead{}
+\rfoot{\thepage}
+
+\titleformat{\section}{\large\bfseries}{\thesection.}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{1em}{}
+
+% \setlength{\parindent}{0pt}
+% \setlength{\parskip}{1em}
+\onehalfspacing
+
+\begin{document}
+
+\tableofcontents
+\newpage
+
+\begin{center}
+    {\LARGE \textbf{Proposal}}\\[1em]
+    {\Large \textbf{Personal Expense Tracker}}
+\end{center}
+
+\addtocontents{toc}{\setcounter{tocdepth}{5}} % Set depth of topics/subtopics
+\section{Introduction}
+
+Managing personal finances is crucial for maintaining financial health and achieving long-term goals. However, many individuals struggle to keep track of their daily expenses and often lack awareness of their spending patterns. The \textit{Personal Expense Tracker} is a simple yet powerful application designed to help users monitor their income and expenditures efficiently. By categorizing transactions and generating visual reports, this tool enables users to make informed financial decisions and develop better budgeting habits.
+
+\textbf{Note}: A chart showing monthly or weekly expenses can be inserted here (e.g., bar chart or pie chart).
+
+\section{Problem Statement}
+
+Most people do not systematically track their expenses, relying instead on memory, paper notes, or spreadsheets. These methods are often inconsistent, time-consuming, and prone to errors. Without a clear view of where money is going, users may overspend in certain categories (like food or entertainment) and fail to save adequately. There is a clear need for an easy-to-use, reliable, and accessible digital solution that allows individuals to log, manage, and analyze their personal finances in real time.
+
+\section{Objectives}
+
+The main objectives of the Personal Expense Tracker are:
+
+\begin{itemize}
+    \item Allow users to \textbf{add, view, edit, and delete} income and expense entries (CRUD operations).
+    \item Enable \textbf{categorization} of transactions (e.g., Food, Bills, Transport, Entertainment).
+    \item Support \textbf{search and filter} functionality by date range, category, or keywords.
+    \item Generate \textbf{monthly and weekly reports} with visual charts to illustrate spending trends.
+    \item Store user data securely using a \textbf{MySQL database}.
+    \item Provide a \textbf{simple and intuitive user interface} for seamless user experience.
+\end{itemize}
+
+\section{Methodology}
+
+\subsection{Requirement Identification}
+
+% \subsubsection*{i. Study of Existing System}
+\subsubsection{Study of Existing System}
+    Current expense tracking methods include:
+
+\begin{itemize}
+    \item Manual logging in notebooks.
+    \item Excel or Google Sheets.
+    \item Third-party apps like Mint, YNAB, or Splitwise.
+\end{itemize}
+
+While these tools are functional, they often come with a steep learning curve, excessive features, or subscription costs. A lightweight, customizable, and offline-friendly solution is missing for average users.
+
+\subsubsection{Requirement Collection}
+
+Requirements were gathered through user interviews and surveys. Key features requested:
+
+\begin{itemize}
+    \item Fast entry of expenses.
+    \item Category-based filtering.
+    \item Monthly spending summary.
+    \item Data export (PDF/CSV).
+    \item Secure login and data privacy.
+\end{itemize}
+
+\subsection{Feasibility Study}
+
+\subsubsection{Technical Feasibility}
+
+The system will be built using widely supported technologies:
+
+\begin{itemize}
+    \item \textbf{Frontend}: HTML, CSS, JavaScript (or React)
+    \item \textbf{Backend}: Node.js with Express or Python with Flask
+    \item \textbf{Database}: MySQL
+\end{itemize}
+
+All components are open-source, well-documented, and easy to integrate.
+
+\subsubsection{Operational Feasibility}
+
+The app is designed for individuals, students, freelancers, and small business owners. Its simple interface ensures minimal training is required. It can run on personal devices or be hosted online for broader access.
+
+\subsubsection{Economic Feasibility}
+
+Development uses free and open-source tools. Hosting can be done on low-cost platforms (e.g., Render, Vercel, or shared hosting). No major investment is required.
+
+\subsection{High-Level Design of the System}
+
+\subsubsection{System Architecture}
+
+The application follows a \textbf{three-tier architecture}:
+
+\begin{enumerate}
+    \item \textbf{Presentation Layer (Frontend)} \\
+    User interface for adding, viewing, and filtering transactions.
+    
+    \item \textbf{Application Layer (Backend)} \\
+    Handles business logic, authentication, and API requests.
+    
+    \item \textbf{Data Layer (Database)} \\
+    MySQL stores all user and transaction data securely.
+\end{enumerate}
+
+\subsubsection{System Flow}
+
+\begin{itemize}
+    \item User logs in or registers.
+    \item Adds an expense/income with amount, date, category, and description.
+    \item Data is validated and saved to the database.
+    \item User can view transactions, filter, or generate reports.
+    \item Reports are displayed using charts (e.g., Chart.js or D3.js).
+\end{enumerate}
+
+\subsubsection{Database Schema (Key Tables)}
+
+\begin{itemize}
+    \item \textbf{users}
+    \begin{itemize}
+        \subitem id (PK)
+        \subitem name
+        \subitem email
+        \subitem password\_hash
+    \end{itemize}
+    \item \textbf{categories}
+    \begin{itemize}
+        \subitem id (PK)
+        \subitem name (e.g., Food, Rent)
+    \end{itemize}
+    \item \textbf{transactions}
+    \begin{itemize}
+        \subitem id (PK) \
+        \subitem user\_id (FK)
+        \subitem amount
+        \subitem type (income/expense)
+        \subitem category\_id (FK)
+        \subitem date
+        \subitem description
+    \end{itemize}
+\end{itemize}
+
+\section{Gantt Chart (Project Timeline)}
+
+\begin{longtable}{@{}ll@{}}
+\toprule
+\textbf{Phase} & \textbf{Duration} \\
+\midrule
+Requirement Analysis & Jan 1 – Jan 10 \\
+Feasibility Study & Jan 11 – Jan 15 \\
+System Design & Jan 16 – Jan 25 \\
+Frontend \& Backend Development & Jan 26 – Feb 20 \\
+Database Integration & Feb 21 – Feb 28 \\
+Testing \& Debugging & Mar 1 – Mar 10 \\
+Report Generation \& UI Polish & Mar 11 – Mar 20 \\
+Deployment \& Documentation & Mar 21 – Mar 31 \\
+\midrule
+\textbf{Total Duration} & \textasciitilde 3 months \\
+\bottomrule
+\end{longtable}
+
+\section{Expected Outcome}
+
+Upon completion, the Personal Expense Tracker will:
+
+\begin{itemize}
+    \item Provide a user-friendly platform for tracking daily financial activities.
+    \item Support full CRUD operations and data filtering.
+    \item Visualize spending trends through interactive charts and reports.
+    \item Store data securely in a relational database.
+    \item Serve as a foundation for future enhancements (e.g., mobile app, cloud sync).
+\end{itemize}
+
+This tool will empower users to take control of their finances, reduce unnecessary spending, and build healthier financial habits.
+
+\section{References}
+
+\begin{itemize}
+    \item MySQL Documentation: \url{https://dev.mysql.com/doc/}
+    \item Flask Framework Guide: \url{https://flask.palletsprojects.com/}
+    \item React Official Docs: \url{https://react.dev/}
+    \item Chart.js Library: \url{https://www.chartjs.org/}
+    \item Pressman, R. S. (2014). \textit{Software Engineering: A Practitioner’s Approach}.
+    \item Sommerville, I. (2011). \textit{Software Engineering}. Pearson Education.
+\end{itemize}
+
+\end{document}
