@@ -42,6 +42,7 @@ BOOKS_DIR="books"
 PRACTICE_DIR="practice"
 NOTES_DIR="notes"
 REACT_DIR="react_dev"
+TYPST="typst_latex"
 
 # /opt/void
 if [ -d "$BAK_MAIN_DIR" ]; then
@@ -87,15 +88,28 @@ else
 fi
 
 # React
+# cd "/opt/void/"
+# if [ -d "$REACT_DIR" ]; then
+# 	warn "$REACT_DIR already exists. Skipping."
+# else
+# 	ask ":: Would you like to get some React Programming Stuffs? [Y/n] "
+# 	read -r REACT
+# 	if [ "$REACT" = "Y" ] || [ "$REACT" = "y" ] || [ -z "$REACT" ]; then
+# 		git clone --depth=1 https://github.com/amritxyz/react_dev.git "$REACT_DIR"
+# 		success "Cloned React Dev repo."
+# 	fi
+# fi
+
+# Typst & Latex
 cd "/opt/void/"
-if [ -d "$REACT_DIR" ]; then
-	warn "$REACT_DIR already exists. Skipping."
+if [ -d "$TYPST" ]; then
+	warn "$TYPST already exists. Skipping."
 else
-	ask ":: Would you like to get some React Programming Stuffs? [Y/n] "
-	read -r REACT
-	if [ "$REACT" = "Y" ] || [ "$REACT" = "y" ] || [ -z "$REACT" ]; then
-		git clone --depth=1 https://github.com/amritxyz/react_dev.git "$REACT_DIR"
-		success "Cloned React Dev repo."
+	ask ":: Would you like to get some Typst & Latex stuffs? [Y/n] "
+	read -r TYPST
+	if [ "$TYPST" = "Y" ] || [ "$TYPST" = "y" ] || [ -z "$TYPST" ]; then
+		git clone --depth=1 https://github.com/amritxyz/typst_latex.git "$TYPST"
+		success "Cloned Typst & Latex repo."
 	fi
 fi
 
