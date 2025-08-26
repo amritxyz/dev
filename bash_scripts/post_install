@@ -42,7 +42,7 @@ BOOKS_DIR="books"
 PRACTICE_DIR="practice"
 NOTES_DIR="notes"
 REACT_DIR="react_dev"
-TYPST="typst_latex"
+TYPLTX="typst_latex"
 
 # /opt/void
 if [ -d "$BAK_MAIN_DIR" ]; then
@@ -102,13 +102,13 @@ fi
 
 # Typst & Latex
 cd "/opt/void/"
-if [ -d "$TYPST" ]; then
-	warn "$TYPST already exists. Skipping."
+if [ -d "$TYPLTX" ]; then
+	warn "$TYPLTX already exists. Skipping."
 else
 	ask ":: Would you like to get some Typst & Latex stuffs? [Y/n] "
 	read -r TYPST
 	if [ "$TYPST" = "Y" ] || [ "$TYPST" = "y" ] || [ -z "$TYPST" ]; then
-		git clone --depth=1 https://github.com/amritxyz/typst_latex.git "$TYPST"
+		git clone --depth=1 https://github.com/amritxyz/typst_latex.git "$TYPLTX"
 		success "Cloned Typst & Latex repo."
 	fi
 fi
