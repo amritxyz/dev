@@ -115,7 +115,7 @@ fi
 
 # Music
 cd "$HOME/.local/"
-if [ -f "$MUSIC_TAR" ]; then
+if [ -d "$MUSIC_DIR" ] || [ -f "$MUSIC_TAR" ]; then
 	warn "$MUSIC_DIR or $MUSIC_TAR exists. Skipping."
 	ask ":: Would you like to re-download Music Dir? [y/N] "
 	read -r RE_MUSIC
