@@ -1,0 +1,383 @@
+\documentclass[12pt]{report} % Report class for chapters
+
+% ----------------- Packages -----------------
+\usepackage{graphicx}   % Figures
+\usepackage{float}      % Better float handling
+\usepackage{enumitem}   % Custom lists
+\usepackage{fancyhdr}   % Headers/footers
+\usepackage{newtxtext,newtxmath} % Times New Roman font
+\usepackage{setspace}   % Line spacing
+\usepackage{titlesec}   % Heading size/style control
+\usepackage{tocloft}    % TOC customization
+\usepackage{etoolbox}
+\usepackage{ragged2e}
+\usepackage[top=1in, left=1.25in, bottom=1in, right=1in]{geometry}
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=green]{hyperref} % Links
+\usepackage{url}
+\usepackage[numbers,compress]{natbib} % For numbered citations
+
+
+% ----------------- Line & Paragraph Style -----------------
+\onehalfspacing
+\setlength{\parindent}{0pt} % No paragraph indent
+\setlength{\parskip}{0.5em} % Space between paragraphs
+\raggedbottom
+\sloppy % Avoid overfull boxes
+
+% ----------------- Page Numbering -----------------
+\pagestyle{plain} % Page number at bottom center
+\pagenumbering{roman} % i, ii, iii...
+\setcounter{page}{1}   % TOC starts at i
+
+% ----------------- TOC -----------------
+% TOC title
+
+
+% Spacing around TOC title
+\setlength{\cftbeforetoctitleskip}{0.5cm}
+\setlength{\cftaftertoctitleskip}{0.5cm}
+
+% Add dot after chapter numbers in TOC
+\renewcommand{\cftchapaftersnum}{.\ }
+
+% Leaders (dots) for TOC
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+% Control vertical spacing inside TOC
+\setlength{\cftbeforechapskip}{1.5pt}
+\setlength{\cftbeforesecskip}{1.5pt}
+\setlength{\cftbeforesubsecskip}{1.5pt}
+\setlength{\cftbeforesubsubsecskip}{1.5pt}
+
+% ----------------- Chapter/Section Formatting -----------------
+% Chapter -> "1. Introduction" style
+\titleformat{\chapter}[hang]
+  {\bfseries\fontsize{16pt}{18pt}\selectfont\centering} % font
+  {\thechapter.}{1em}{} % <-- "1. Title"
+\titlespacing*{\chapter}{0pt}{-10pt}{10pt}
+
+% Section
+\titleformat{\section}[hang]
+  {\bfseries\fontsize{14pt}{16pt}\selectfont}
+  {\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+
+% Subsection
+\titleformat{\subsection}[hang]
+  {\bfseries\fontsize{12pt}{14pt}\selectfont}
+  {\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+
+\patchcmd{\chapter}{\clearpage}{\relax}{}{}
+\patchcmd{\chapter}{\newpage}{\relax}{}{}
+
+
+% ----------------- Captions -----------------
+\usepackage[labelfont=bf,font=bf]{caption}
+\captionsetup{justification=centering, labelsep=period}
+
+% ----------------- Title Info -----------------
+\title{Personal Expense Tracker}
+\author{} % Leave blank if no author specified
+\date{}   % Leave blank for no date
+
+\begin{document}
+
+\thispagestyle{empty} % no page number here
+\begin{center}
+    % --- Logo at top ---
+    \includegraphics[width=3cm]{logo.png} \\[1cm] % replace logo.png with your file name
+    
+
+    % --- University & Faculty Info ---
+    \Large \textbf{Tribhuvan University} \\[-0.1cm]
+    \Large \textbf {Faculty of Humanities and Social Science} \\[1cm]
+
+    
+
+    % --- Project Title ---
+    \large \textbf{Personal Expense Tracker} \\[1cm]
+     \textbf{A PROJECT PROPOSAL} \\[1cm]
+
+    
+
+    % --- Submission Info ---
+    \large \textbf{Submitted to}  \\[-0.1cm]
+    \large \textbf {Department of Computer Application} \\[-0.1cm]
+    \large \textbf {Butwal Kalika Campus} \\[1cm]
+
+
+    
+
+    \textbf{In partial fulfillment of the requirements for the} \\[-0.1cm]
+    \textbf{Bachelors in Computer Application} \\[1.2cm]
+
+
+
+    % --- Authors ---
+    \large \textbf{Submitted by:}  \\[0cm]
+    \textbf{Susma Tandan} \\[-0.2cm]
+    \textbf{Amrit Bhattarai} \\[1cm]
+    
+
+    % --- Date at bottom ---
+    \Large \textbf {\today}
+\end{center}
+\newpage
+
+\pagestyle{plain} % bottom center
+
+%\renewcommand{\contentsname}{ Table of Contents}
+\centering\renewcommand{\contentsname}{\Huge \bfseries Table of Contents}
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+\chapter{Introduction}
+\justifying
+%\section{Introduction}
+Managing personal finances has become one of the most important skills in today's world \cite{lusardi2014financial}.
+People often find it challenging to keep track of their money due to multiple income
+sources, daily expenses, and the growing use of digital payment methods such as credit and
+debit cards, mobile wallets, online subscriptions, and shopping platforms \cite{capgemini2021payments}. Small, everyday
+expenses like a cup of coffee, streaming subscriptions, or impulse purchases can quickly add
+up and disrupt monthly budgets \cite{bamforth2018spending}. Without proper tracking, individuals may overspend, fail
+to save, or even fall into debt \cite{apa2020stress}. Poor financial management can also affect mental well-being,
+family life, and long-term security. Therefore, it has become essential to adopt tools and
+systems that help individuals manage their money effectively, understand spending patterns,
+and plan for the future.
+
+A personal expense tracker is a digital tool designed to simplify the management of income 
+and expenditures. It allows users to record every financial transaction in an organized
+manner, providing insights into how money is being spent. By using such a system, individuals
+can identify areas of unnecessary spending, avoid overspending, and develop better
+financial habits. Unlike traditional methods such as handwritten notes, mental accounting,
+or basic spreadsheets which are prone to errors and inconsistencies, a digital expense tracker
+offers categorization, and real-time analytics \cite{verma2024research}. It reduces human error, saves
+time, and provides a reliable platform for financial management.
+
+The main objective of this system is to increase financial awareness and support users in
+achieving their financial goals. It helps users understand the balance between income and
+expenses, highlights spending trends, and enables informed decision-making. For students,
+it helps manage pocket money; for professionals, it assists in budgeting salaries and bills;
+and for households, it supports managing monthly expenses efficiently. The system also
+motivates users to save by providing visual evidence of their progress, such as charts and
+graphs comparing spending across different categories. These visual tools make complex
+financial data easy to understand, enabling users to take control of their finances and plan
+for future needs.
+
+\newpage
+
+From a technical perspective, the project uses modern and reliable technologies to ensure
+a secure, fast, and user-friendly experience. The frontend is built with React, which provides
+smooth, interactive interfaces and allows for easy updates and feature expansion. The
+backend is implemented using Node.js and Express, handling login, transaction processing,
+and data validation efficiently. For data storage, MySQL is used due to its reliability and
+suitability for structured financial data. This technology stack ensures that the system is
+practical, maintainable, and accessible across multiple devices.
+
+In addition to personal use, the system also supports business applications, such as
+tracking employee expenses and budgets. Organizations can use expense tracking software
+to record daily expenditures, generate reports, and analyze trends to identify cost-saving
+opportunities \cite{zohoexpense}. Automating these processes reduces manual work, increases accuracy, and
+gives administrators complete visibility of financial resources. By integrating these func-
+tionalities, the system can serve both individuals and organizations, helping them manage
+finances in a structured and efficient way.
+
+Overall, the Personal Expense Tracker project aims to provide a comprehensive, easy-
+to-use solution for financial management. It combines the simplicity of record-keeping
+with the power of automated analysis and visualization, making it easier for users to
+track, understand, and control their finances. By encouraging better spending habits,
+promoting savings, and providing actionable insights, the system supports financial stability
+and independence for users across different age groups and professional backgrounds. With
+its user-friendly design, automated features, and visual reporting, this tool not only improves
+financial awareness but also fosters long-term financial discipline, helping individuals and
+organizations achieve their financial objectives more effectively.
+
+\newpage
+\chapter{Problem Statement}
+
+Most individuals lack a systematic way to record and analyze their daily income and expenses.
+People earn money from different sources and spend it on various needs such as food,
+transportation, education, healthcare, shopping, and entertainment. Writing expenses in a diary
+or notebook is not very effective because it takes time, can be forgotten, and is difficult to
+calculate.
+
+A personal expenses tracker aims to solve this problem by providing a digital platform where
+users can easily record their income and expenses in a systematic way. It helps categorize
+transactions into groups such as food, bills, travel, or entertainment, making it easier to
+understand where most of the money is going. It also supports better financial decision making.
+It also helps in making a monthly budget and set our financial goal where to spend more money
+and create limit in overspending. Recording transaction in notebook is time-consuming ,
+sometime people forget to record every expense. Some people also use spreadsheets, but it is
+not very user-friendly for everyone.
+
+The main problem is not only recording the money but also keeping it organized, accurate, and
+easy to understand. Therefore, a personal expenses tracker is very important. With this tool,
+individuals can avoid overspending, save more effectively, and achieve their future financial
+plans. \vspace{30pt}
+
+\chapter{Objectives}
+The objectives of \textbf{Personal Expense Tracker} are as follows:
+
+\begin{enumerate}[label=\textbullet, topsep=2pt, partopsep=0pt, itemsep=2pt, parsep=0pt]
+   \item \textbf{Enhance Accessibility and Usability}:
+    Help users understand their spending habits through categorized records and visual charts.
+    \item \textbf{Easy Financial Tracking}:
+    Help users quickly and easily record their income and expenses in a digital way, making it simpler than writing them down in a notebook or using spreadsheets.
+    \item \textbf{Better Money Decisions}: 
+    Show users where their money is going through simple charts and summaries, helping them understand their spending habits and make smarter choices.
+    \item \textbf{Budget and Goal Setting}:
+    Let users set monthly budgets and financial goals, so they can track their spending and avoid going over budget.
+\end{enumerate}
+
+\hspace{30pt}
+
+%\chapter{Literature Review}
+%Many researchers and developers have studied ways to help people manage their personal finances more effectively. Traditional methods, such as writing expenses in a notebook or using basic spreadsheets, are often time-consuming, prone to mistakes, and do not provide clear insights into spending habits. To address these issues, several digital expense tracker systems have been developed.
+
+%Mobile applications like Mint, YNAB (You Need a Budget), and PocketGuard allow users to categorize transactions, track income and expenses, and visualize data through charts and graphs. Some studies show that using these tools helps individuals save more money, understand spending patterns, and plan budgets efficiently. Other research focuses on building simple web-based systems that provide CRUD functionality for income and expenses, making it easier for users to maintain accurate records.
+%Recent research has explored innovative approaches to expense tracking.
+
+%\cite{verma2024research} \hspace{2pt} demonstrated that personal finance trackers play a crucial role in financial literacy and decision-making. Their study shows how modern expense tracking systems can significantly improve users' ability to manage their money effectively.
+%\vspace{6pt}
+
+%\cite{manchanda2012expense} \hspace{5pt} developed an expense tracker mobile application that focused on usability and accessibility for general users. His work highlighted the importance of designing intuitive interfaces for financial management tools.
+%\vspace{6pt}
+
+%\cite{singla2024unveiling} \hspace{5pt} presented "Unveiling Financial Insights: The Daily Expense Tracker System Approach" which introduced a system emphasizing data-driven insights and user-friendly interfaces for financial transparency. Their research aligns with the need for modern, accessible expense tracking solutions.
+%\vspace{6pt}
+
+%\cite{lingayat2024design} \hspace{5pt} explored the design and implementation of a real-time expense tracker using machine learning techniques, demonstrating how AI can enhance financial tracking capabilities.
+%\vspace{6pt}
+
+%\cite{jain2025expense} \hspace{5pt} proposed an expense tracker system that addresses the challenges of manual tracking and provides automated solutions for personal finance management.
+
+%While many existing systems offer advanced features like bank integration, predictive analysis, or expense reports for organizations, these can be complex or costly for individual users. Therefore, a simpler personal expense tracker with easy data entry, category-based visualization, and optional export features can provide practical and effective support for everyday financial management.
+
+%\newpage
+
+\chapter{Methodology}
+
+\section{Requirement identification}
+
+\subsection{Study of an Existing System}
+Today, there are many expense tracker apps and tools already available. Popular mobile apps like Mint, YNAB (You Need a Budget), and PocketGuard help people manage their money by connecting with bank accounts, sorting expenses into categories, and showing charts of spending. Some people also use Google Sheets or other spreadsheets to record expenses, since they are free and flexible, but these require more manual work. For businesses, tools like Expensify and Zoho Expense are often used because they support features like scanning receipts, creating reports, and handling reimbursements. Even though these systems are useful, many of them are either too complex, cost money to use, or do not work well offline. This creates a need for a simple, easy-to-use expense tracker that provides only the most important features without making things complicated.
+
+\subsection{Requirement Collection}
+In the Requirement Collection phase, we gather and identify the essential features and functionalities needed for the Personal Expense Tracker system. This process involves interacting with users and understanding their needs through various methods. The goal is to ensure the system is both useful and user-friendly. \\[3mm]
+\newpage
+\noindent
+\textbf{Functional Requirement:}
+
+\begin{enumerate}[label=\roman*., topsep=2pt, partopsep=0pt, itemsep=2pt, parsep=0pt]
+    \renewcommand{\labelenumi}{\roman{enumi}.}
+    \item User registration and authentication (sign up, login, secure account management)
+    \item Add, edit, delete, and view daily expenses with details (date, category, amount, notes)
+    \item Record income from different sources and categorize them
+    \item Generate reports showing spending patterns by category, time, or source
+    \item Provide charts/graphs for financial visualization
+    \item Search and filter transactions by keyword, category, or date
+    %\item Backup and export data (e.g., CSV, PDF)
+    \item Send alerts/notifications for important events (budget limit, large expense, reminders)
+\end{enumerate}
+
+\noindent
+\textbf{Non-Functional Requirement:}
+\begin{enumerate}[label=\roman*., topsep=2pt, partopsep=0pt, itemsep=2pt, parsep=0pt]
+    \renewcommand{\labelenumi}{\roman{enumi}.}
+    \item Fast response time for processing inputs and generating reports
+    \item Simple, intuitive, and easy-to-use interface
+    \item Reliable performance with minimal crashes and offline availability
+    \item Secure storage of user data with authentication
+    \item Ability to scale with increasing transactions and users
+    \item Maintainable and modular code structure for future updates
+    \item Portable across devices (desktop, mobile, tablet)
+\end{enumerate}
+
+\newpage
+
+\section{Feasibility study}
+A feasibility study is carried out to check whether the proposed project can be successfully completed. It helps to find out if the project is practical, affordable, and useful. This study looks at the technical, financial, and operational aspects to ensure that the project can be implemented smoothly and will meet its goals.
+
+\subsection{Technical feasibility}
+The system can be developed using the existing technology stack of React, Node.js, Express, and MySQL. The required hardware is minimal, as most users have smartphones, tablets, or computers. The app follows software principles such as simplicity, modularity, and maintainability, making it easy to update, fix bugs, or add features. The system supports CRUD operations, secure storage of user data, and visual representation of transactions through graphs and charts.
+
+\subsection{Operational feasibility}
+The app is user-friendly and easy to operate, requiring no advanced technical knowledge. Users can log income and expenses, categorize transactions, view charts for spending patterns, and optionally export the data. These features make the system practical and useful for personal financial management.
+
+\subsection{Economic feasibility}
+Developing the system requires minimal resources, as the development team already has access to necessary hardware and software tools. Users benefit from better financial control and insights, without any additional cost. Visual analytics provide value and improve understanding of spending habits without increasing complexity or expenses.
+
+\newpage
+
+\section{High Level Design of System}
+
+Figure~\ref{fig:flowchart} presents the system flowchart, showing the login, authentication, and main functionalities of the personal expense tracker, including expense entry, income tracking and generation of charts for financial analysis.
+\vspace{50pt}
+\begin{figure}[h!]
+    \centering
+    % Replace 'flowchart.png' with your actual image file
+    \includegraphics[scale=0.6]{system_flow_diagram.png}
+    \caption{System Flowchart of Personal Expense Tracker}
+    \label{fig:flowchart}
+\end{figure}
+
+\newpage
+
+\chapter{Gantt Chart}
+Figure~\ref{fig:gantt} illustrates the project timeline using a Gantt chart. It shows the project schedule, displaying tasks, start and end dates, and their progress in a simple visual format.
+
+\begin{figure}[h!]
+    \centering
+    % Replace 'ganttchart.png' with your actual image file
+    \includegraphics[scale=0.7]{gantt_chart.png}
+    \caption{Gantt chart showing project tasks and timeline.}
+    \label{fig:gantt}
+\end{figure}
+
+\newpage
+
+\chapter{Expected Outcome}
+The expected outcome is a fully functional personal expense tracker that allows users to record, manage, and analyze their financial transactions. \\[3mm]
+The system developed will deliver the following components:
+\begin{enumerate}[label=\roman*., topsep=2pt, partopsep=0pt, itemsep=2pt, parsep=0pt]
+    \renewcommand{\labelenumi}{\roman{enumi}.}
+    \item \textbf{User-Friendly Interface:} The system will have an intuitive, easy-to-use interface that caters to people with varying levels of financial knowledge.
+    \item \textbf{Better Budgeting and Control:} Users can create personalized budgets for different spending categories (e.g., groceries, entertainment, savings).
+    \item \textbf{Enhanced Financial Stability:} By tracking spending, managing budgets, and achieving financial goals, users will experience improved financial stability and control over their finances.
+\end{enumerate}
+
+Overall, the Personal Expense Tracker will provide a reliable and efficient tool for managing personal finances. It will not only help users track their daily spending but also support them in achieving their long-term financial goals. By improving budgeting, tracking expenses, and saving time, the system will contribute to better financial decision-making, more savings, and improved financial stability for its users.
+
+\newpage
+
+\chapter{References}
+\renewcommand{\bibname}{}
+\begin{thebibliography}{9}
+\vspace{-25pt}
+
+%   1   %
+\bibitem{lusardi2014financial}
+A. Lusardi and O. S. Mitchell, ``The Economic Importance of Financial Literacy: Theory and Evidence,'' \textit{Journal of Economic Literature}, vol. 52, no. 1, pp. 5--44, 2014.
+%   2   %
+\bibitem{capgemini2021payments}
+Capgemini Research Institute, ``World Payments Report 2021,'' 2021. \hyperlink{https://worldpaymentsreport.com}{Link}
+%   3   %
+\bibitem{bamforth2018spending}
+S. Bamforth, ``The Psychology of Micro-Spending: How Small Expenses Add Up,'' \textit{Journal of Behavioral Economics}, vol. 12, no. 2, pp. 45--53, 2018.
+%   4   %
+\bibitem{apa2020stress}
+American Psychological Association, ``Stress in America 2020: Stress and Financial Concerns,'' 2020. \hyperlink{https://www.apa.org/news/press/releases/stress/2020/stress-in-america-finances.pdf}{Link}
+%   5   %
+\bibitem{verma2024research}
+S. Verma, S. S. Kheda, and S. Kuwale, ``Research Paper for Personal Finance Tracker,'' \textit{Int. Res. J. Mod. Eng. Technol. Sci.}, vol. 6, no. 5, pp. 10279--10285, May 2024.
+%   6   %
+\bibitem{zohoexpense}
+Zoho Corporation, ``Zoho Expense: Business Expense Tracking Software,'' 2023.
+\hyperlink{https://www.zoho.com/expense/}{Link}
+
+
+\end{thebibliography}
+
+\end{document}
