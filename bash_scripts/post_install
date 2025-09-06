@@ -33,6 +33,7 @@ fail() {
 
 BAK_MAIN_DIR="/opt/void"
 BAK_DIR="/opt/void/bak"
+GIT_DIR="$BAK_MAIN_DIR/git-repos"
 JSQL_FILE="mysql-connector-j-9.3.0"
 XAMPP_FILE="lampp"
 MUSIC_TAR="music.tar"
@@ -102,13 +103,13 @@ fi
 
 # Typst & Latex
 cd "/opt/void/"
-if [ -d "$TYPLTX" ]; then
-	warn "$TYPLTX already exists. Skipping."
+if [ -d "$GIT_DIR/$TYPLTX" ]; then
+	warn "$GIT_DIR/$TYPLTX already exists. Skipping."
 else
 	ask ":: Would you like to get some Typst & Latex stuffs? [Y/n] "
 	read -r TYPST
 	if [ "$TYPST" = "Y" ] || [ "$TYPST" = "y" ] || [ -z "$TYPST" ]; then
-		git clone --depth=1 https://github.com/amritxyz/typst_latex.git "$TYPLTX"
+		git clone --depth=1 https://github.com/amritxyz/typst_latex.git "$GIT_DIR/$TYPLTX"
 		success "Cloned Typst & Latex repo."
 	fi
 fi
