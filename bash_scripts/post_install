@@ -67,7 +67,7 @@ else
 	mkdir -p "$GIT_DIR"
 fi
 
-mkdir -p ~/.local/{share,bin,dox,git-repos,hugo-dir,vids,audio}
+mkdir -p $HOME/.local/{share,bin,dox,git-repos,hugo-dir,vids,audio}
 
 # Practice
 cd "$HOME/.local/"
@@ -137,23 +137,20 @@ fi
 # Music
 cd "$HOME/.local/"
 
-if [ -z "$(ls -A music)" ]; then
-	rm -rf music
-fi
-
 if [ -d "$MUSIC_DIR" ] || [ -f "$MUSIC_TAR" ]; then
 	warn "$MUSIC_DIR or $MUSIC_TAR exists. Skipping."
 	ask ":: Would you like to re-download Music Dir? [y/N] "
 	read -r RE_MUSIC
 	if [ "$RE_MUSIC" = "Y" ] || [ "$RE_MUSIC" = "y" ]; then
-		if [ -f "~/.local/bin/bak" ]; then
-			~/.local/bin/bak "$MUSIC_DIR"
+		if [ -f "$HOME/.local/bin/bak" ]; then
+			$HOME/.local/bin/bak "$MUSIC_DIR"
 		else
 			mv "$MUSIC_DIR" "$BAK_DIR/$(date '+%Y-%m-%d_%H-%M-%S')_music_bak"
 		fi
 		rm -rf "$MUSIC_TAR" "$MUSIC_DIR"
 		wget -q --show-progress -O "$MUSIC_TAR" https://gitlab.com/amritxyz/tars/-/raw/main/music.tar
-		tar -xf "$MUSIC_TAR"
+		mkdir "$MUSIC_DIR"
+		tar --strip-components=1 -xf "$MUSIC_TAR" -C "$MUSIC_DIR"
 		mkdir -p "$BAK_DIR"
 		if [ -f "$BAK_DIR/$MUSIC_TAR" ]; then
 			mv "$MUSIC_TAR" "$BAK_DIR/$(date '+%Y-%m-%d_%H-%M-%S')_$MUSIC_TAR"
@@ -167,7 +164,8 @@ else
 	read -r MUSIC
 	if [ "$MUSIC" = "Y" ] || [ "$MUSIC" = "y" ] || [ -z "$MUSIC" ]; then
 		wget -q --show-progress -O "$MUSIC_TAR" https://gitlab.com/amritxyz/tars/-/raw/main/music.tar
-		tar -xf "$MUSIC_TAR"
+		mkdir "#$MUSIC_DIR"
+		tar --strip-components=1 -xf "$MUSIC_TAR" -C "$MUSIC_DIR"
 		mkdir -p "$BAK_DIR"
 		mv "$MUSIC_TAR" "$BAK_DIR"
 		success "Music downloaded and extracted."
@@ -181,16 +179,17 @@ if [ -d "$BOOKS_DIR" ] || [ -f "$BOOKS_TAR" ]; then
 	ask ":: Would you like to re-download the Books archive? [y/N] "
 	read -r RE_BOOKS
 	if [ "$RE_BOOKS" = "Y" ] || [ "$RE_BOOKS" = "y" ]; then
-		if [ -f "~/.local/bin/bak"]; then
-			~/.local/bin/bak "$BOOKS_DIR"
+		if [ -f "$HOME/.local/bin/bak"]; then
+			$HOME/.local/bin/bak "$BOOKS_DIR"
 		else
 			mv "$BOOKS_DIR" "$BAK_DIR/$(date '+%Y-%m-%d_%H-%M-%S')_books_bak"
 		fi
 		rm -rf "$BOOKS_TAR" "$BOOKS_DIR"
 		wget -q --show-progress -O "$BOOKS_TAR" https://gitlab.com/amritxyz/tars/-/raw/main/books.tar
-		tar -xf "$BOOKS_TAR"
+		mkdir "$BOOKS_DIR"
+		tar --strip-components=1 -xf "$BOOKS_TAR" -C "$BOOKS_DIR"
 		mkdir -p "$BAK_DIR"
-		if [ -f "$BAK_DIR/$MUSIC_TAR" ]; then
+		if [ -f "$BAK_DIR/$BOOKS_TAR" ]; then
 			mv "$BOOKS_TAR" "$BAK_DIR/$(date '+%Y-%m-%d_%H-%M-%S')_$BOOKS_TAR"
 		else
 			mv "$BOOKS_TAR" "$BAK_DIR"
@@ -202,9 +201,15 @@ else
 	read -r BOOKS
 	if [ "$BOOKS" = "Y" ] || [ "$BOOKS" = "y" ] || [ -z "$BOOKS" ]; then
 		wget -q --show-progress -O "$BOOKS_TAR" https://gitlab.com/amritxyz/tars/-/raw/main/books.tar
-		tar -xf "$BOOKS_TAR"
+		mkdir "$BOOKS_DIR"
+		tar --strip-components=1 -xf "$BOOKS_TAR" -C "$BOOKS_DIR"
 		mkdir -p "$BAK_DIR"
 		mv "$BOOKS_TAR" "$BAK_DIR"
+		if [ -f "$BAK_DIR/$BOOKS_TAR" ]; then
+			mv "$BOOKS_TAR" "$BAK_DIR/$(date '+%Y-%m-%d_%H-%M-%S')_$BOOKS_TAR"
+		else
+			mv "$BOOKS_TAR" "$BAK_DIR"
+		fi
 		success "Books archive downloaded and extracted."
 	fi
 fi
@@ -212,13 +217,13 @@ fi
 ask ":: Would you like to install Libre-Office? [Y/n] "
 read -r LO
 if [ "$LO" = "Y" ] || [ "$LO" = "y" ] || [ -z "$LO" ]; then
-	if [ -d ~/.config/libreoffice/4/user ]; then
+	if [ -d $HOME/.config/libreoffice/4/user ]; then
 		warn "Libre-office config already exists. Skipping."
 	else
-		mkdir -p ~/.config/libreoffice/4/user/
-		touch ~/.config/libreoffice/4/user/registrymodifications.xcu
+		mkdir -p $HOME/.config/libreoffice/4/user/
+		touch $HOME/.config/libreoffice/4/user/registrymodifications.xcu
 	fi
-	wget -q --show-progress -O ~/.config/libreoffice/4/user/registrymodifications.xcu https://raw.githubusercontent.com/amritxyz/dev/refs/heads/main/xml/registrymodifications.xcu
+	wget -q --show-progress -O $HOME/.config/libreoffice/4/user/registrymodifications.xcu https://raw.githubusercontent.com/amritxyz/dev/refs/heads/main/xml/registrymodifications.xcu
 	sudo pacman -S libreoffice-fresh
 	success "Libre-office successfully installed."
 fi
