@@ -143,7 +143,7 @@ if [ -d "$MUSIC_DIR" ] || [ -f "$MUSIC_TAR" ]; then
 	read -r RE_MUSIC
 	if [ "$RE_MUSIC" = "Y" ] || [ "$RE_MUSIC" = "y" ]; then
 		if [ -f "$HOME/.local/bin/bak" ]; then
-			$HOME/.local/bin/bak "$MUSIC_DIR"
+			"$HOME/.local/bin/bak" "$MUSIC_DIR"
 		else
 			mv "$MUSIC_DIR" "$BAK_DIR/$(date '+%Y-%m-%d_%H-%M-%S')_music_bak"
 		fi
@@ -152,11 +152,7 @@ if [ -d "$MUSIC_DIR" ] || [ -f "$MUSIC_TAR" ]; then
 		mkdir "$MUSIC_DIR"
 		tar --strip-components=1 -xf "$MUSIC_TAR" -C "$MUSIC_DIR"
 		mkdir -p "$BAK_DIR"
-		if [ -f "$BAK_DIR/$MUSIC_TAR" ]; then
-			mv "$MUSIC_TAR" "$BAK_DIR/$(date '+%Y-%m-%d_%H-%M-%S')_$MUSIC_TAR"
-		else
-			mv "$MUSIC_TAR" "$BAK_DIR"
-		fi
+		mv "$MUSIC_TAR" "$BAK_DIR/$(date '+%Y-%m-%d_%H-%M-%S')_$MUSIC_TAR"
 		success "Music downloaded and extracted."
 	fi
 else
@@ -164,10 +160,10 @@ else
 	read -r MUSIC
 	if [ "$MUSIC" = "Y" ] || [ "$MUSIC" = "y" ] || [ -z "$MUSIC" ]; then
 		wget -q --show-progress -O "$MUSIC_TAR" https://gitlab.com/amritxyz/tars/-/raw/main/music.tar
-		mkdir "#$MUSIC_DIR"
+		mkdir "$MUSIC_DIR"
 		tar --strip-components=1 -xf "$MUSIC_TAR" -C "$MUSIC_DIR"
 		mkdir -p "$BAK_DIR"
-		mv "$MUSIC_TAR" "$BAK_DIR"
+		mv "$MUSIC_TAR" "$BAK_DIR/$(date '+%Y-%m-%d_%H-%M-%S')_$MUSIC_TAR"
 		success "Music downloaded and extracted."
 	fi
 fi
@@ -179,8 +175,8 @@ if [ -d "$BOOKS_DIR" ] || [ -f "$BOOKS_TAR" ]; then
 	ask ":: Would you like to re-download the Books archive? [y/N] "
 	read -r RE_BOOKS
 	if [ "$RE_BOOKS" = "Y" ] || [ "$RE_BOOKS" = "y" ]; then
-		if [ -f "$HOME/.local/bin/bak"]; then
-			$HOME/.local/bin/bak "$BOOKS_DIR"
+		if [ -f "$HOME/.local/bin/bak" ]; then
+			"$HOME/.local/bin/bak" "$BOOKS_DIR"
 		else
 			mv "$BOOKS_DIR" "$BAK_DIR/$(date '+%Y-%m-%d_%H-%M-%S')_books_bak"
 		fi
@@ -189,11 +185,7 @@ if [ -d "$BOOKS_DIR" ] || [ -f "$BOOKS_TAR" ]; then
 		mkdir "$BOOKS_DIR"
 		tar --strip-components=1 -xf "$BOOKS_TAR" -C "$BOOKS_DIR"
 		mkdir -p "$BAK_DIR"
-		if [ -f "$BAK_DIR/$BOOKS_TAR" ]; then
-			mv "$BOOKS_TAR" "$BAK_DIR/$(date '+%Y-%m-%d_%H-%M-%S')_$BOOKS_TAR"
-		else
-			mv "$BOOKS_TAR" "$BAK_DIR"
-		fi
+		mv "$BOOKS_TAR" "$BAK_DIR/$(date '+%Y-%m-%d_%H-%M-%S')_$BOOKS_TAR"
 		success "Books archive downloaded and extracted."
 	fi
 else
@@ -204,12 +196,7 @@ else
 		mkdir "$BOOKS_DIR"
 		tar --strip-components=1 -xf "$BOOKS_TAR" -C "$BOOKS_DIR"
 		mkdir -p "$BAK_DIR"
-		mv "$BOOKS_TAR" "$BAK_DIR"
-		if [ -f "$BAK_DIR/$BOOKS_TAR" ]; then
-			mv "$BOOKS_TAR" "$BAK_DIR/$(date '+%Y-%m-%d_%H-%M-%S')_$BOOKS_TAR"
-		else
-			mv "$BOOKS_TAR" "$BAK_DIR"
-		fi
+		mv "$BOOKS_TAR" "$BAK_DIR/$(date '+%Y-%m-%d_%H-%M-%S')_$BOOKS_TAR"
 		success "Books archive downloaded and extracted."
 	fi
 fi
