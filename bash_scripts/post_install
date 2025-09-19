@@ -146,7 +146,7 @@ if [ -d "$MUSIC_DIR" ] || [ -f "$MUSIC_TAR" ]; then
 	ask ":: Would you like to re-download Music Dir? [y/N] "
 	read -r RE_MUSIC
 	if [ "$RE_MUSIC" = "Y" ] || [ "$RE_MUSIC" = "y" ]; then
-		if [ -f "~/.local/bin/bak"]; then
+		if [ -f "~/.local/bin/bak" ]; then
 			~/.local/bin/bak "$MUSIC_DIR"
 		else
 			mv "$MUSIC_DIR" "$BAK_DIR/$(date '+%Y-%m-%d_%H-%M-%S')_music_bak"
@@ -155,7 +155,11 @@ if [ -d "$MUSIC_DIR" ] || [ -f "$MUSIC_TAR" ]; then
 		wget -q --show-progress -O "$MUSIC_TAR" https://gitlab.com/amritxyz/tars/-/raw/main/music.tar
 		tar -xf "$MUSIC_TAR"
 		mkdir -p "$BAK_DIR"
-		mv "$MUSIC_TAR" "$BAK_DIR"
+		if [ -f "$BAK_DIR/$MUSIC_TAR" ]; then
+			mv "$MUSIC_TAR" "$BAK_DIR/$(date '+%Y-%m-%d_%H-%M-%S')_$MUSIC_TAR"
+		else
+			mv "$MUSIC_TAR" "$BAK_DIR"
+		fi
 		success "Music downloaded and extracted."
 	fi
 else
@@ -186,7 +190,11 @@ if [ -d "$BOOKS_DIR" ] || [ -f "$BOOKS_TAR" ]; then
 		wget -q --show-progress -O "$BOOKS_TAR" https://gitlab.com/amritxyz/tars/-/raw/main/books.tar
 		tar -xf "$BOOKS_TAR"
 		mkdir -p "$BAK_DIR"
-		mv "$BOOKS_TAR" "$BAK_DIR"
+		if [ -f "$BAK_DIR/$MUSIC_TAR" ]; then
+			mv "$BOOKS_TAR" "$BAK_DIR/$(date '+%Y-%m-%d_%H-%M-%S')_$BOOKS_TAR"
+		else
+			mv "$BOOKS_TAR" "$BAK_DIR"
+		fi
 		success "Books archive downloaded and extracted."
 	fi
 else
