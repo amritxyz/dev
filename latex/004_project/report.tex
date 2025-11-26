@@ -1,0 +1,598 @@
+\documentclass[12pt]{report} % Report class for chapters
+
+% ----------------- Packages -----------------
+\usepackage{graphicx}   % Figures
+\usepackage{float}      % Better float handling
+\usepackage{enumitem}   % Custom lists
+\usepackage{fancyhdr}   % Headers/footers
+\usepackage{newtxtext,newtxmath} % Times New Roman font
+\usepackage{setspace}   % Line spacing
+\usepackage{titlesec}   % Heading size/style control
+\usepackage{tocloft}    % TOC customization
+\usepackage{etoolbox}
+\usepackage{ragged2e}
+\usepackage[top=1in, left=1.25in, bottom=1in, right=1in]{geometry}
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=green]{hyperref} % Links
+\usepackage{url}
+\usepackage[numbers,compress]{natbib} % For numbered citations
+
+
+% ----------------- Line & Paragraph Style -----------------
+\onehalfspacing
+\setlength{\parindent}{0pt} % No paragraph indent
+\setlength{\parskip}{0.5em} % Space between paragraphs
+\raggedbottom
+\sloppy % Avoid overfull boxes
+
+% ----------------- Page Numbering -----------------
+\pagestyle{plain} % Page number at bottom center
+\pagenumbering{roman} % i, ii, iii...
+\setcounter{page}{1}   % TOC starts at i
+
+% ----------------- TOC -----------------
+% TOC title
+
+
+% Spacing around TOC title
+\setlength{\cftbeforetoctitleskip}{0.5cm}
+\setlength{\cftaftertoctitleskip}{0.5cm}
+
+% Add dot after chapter numbers in TOC
+\renewcommand{\cftchapaftersnum}{.\ }
+
+% Leaders (dots) for TOC
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+% Control vertical spacing inside TOC
+\setlength{\cftbeforechapskip}{1.5pt}
+\setlength{\cftbeforesecskip}{1.5pt}
+\setlength{\cftbeforesubsecskip}{1.5pt}
+\setlength{\cftbeforesubsubsecskip}{1.5pt}
+
+% ----------------- Chapter/Section Formatting -----------------
+% Chapter -> "1. Introduction" style
+\titleformat{\chapter}[hang]
+  {\bfseries\fontsize{16pt}{18pt}\selectfont\centering} % font
+  {\thechapter.}{1em}{} % <-- "1. Title"
+\titlespacing*{\chapter}{0pt}{-10pt}{10pt}
+
+% Section
+\titleformat{\section}[hang]
+  {\bfseries\fontsize{14pt}{16pt}\selectfont}
+  {\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+
+% Subsection
+\titleformat{\subsection}[hang]
+  {\bfseries\fontsize{12pt}{14pt}\selectfont}
+  {\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+
+\patchcmd{\chapter}{\clearpage}{\relax}{}{}
+\patchcmd{\chapter}{\newpage}{\relax}{}{}
+
+
+% ----------------- Captions -----------------
+\usepackage[labelfont=bf,font=bf]{caption}
+\captionsetup{justification=centering, labelsep=period}
+
+% ----------------- Title Info -----------------
+\title{Personal Expense Tracker}
+\author{} % Leave blank if no author specified
+\date{}   % Leave blank for no date
+
+\begin{document}
+
+\thispagestyle{empty} % no page number here
+\begin{center}
+    % --- Logo at top ---
+    \includegraphics[width=3cm]{logo.png} \\[1.0cm] % replace logo.png with your file name
+    
+
+    % --- University & Faculty Info ---
+    \Large \textbf{Tribhuvan University} \\[0.1cm]
+    \Large \textbf {Faculty of Humanities and Social Science} \\[1.1cm]
+
+    
+
+    % --- Project Title ---
+    \large \textbf{Personal Expense Tracker} \\[1.2cm]
+     \textbf{A PROJECT REPORT} \\[1.2cm]
+
+    
+
+    % --- Submission Info ---
+    \large \textbf{Submitted to}  \\[0.1cm]
+    \large \textbf {Department of Computer Application} \\[0.1cm]
+    \large \textbf {Butwal Kalika Campus} \\[1.1cm]
+
+
+    
+
+    \textbf{In partial fulfillment of the requirements for the} \\[0.1cm]
+    \textbf{Bachelors in Computer Application} \\[1.1cm]
+
+
+
+    % --- Authors ---
+    \large \textbf{Submitted by:}  \\[0.2cm]
+    \textbf{Susma Tandan} \\[0cm]
+    \textbf{Amrit Bhattarai} \\[1.2cm]
+    
+
+    % --- Date at bottom ---
+    \Large \textbf {\today}
+\end{center}
+\newpage
+
+\pagestyle{plain} % bottom center
+
+%\renewcommand{\contentsname}{ Table of Contents}
+\centering\renewcommand{\contentsname}{\Huge \bfseries Table of Contents}
+\tableofcontents
+\newpage
+
+% ==============================================
+% CHAPTER 1: INTRODUCTION
+% ==============================================
+\pagenumbering{arabic}
+\chapter{Introduction}
+\justifying
+
+\section{Introduction}
+Managing personal finances has become one of the most important skills in today's world.
+People often find it challenging to keep track of their money due to multiple income
+sources, daily expenses, and the growing use of digital payment methods such as credit and
+debit cards, mobile wallets, online subscriptions, and shopping platforms \cite{singh2021spending}. Small, everyday
+expenses like a cup of coffee, streaming subscriptions, or impulse purchases can quickly add
+up and disrupt monthly budgets \cite{chandini2019online}. Without proper tracking, individuals may overspend, fail
+to save, or even fall into debt. Poor financial management can also affect mental well-being,
+family life, and long-term security \cite{verma2024research}. Therefore, it has become essential to adopt tools and
+systems that help individuals manage their money effectively, understand spending patterns,
+and plan for the future.
+
+A personal expense tracker is a digital tool designed to simplify the management of income 
+and expenditures. It allows users to record every financial transaction in an organized
+manner, providing insights into how money is being spent. By using such a system, individuals
+can identify areas of unnecessary spending, avoid overspending, and develop better
+financial habits. Unlike traditional methods such as handwritten notes, mental accounting,
+or basic spreadsheets which are prone to errors and inconsistencies, a digital expense tracker
+offers categorization, and real-time analytics. It reduces human error, saves
+time, and provides a reliable platform for financial management \cite{verma2024research}.
+
+The main objective of this system is to increase financial awareness and support users in
+achieving their financial goals. It helps users understand the balance between income and
+expenses, highlights spending trends, and enables informed decision-making. For students,
+it helps manage pocket money; for professionals, it assists in budgeting salaries and bills;
+and for households, it supports managing monthly expenses efficiently. The system also
+motivates users to save by providing visual evidence of their progress, such as charts and
+graphs comparing spending across different categories. These visual tools make complex
+financial data easy to understand, enabling users to take control of their finances and plan
+for future needs.
+
+From a technical perspective, the project uses modern and reliable technologies to ensure
+a secure, fast, and user-friendly experience. The frontend is built with React, which provides
+smooth, interactive interfaces and allows for easy updates and feature expansion. The
+backend is implemented using Node.js and Express, handling login, transaction processing,
+and data validation efficiently. For data storage, SQLite3 is used due to its reliability and
+suitability for structured financial data. This technology stack ensures that the system is
+practical, maintainable, and accessible across multiple devices.
+
+In addition to personal use, the system also supports business applications, such as
+tracking employee expenses and budgets. Organizations can use expense tracking software
+to record daily expenditures, generate reports, and analyze trends to identify cost-saving
+opportunities. Automating these processes reduces manual work, increases accuracy, and
+gives administrators complete visibility of financial resources. By integrating these func-
+tionalities, the system can serve both individuals and organizations, helping them manage
+finances in a structured and efficient way.
+
+Overall, the Personal Expense Tracker project aims to provide a comprehensive, easy-
+to-use solution for financial management. It combines the simplicity of record-keeping
+with the power of automated analysis and visualization, making it easier for users to
+track, understand, and control their finances. By encouraging better spending habits,
+promoting savings, and providing actionable insights, the system supports financial stability
+and independence for users across different age groups and professional backgrounds. With
+its user-friendly design, automated features, and visual reporting, this tool not only improves
+financial awareness but also fosters long-term financial discipline, helping individuals and
+organizations achieve their financial objectives more effectively.
+
+\section{Problem Statement}
+Most individuals lack a systematic way to record and analyze their daily income and expenses.
+People earn money from different sources and spend it on various needs such as food,
+transportation, education, healthcare, shopping, and entertainment \cite{singh2021spending}.
+Writing expenses in a diary or notebook is not very effective because it takes time, can be
+forgotten, and is difficult to calculate \cite{manchanda2012expense}.
+
+A personal expenses tracker aims to solve this problem by providing a digital platform where
+users can easily record their income and expenses in a systematic way \cite{chandini2019online}.
+It helps categorize transactions into groups such as food, bills, travel, or entertainment, making it
+easier to understand where most of the money is going \cite{verma2024research}. It also supports better financial decision making. It also helps in making a monthly budget and set our financial goal where to spend more money
+and create limit in overspending \cite{verma2024research}. Recording transaction in notebook is time-consuming ,
+sometime people forget to record every expense. Some people also use spreadsheets, but it is
+not very user-friendly for everyone \cite{manchanda2012expense}.
+
+The main problem is not only recording the money but also keeping it organized, accurate, and
+easy to understand. Therefore, a personal expenses tracker is very important. With this tool,
+individuals can avoid overspending, save more effectively, and achieve their future financial
+plans \cite{verma2024research}.
+
+\section{Objectives}
+The objectives of \textbf{Personal Expense Tracker} are as follows:
+
+\begin{enumerate}[label=\textbullet, topsep=2pt, partopsep=0pt, itemsep=2pt, parsep=0pt]
+   \item \textbf{Enhance Accessibility and Usability}: Help users understand their spending habits through categorized records and visual charts.
+    \item \textbf{Easy Financial Tracking}: Help users quickly and easily record their income and expenses in a digital way, making it simpler than writing them down in a notebook or using spreadsheets.
+    \item \textbf{Better Money Decisions}: Show users where their money is going through simple charts and summaries, helping them understand their spending habits and make smarter choices.
+    \item \textbf{Budget and Goal Setting}: Let users set monthly budgets and financial goals, so they can track their spending and avoid going over budget.
+\end{enumerate}
+
+\section{Scope and Limitation}
+\justifying
+The \textbf{scope} of the Personal Expense Tracker project defines the extent and boundaries of the system. This system focuses on helping individuals efficiently record, monitor, and analyze their personal financial transactions. It is designed for personal and small-scale usage, where users can enter daily expenses and income, categorize transactions, and generate summary reports and visual analytics.
+
+\noindent
+The system supports fundamental financial tracking features, such as:
+\begin{itemize}
+    \item Managing user accounts and securely storing personal data.
+    \item Recording income and expenses with detailed descriptions.
+    \item Categorizing transactions for better financial insights.
+    \item Displaying charts and summaries for visualization of spending habits.
+    \item Supporting cross-platform accessibility via web interface.
+\end{itemize}
+
+\noindent
+However, every system has limitations. The following are the \textbf{limitations} of this project:
+\begin{itemize}
+    \item It does not integrate directly with banks or financial APIs.
+    \item It requires manual entry of transactions, which may lead to user omission or error.
+    \item The system is designed for individual use and does not support multi-user financial management or business-level accounting.
+    \item Limited automation in forecasting or AI-based budget prediction.
+    \item Internet access may be required for some functionalities, depending on deployment setup.
+\end{itemize}
+
+Despite these limitations, the Personal Expense Tracker fulfills its primary goal of providing an easy, accessible, and reliable platform for managing and understanding personal finances.
+
+\section{Report Organization}
+\justifying
+This report is organized into five chapters, each addressing a specific aspect of the Personal Expense Tracker project. The structure ensures logical flow and comprehensive understanding of the entire project development process.
+
+\begin{itemize}
+    \item \textbf{Chapter 1: Introduction} — Provides an overview of personal finance management, the problem statement, objectives, scope, limitations, and the report's structure.
+    \item \textbf{Chapter 2: Background Study and Literature Review} — Covers fundamental theories and reviews similar projects and research.
+    \item \textbf{Chapter 3: System Analysis and Design} — Details the requirement analysis, feasibility study, data modeling, process modeling, and system design.
+    \item \textbf{Chapter 4: Implementation and Testing} — Describes the tools used, implementation details, and test cases.
+    \item \textbf{Chapter 5: Conclusion and Future Recommendations} — Summarizes the outcomes, conclusions, and suggestions for future work.
+\end{itemize}
+
+This organization helps readers easily follow the project from its motivation and design stages through implementation and final conclusions.
+
+% ==============================================
+% CHAPTER 2: BACKGROUND STUDY AND LITERATURE REVIEW
+% ==============================================
+\newpage
+\chapter{Background Study and Literature Review}
+
+\section{Background Study}
+Personal finance management is an essential aspect of modern-day life, as it involves the process of planning and controlling how an individual spends and saves their money. Historically, managing personal finances was a manual process, with individuals keeping written records of their income and expenditures. As technology progressed, these manual methods evolved into more sophisticated approaches, with the development of tools like spreadsheets and, more recently, digital personal finance management systems. These tools aim to help individuals gain control over their financial activities, plan for the future, and make informed financial decisions.
+
+In today's fast-paced world, the ability to manage personal finances has become more critical due to various factors such as the rise of digital payment methods, credit cards, mobile wallets, online shopping, and an increasingly diverse array of income sources. People are earning money from different channels, including salaries, freelance work, investments, and side businesses. At the same time, they are spending money on various categories such as food, transportation, housing, entertainment, and health. The rapid growth of e-commerce and digital transactions has added to the complexity, making it harder for individuals to track their daily expenditures effectively. This underscores the importance of utilizing modern tools that can streamline financial tracking and help individuals stay on top of their financial goals.
+
+Expense tracking tools have emerged as a solution to these challenges. These tools allow individuals to systematically record their income and expenses, categorize them, and provide real-time insights into their spending patterns. They enable users to track every transaction, whether it is a small coffee purchase or a larger monthly bill, helping them gain a better understanding of their financial health. Unlike traditional methods, which often rely on manual record-keeping and are prone to human error, digital expense trackers offer a more reliable, automated approach to managing personal finances. This is especially useful for individuals who struggle with consistency and accuracy when maintaining paper records or spreadsheets.
+
+One fundamental concept in personal finance management is budgeting. Budgeting refers to the process of allocating a set amount of money for specific categories of expenses within a given time period. A well-structured budget helps individuals prioritize essential expenses, minimize wasteful spending, and achieve their financial goals. Budgeting is based on the principle of income versus expenses, where the goal is to ensure that expenditures do not exceed the available income, promoting financial stability and reducing the risk of debt.
+
+Another key concept in financial management is cash flow, which refers to the movement of money into and out of an individual's or business’s finances. Positive cash flow occurs when income exceeds expenses, allowing individuals to save or invest. On the other hand, negative cash flow indicates that expenditures surpass income, often leading to debt accumulation. By tracking cash flow through expense management tools, users can better anticipate financial challenges and plan accordingly.
+
+The advancement of technology has played a significant role in shaping modern personal finance tools. With the rise of smartphones, mobile applications, and cloud-based platforms, users can now access their financial data from anywhere, at any time. These tools also incorporate features like real-time data synchronization, automated transaction categorization, and expense forecasting, which make it easier to manage finances on a daily basis. Data visualization techniques, such as charts and graphs, are often integrated into these systems to provide users with clear insights into their spending habits, helping them make informed decisions. Furthermore, cloud storage ensures that data is securely backed up and accessible across multiple devices, reducing the risk of losing important financial information.
+
+Expense tracking tools also emphasize the importance of saving. These tools often allow users to set financial goals, track their progress, and receive alerts when they are approaching their budget limits. By helping users visualize their spending and savings, these tools foster a greater sense of financial discipline and encourage users to stick to their budgets.
+
+The evolution of personal expense tracking tools has been significant over the past decade. From simple desktop software and spreadsheets to the sophisticated mobile apps we use today, these tools have become an integral part of managing personal finances. Apps like Mint, YNAB (You Need a Budget), and PocketGuard offer users the ability to track their spending, categorize expenses, set financial goals, and visualize their financial health in real-time. These systems have democratized financial management, making it more accessible to individuals from all walks of life.
+
+Overall, personal expense trackers have become a vital part of modern financial management, enabling individuals to take control of their finances, make informed decisions, and work toward long-term financial goals. The integration of automation, data analysis, and mobile accessibility has made these tools more user-friendly and effective in helping individuals stay on top of their finances.
+
+\section{Literature Review}
+Many researchers and developers have studied ways to help people manage their personal finances more effectively. Traditional methods, such as writing expenses in a notebook or using basic spreadsheets, are often time-consuming, prone to mistakes, and do not provide clear insights into spending habits. To address these issues, several digital expense tracker systems have been developed.
+
+Mobile applications like Mint, YNAB (You Need a Budget), and PocketGuard allow users to categorize transactions, track income and expenses, and visualize data through charts and graphs. Some studies show that using these tools helps individuals save more money, understand spending patterns, and plan budgets efficiently. Other research focuses on building simple web-based systems that provide CRUD functionality for income and expenses, making it easier for users to maintain accurate records.
+
+\noindent
+Recent research has explored innovative approaches to expense tracking.
+
+\cite{verma2024research} demonstrated that financial literacy plays a crucial role in personal financial management and decision-making. Their study shows how understanding financial concepts can significantly improve users' ability to manage their money effectively.
+
+\cite{manchanda2012expense} reported on some people using spreadsheets, and states how it is not very user-friendly for everyone
+
+\noindent
+Their research aligns with the need for modern, accessible expense tracking solutions.
+
+While many existing systems offer advanced features like bank integration, predictive analysis, or expense reports for organizations, these can be complex or costly for individual users. Therefore, a simpler personal expense tracker with easy data entry, category-based visualization, and optional export features can provide practical and effective support for everyday financial management.
+
+% ==============================================
+% CHAPTER 3: SYSTEM ANALYSIS AND DESIGN
+% ==============================================
+\newpage
+\chapter{System Analysis and Design}
+
+\section{System Analysis}
+
+\subsection{Requirement Analysis}
+
+\subsubsection{Functional Requirements}
+The functional requirements describe what the system should do. For the Personal Expense Tracker, these are:
+\begin{enumerate}[label=\roman*., topsep=2pt, partopsep=0pt, itemsep=2pt, parsep=0pt]
+    \item \textbf{User Authentication:} Users shall be able to register, log in, and log out securely.
+    \item \textbf{Manage Transactions:} Users shall be able to add, view, edit, and delete income and expense entries.
+    \item \textbf{Categorize Transactions:} The system shall allow users to assign categories (e.g., Food, Salary, Rent) to each transaction.
+    \item \textbf{Data Visualization:} The system shall generate charts and graphs (e.g., pie charts, bar graphs) to visualize spending patterns and income vs. expenses.
+    \item \textbf{View Reports:} Users shall be able to view financial summaries and reports filtered by date and category.
+\end{enumerate}
+\textbf{Use Case Diagram:} The use case diagram (Figure~\ref{fig:usecase}) illustrates the interactions between the user (actor) and the system.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.5]{use_case_diagram.png} % Replace with your use case diagram
+    \caption{Use Case Diagram for Personal Expense Tracker}
+    \label{fig:usecase}
+\end{figure}
+
+\subsubsection{Non-Functional Requirements}
+The non-functional requirements describe how the system should perform:
+\begin{enumerate}[label=\roman*., topsep=2pt, partopsep=0pt, itemsep=2pt, parsep=0pt]
+    \item \textbf{Usability:} The user interface shall be intuitive and easy to use for non-technical users.
+    \item \textbf{Performance:} The system shall respond to user actions (e.g., adding a transaction, loading a chart) in less than 3 seconds.
+    \item \textbf{Reliability:} The system shall be available 99\% of the time and data shall be persisted without loss.
+    \item \textbf{Security:} User passwords shall be hashed before storage.
+    \item \textbf{Portability:} The web application shall be accessible on common browsers (Chrome, Firefox, Edge).
+\end{enumerate}
+
+\subsection{Feasibility Analysis}
+
+\subsubsection{Technical Feasibility}
+The system can be developed using the existing technology stack of React, Node.js, Express, and SQLite3. The required hardware is minimal, as most users have smartphones, tablets, or computers. The app follows software principles such as simplicity, modularity, and maintainability, making it easy to update, fix bugs, or add features. The system supports CRUD operations, secure storage of user data, and visual representation of transactions through graphs and charts.
+
+\subsubsection{Operational Feasibility}
+The app is user-friendly and easy to operate, requiring no advanced technical knowledge. Users can log income and expenses, categorize transactions, view charts for spending patterns, and optionally export the data. These features make the system practical and useful for personal financial management.
+
+\subsubsection{Economic Feasibility}
+Developing the system requires minimal resources, as the development team already has access to necessary hardware and software tools. Users benefit from better financial control and insights, without any additional cost. Visual analytics provide value and improve understanding of spending habits without increasing complexity or expenses.
+
+\subsubsection{Schedule Feasibility}
+The project was planned with a realistic timeline (see Gantt Chart in Chapter 1 Appendix). The scope was well-defined, and the technologies used are familiar to the development team, making it feasible to complete the project within the allotted time frame.
+
+\subsection{Data Modeling (ER-Diagram)}
+The Entity-Relationship (ER) Diagram (Figure~\ref{fig:er_diagram}) represents the data entities and their relationships. The main entities are \textbf{User}, \textbf{Transaction}, and \textbf{Category}. A User can have many Transactions, and each Transaction belongs to one Category.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.6]{er_diagram.png} % Replace with your ER diagram
+    \caption{Entity-Relationship Diagram for Personal Expense Tracker}
+    \label{fig:er_diagram}
+\end{figure}
+
+\subsection{Process Modeling (DFD)}
+The Data Flow Diagram (DFD) in Figure~\ref{fig:level0_dfd} shows the system's processes and data flow at Level 0. It illustrates how the user interacts with the system to perform key functions like logging in, managing transactions, and viewing reports.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.6]{level0_dfd.png} % Replace with your DFD
+    \caption{Level 0 Data Flow Diagram (DFD)}
+    \label{fig:level0_dfd}
+\end{figure}
+
+\section{System Design}
+
+\subsection{Architectural Design}
+The system follows a client-server architecture, specifically the Model-View-Controller (MVC) pattern.
+\begin{itemize}
+    \item \textbf{Client-Side (View):} Built with React. Handles the user interface, renders components (forms, charts, lists), and captures user input.
+    \item \textbf{Server-Side (Controller):} Built with Node.js and Express. Manages application logic, handles HTTP requests, and interacts with the database.
+    \item \textbf{Database (Model):} SQLite3 database. Stores all persistent data including users, transactions, and categories.
+\end{itemize}
+This separation of concerns makes the system modular, scalable, and easier to maintain.
+
+\subsection{Database Schema Design}
+The database schema consists of the following tables:
+\begin{itemize}
+    \item \textbf{login\_users (\underline{id}, username, email, password)}
+    \item \textbf{income (\underline{user\_id}, source, amount, date)}
+    \item \textbf{expense (\underline{user\_id}, category, amount, date)}
+\end{itemize}
+The \textbf{income} and \textbf{expense} table has foreign keys referencing \textbf{login\_users(id)}.
+
+\subsection{Interface Design (UI Interface)}
+The user interface is designed to be clean and intuitive. Key screens include:
+\begin{itemize}
+    \item \textbf{Dashboard:} Shows a summary (total income, total expenses, balance) and visual charts.
+    \item \textbf{Add Transaction Screen:} A form with fields for amount, description, date, category (dropdown), and type (income/expense).
+    \item \textbf{Transaction History:} A list/searchable table of all transactions with options to edit or delete.
+    \item \textbf{Reports/Charts Screen:} Displays pie charts for expense categories and bar charts for income vs. expenses over time.
+\end{itemize}
+Wireframes or screenshots of these interfaces should be included here.
+
+\subsection{Physical DFD}
+The Physical DFD (Figure~\ref{fig:physical_dfd}) shows the implementation specifics, including the web server, application server, and database, illustrating the physical flow of data when a user performs an action like adding a new expense.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.6]{physical_dfd.png} % Replace with your Physical DFD
+    \caption{Physical Data Flow Diagram}
+    \label{fig:physical_dfd}
+\end{figure}
+
+% ==============================================
+% CHAPTER 4: IMPLEMENTATION AND TESTING
+% ==============================================
+\newpage
+\chapter{Implementation and Testing}
+
+\section{Implementation}
+
+\subsection{Tools Used}
+\begin{itemize}
+    \item \textbf{Frontend:} React, JavaScript, HTML5, CSS3, Chart.js (for visualizations)
+    \item \textbf{Backend:} Node.js, Express.js
+    \item \textbf{Database:} SQLite3
+    \item \textbf{Version Control:} Git, GitHub
+    \item \textbf{Other Tools:} NeoVIM(Text Editor), Visual Studio Code (IDE)
+\end{itemize}
+
+\subsection{Implementation Details of Modules}
+
+The backend system is implemented using Node.js with the Express.js framework and follows a clean, route-based modular architecture. All database operations are performed synchronously using the \textbf{better-sqlite3} library on a local SQLite file (\textbf{database.db}). The key functional modules are:
+
+\begin{itemize}
+    \item \textbf{Authentication Module} \\
+    Manages user registration and login via \textbf{POST /register} and \textbf{POST /login} endpoints. Passwords are currently stored in plain text (suitable for academic prototype; hashing recommended in production). Upon successful login, a JSON Web Token (JWT) is generated using \textbf{jwt.sign()} with a secret key and 100-hour expiry. This token must be included in the \textbf{Authorization: Bearer token} header for all protected routes.
+
+    \item \textbf{Expense Management Module} \\
+    Provides full CRUD functionality:
+    \begin{itemize}
+        \item \textbf{POST /expense}: Adds a new expense (protected route)
+        \item \textbf{GET /expenses}: Retrieves all expenses belonging to the authenticated user
+        \item \textbf{PUT /expenses/:id}: Updates an existing expense (ownership validated)
+        \item \textbf{DELETE /expenses/:id}: Deletes an expense by ID
+    \end{itemize}
+    All operations are linked to the authenticated user via \textbf{user\_id} extracted from the JWT payload.
+
+    \item \textbf{Income Management Module} \\
+    Implements identical CRUD operations for income records:
+    \begin{itemize}
+        \item \textbf{POST /income}: Adds a new income
+        \item \textbf{GET /income}: Retrieve all income belonging to the authenticated user
+        \item \textbf{PUT /income/:id}: Updates an existing income
+        \item \textbf{DELETE /income/:id}: Deletes an income ny ID
+    \end{itemize}
+    Income entries include source, amount, and date.
+
+    \item \textbf{User Profile Module} \\
+    Allows authenticated users to view and update their profile information:
+    \begin{itemize}
+        \item \textbf{GET /profile}: Returns current user's name and email
+        \item \textbf{PUT /profile}: Updates name and email (password update not implemented in current version)
+    \end{itemize}
+
+    \item \textbf{Security \& Middleware Layer} \\
+    The \textbf{authenticateJWT} middleware protects all routes requiring authentication. It verifies the JWT token from the \textbf{Authorization} header using \textbf{jwt.verify()} and attaches the decoded user object (\textbf{id}, \textbf{email}) to \textbf{req.user} for use in downstream handlers.
+
+    \item \textbf{Data Persistence Layer} \\
+    All data is stored in a single SQLite database file located at \textbf{./db/database.db}. Tables (\textbf{users}, \textbf{expense}, \textbf{income}) are created automatically on server startup if they do not exist. Prepared statements from separate modules (\textbf{login\_statements.js}, \textbf{expense.js}, \textbf{income.js}) ensure clean separation of SQL logic.
+\end{itemize}
+
+The frontend (running on \textbf{http://localhost:5173}) communicates with the backend via RESTful APIs over HTTP, with CORS explicitly enabled for local development.
+
+\noindent
+\textbf{Code Snippet:} \textbf{add.expense} function (Backend - Node.js/Express)
+\begin{verbatim}
+// Example pseudo-code for adding a expense
+app.post('/expense', authenticateJWT, (req, res) => {
+  const { amount, categories, subcategories, date } = req.body;
+  const user_id = req.user.id;
+
+  if (!amount || !categories || !subcategories || !date) {
+    return res.status(400).json({ message: "Categories, Amount and Date are required" });
+  }
+
+  try {
+    insert_expense(user_id, amount, categories, subcategories, date);
+    res.status(200).json({ message: 'Inserted expense successfully' });
+  } catch (err) {
+    console.error("Error during insertion of expenses", err);
+    return res.status(500).json({ message: "Internal Server Error", error: err.message });
+  }
+});
+
+\end{verbatim}
+
+\section{Testing}
+
+\subsection{Test Cases for Unit Testing}
+Unit tests were written for critical backend functions.
+\begin{table}[h!]
+\centering
+\caption{Unit Test Cases}
+\label{tab:unit_tests}
+\begin{tabular}{|p{2cm}|p{3cm}|p{3cm}|p{3cm}|}
+\hline
+\textbf{Test ID} & \textbf{Description} & \textbf{Input} & \textbf{Expected Output} \\ \hline
+UT-1 & Add valid transaction & Valid transaction object & Success message, ID \\ \hline
+UT-2 & Add transaction with negative amount & Amount = -100 & Error message \\ \hline
+UT-3 & Login with correct credentials & Correct username/password & JWT Token \\ \hline
+UT-4 & Login with wrong password & Wrong password & Unauthorized error \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Test Cases for System Testing}
+System tests ensure different modules work together correctly.
+\begin{table}[h!]
+\centering
+\caption{System Test Cases}
+\label{tab:system_tests}
+\begin{tabular}{|p{2cm}|p{3cm}|p{3cm}|p{3cm}|}
+\hline
+\textbf{Test ID} & \textbf{Description} & \textbf{Test Steps} & \textbf{Expected Result} \\ \hline
+ST-1 & Full transaction flow & 1. Login 2. Add expense 3. View dashboard & New expense reflected in summary and chart \\ \hline
+ST-2 & Data persistence & 1. Add transaction 2. Log out 3. Log in 4. View history & Transaction is still present in the list \\ \hline
+ST-3 & Chart generation & 1. Add multiple expenses in different categories 2. Navigate to reports page & Pie chart displays correct category proportions \\ \hline
+\end{tabular}
+\end{table}
+
+% ==============================================
+% CHAPTER 5: CONCLUSION AND FUTURE RECOMMENDATIONS
+% ==============================================
+\newpage
+\chapter{Conclusion and Future Recommendations}
+
+\section{Lesson Learnt / Outcome}
+Throughout the development of the Personal Expense Tracker, several key lessons were learned:
+\begin{itemize}
+    \item \textbf{Project Management:} Breaking down the project into modules (Auth, Transactions, Reporting) made development more manageable.
+    \item \textbf{Technology Stack:} Using React for the frontend and Node.js for the backend proved efficient for building a dynamic single-page application (SPA).
+    \item \textbf{Data Integrity:} Proper validation on both the frontend and backend is crucial to prevent invalid data from entering the system.
+    \item \textbf{User Experience:} Integrating Chart.js significantly enhanced the usability and value of the application by making data easy to understand.
+\end{itemize}
+The final outcome is a fully functional web application that allows users to effectively track and analyze their personal finances, meeting all the primary objectives set forth at the beginning of the project.
+
+\section{Conclusion}
+The Personal Expense Tracker project successfully addresses the problem of inefficient personal finance management by providing a digital, user-friendly platform. The system enables users to record income and expenses, categorize transactions, and visualize their financial data through interactive charts. The use of a modern technology stack (React, Node.js, SQLite) resulted in a responsive, reliable, and maintainable application. This project demonstrates that a well-designed expense tracking tool can empower individuals to gain better control over their finances, promote saving habits, and make informed financial decisions.
+
+\section{Future Recommendations}
+While the current system is functional, there are several avenues for future enhancement:
+\begin{itemize}
+    \item \textbf{Bank Integration:} Incorporate APIs (e.g., Plaid) to automatically import transactions from bank accounts.
+    \item \textbf{Recurring Transactions:} Allow users to set up recurring expenses or income (e.g., monthly rent, salary).
+    \item \textbf{Data Export:} Add functionality to export transaction history to CSV or PDF formats.
+    \item \textbf{Mobile App:} Develop a dedicated mobile application using React Native for a native mobile experience.
+    \item \textbf{Advanced Analytics:} Incorporate machine learning to provide predictive insights and spending forecasts.
+\end{itemize}
+
+% ==============================================
+% REFERENCES
+% ==============================================
+\newpage
+\chapter*{References}
+\addcontentsline{toc}{chapter}{References}
+\renewcommand{\bibname}{}
+\begin{thebibliography}{9}
+\vspace{-25pt}
+
+%   1   %
+\bibitem{chandini2019online}
+S. Chandini, T. Poojitha, D. Ranjith, V. J. Mohammed Akram, M. S. Vani, and V. Rajyalakshmi, ``Online Income and Expense Tracker,'' \textit{International Research Journal of Engineering and Technology (IRJET)}, vol. 6, no. 3, pp. 4119--4124, Mar. 2019.
+
+%   2   %
+\bibitem{manchanda2012expense}
+A. Manchanda, ``Expense Tracker Mobile Application,'' Master's thesis, San Diego State University, Computer Science Department, Fall 2012.
+
+%   3   %
+\bibitem{singh2021spending}
+U. P. Singh, A. K. Gupta, and B. Balamurugan, ``Spending Tracker: A Smart Approach to Track Daily Expense,'' \textit{Turkish Journal of Computer and Mathematics Education}, vol. 12, no. 6, pp. 5095--5102, 2021.
+
+%   4   %
+\bibitem{verma2024research}
+S. Verma, S. S. Kheda, and S. Kuwale, ``Research Paper for Personal Finance Tracker,'' \textit{Int. Res. J. Mod. Eng. Technol. Sci.}, vol. 6, no. 5, pp. 10279--10285, May 2024.
+
+\end{thebibliography}
+
+\end{document}
