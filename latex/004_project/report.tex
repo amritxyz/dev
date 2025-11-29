@@ -1,69 +1,72 @@
-\documentclass[12pt]{report} % Report class for chapters
+\documentclass[12pt]{report}
 
 % ----------------- Packages -----------------
-\usepackage{graphicx}   % Figures
-\usepackage{float}      % Better float handling
-\usepackage{enumitem}   % Custom lists
-\usepackage{fancyhdr}   % Headers/footers
-\usepackage{newtxtext,newtxmath} % Times New Roman font
-\usepackage{setspace}   % Line spacing
-\usepackage{titlesec}   % Heading size/style control
-\usepackage{tocloft}    % TOC customization
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{newtxtext,newtxmath}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{tocloft}
 \usepackage{etoolbox}
 \usepackage{ragged2e}
 \usepackage[top=1in, left=1.25in, bottom=1in, right=1in]{geometry}
-\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=green]{hyperref} % Links
-\usepackage{url}
-\usepackage[numbers,compress]{natbib} % For numbered citations
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=green]{hyperref}
+\usepackage{listings}                % ← fixed: was "listing"
+\usepackage{chngcntr}
+\usepackage[numbers,compress]{natbib}
 
+% ----------------- FIGURE NUMBERING: Figure 1.1, 1.2, 3.1 etc. -----------------
+\counterwithin{figure}{chapter}
+\counterwithin{table}{chapter}
 
-% ----------------- Line & Paragraph Style -----------------
+% ----------------- CAPTION STYLE: "Figure 1.1 Use Case Diagram..." (exactly what you want) -----------------
+\usepackage{caption}
+\captionsetup[figure]{
+  labelfont=bf,
+  textfont=normalfont,
+  justification=centering,
+  labelsep=space,      % ← THIS IS THE KEY: only one space, no colon, no period
+  skip=12pt,
+  name=Figure          % ensures it says "Figure" not "Fig."
+}
+\captionsetup[table]{
+  labelfont=bf,
+  textfont=normalfont,
+  justification=centering,
+  labelsep=space,
+  skip=12pt
+}
+
+% ----------------- General formatting -----------------
 \onehalfspacing
-\setlength{\parindent}{0pt} % No paragraph indent
-\setlength{\parskip}{0.5em} % Space between paragraphs
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
 \raggedbottom
-\sloppy % Avoid overfull boxes
+\sloppy
 
-% ----------------- Page Numbering -----------------
-\pagestyle{plain} % Page number at bottom center
-\pagenumbering{roman} % i, ii, iii...
-\setcounter{page}{1}   % TOC starts at i
+\pagenumbering{roman}
+\setcounter{page}{1}
 
-% ----------------- TOC -----------------
-% TOC title
-
-
-% Spacing around TOC title
+% TOC styling
 \setlength{\cftbeforetoctitleskip}{0.5cm}
 \setlength{\cftaftertoctitleskip}{0.5cm}
-
-% Add dot after chapter numbers in TOC
 \renewcommand{\cftchapaftersnum}{.\ }
-
-% Leaders (dots) for TOC
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
-
-% Control vertical spacing inside TOC
 \setlength{\cftbeforechapskip}{1.5pt}
-\setlength{\cftbeforesecskip}{1.5pt}
-\setlength{\cftbeforesubsecskip}{1.5pt}
-\setlength{\cftbeforesubsubsecskip}{1.5pt}
 
-% ----------------- Chapter/Section Formatting -----------------
-% Chapter -> "1. Introduction" style
+% Chapter style (your original – perfect)
 \titleformat{\chapter}[hang]
-  {\bfseries\fontsize{16pt}{18pt}\selectfont\centering} % font
-  {\thechapter.}{1em}{} % <-- "1. Title"
+  {\bfseries\fontsize{16pt}{18pt}\selectfont\centering}
+  {CHAPTER \thechapter:}{5pt}{\MakeUppercase}
 \titlespacing*{\chapter}{0pt}{-10pt}{10pt}
 
-% Section
 \titleformat{\section}[hang]
   {\bfseries\fontsize{14pt}{16pt}\selectfont}
   {\thesection}{1em}{}
 \titlespacing*{\section}{0pt}{12pt}{6pt}
 
-% Subsection
 \titleformat{\subsection}[hang]
   {\bfseries\fontsize{12pt}{14pt}\selectfont}
   {\thesubsection}{1em}{}
@@ -72,15 +75,10 @@
 \patchcmd{\chapter}{\clearpage}{\relax}{}{}
 \patchcmd{\chapter}{\newpage}{\relax}{}{}
 
-
-% ----------------- Captions -----------------
-\usepackage[labelfont=bf,font=bf]{caption}
-\captionsetup{justification=centering, labelsep=period}
-
-% ----------------- Title Info -----------------
+% ----------------- Title page -----------------
 \title{Personal Expense Tracker}
-\author{} % Leave blank if no author specified
-\date{}   % Leave blank for no date
+\author{}
+\date{}
 
 \begin{document}
 
@@ -131,6 +129,41 @@
 %\renewcommand{\contentsname}{ Table of Contents}
 \centering\renewcommand{\contentsname}{\Huge \bfseries Table of Contents}
 \tableofcontents
+\newpage
+% === ADD THESE LINES JUST AFTER \tableofcontents AND BEFORE \pagenumbering{arabic} ===
+
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\listfigurename}   % "List of Figures"
+\listoffigures
+\newpage
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\listtablename}    % "List of Tables"
+\listoftables
+\newpage
+
+% === LIST OF ABBREVIATIONS (custom) ===
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Abbreviations}
+\chapter*{List of Abbreviations}
+\begin{tabular}{@{}p{3cm}p{10cm}@{}}
+DFD   & Data Flow Diagram \\
+ERD   & Entity Relationship Diagram \\
+CRUD  & Create, Read, Update, Delete \\
+API   & Application Programming Interface \\
+MVC   & Model-View-Controller \\
+JWT   & JSON Web Token \\
+UI    & User Interface \\
+UX    & User Experience \\
+SQL   & Structured Query Language \\
+HTML  & HyperText Markup Language \\
+CSS   & Cascading Style Sheets \\
+JS    & JavaScript \\
+\end{tabular}
 \newpage
 
 % ==============================================
@@ -282,7 +315,7 @@ Expense tracking tools have emerged as a solution to these challenges. These too
 
 One fundamental concept in personal finance management is budgeting. Budgeting refers to the process of allocating a set amount of money for specific categories of expenses within a given time period. A well-structured budget helps individuals prioritize essential expenses, minimize wasteful spending, and achieve their financial goals. Budgeting is based on the principle of income versus expenses, where the goal is to ensure that expenditures do not exceed the available income, promoting financial stability and reducing the risk of debt.
 
-Another key concept in financial management is cash flow, which refers to the movement of money into and out of an individual's or business’s finances. Positive cash flow occurs when income exceeds expenses, allowing individuals to save or invest. On the other hand, negative cash flow indicates that expenditures surpass income, often leading to debt accumulation. By tracking cash flow through expense management tools, users can better anticipate financial challenges and plan accordingly.
+%Another key concept in financial management is cash flow, which refers to the movement of money into and out of an individual's or business’s finances. Positive cash flow occurs when income exceeds expenses, allowing individuals to save or invest. On the other hand, negative cash flow indicates that expenditures surpass income, often leading to debt accumulation. By tracking cash flow through expense management tools, users can better anticipate financial challenges and plan accordingly.
 
 The advancement of technology has played a significant role in shaping modern personal finance tools. With the rise of smartphones, mobile applications, and cloud-based platforms, users can now access their financial data from anywhere, at any time. These tools also incorporate features like real-time data synchronization, automated transaction categorization, and expense forecasting, which make it easier to manage finances on a daily basis. Data visualization techniques, such as charts and graphs, are often integrated into these systems to provide users with clear insights into their spending habits, helping them make informed decisions. Furthermore, cloud storage ensures that data is securely backed up and accessible across multiple devices, reducing the risk of losing important financial information.
 
@@ -361,8 +394,12 @@ Developing the system requires minimal resources, as the development team alread
 \subsubsection{Schedule Feasibility}
 The project was planned with a realistic timeline (see Gantt Chart in Chapter 1 Appendix). The scope was well-defined, and the technologies used are familiar to the development team, making it feasible to complete the project within the allotted time frame.
 
+\newpage
+
 \subsection{Data Modeling (ER-Diagram)}
 The Entity-Relationship (ER) Diagram (Figure~\ref{fig:er_diagram}) represents the data entities and their relationships. The main entities are \textbf{User}, \textbf{Transaction}, and \textbf{Category}. A User can have many Transactions, and each Transaction belongs to one Category.
+
+\vspace{40pt}
 
 \begin{figure}[h!]
     \centering
@@ -371,8 +408,12 @@ The Entity-Relationship (ER) Diagram (Figure~\ref{fig:er_diagram}) represents th
     \label{fig:er_diagram}
 \end{figure}
 
+\newpage
+
 \subsection{Process Modeling (DFD)}
 The Data Flow Diagram (DFD) in Figure~\ref{fig:level0_dfd} shows the system's processes and data flow at Level 0. It illustrates how the user interacts with the system to perform key functions like logging in, managing transactions, and viewing reports.
+
+\vspace{20pt}
 
 \begin{figure}[h!]
     \centering
@@ -380,6 +421,8 @@ The Data Flow Diagram (DFD) in Figure~\ref{fig:level0_dfd} shows the system's pr
     \caption{Level 0 Data Flow Diagram (DFD)}
     \label{fig:level0_dfd}
 \end{figure}
+
+\newpage
 
 \section{System Design}
 
@@ -401,22 +444,51 @@ The database schema consists of the following tables:
 \end{itemize}
 The \textbf{income} and \textbf{expense} table has foreign keys referencing \textbf{login\_users(id)}.
 
-\subsection{Interface Design (UI Interface)}
-The user interface is designed to be clean and intuitive. Key screens include:
-\begin{itemize}
-    \item \textbf{Dashboard:} Shows a summary (total income, total expenses, balance) and visual charts.
-    \item \textbf{Add Transaction Screen:} A form with fields for amount, description, date, category (dropdown), and type (income/expense).
-    \item \textbf{Transaction History:} A list/searchable table of all transactions with options to edit or delete.
-    \item \textbf{Reports/Charts Screen:} Displays pie charts for expense categories and bar charts for income vs. expenses over time.
-\end{itemize}
-Wireframes or screenshots of these interfaces should be included here.
+\subsection{Interface Design}
+The design of the interface focuses on being clear, easy to navigate, and making key financial insights immediately accessible. It’s built to create a welcoming experience, so managing your money feels simple and not overwhelming [web:21][web:23].
 
-\subsection{Physical DFD}
-The Physical DFD (Figure~\ref{fig:physical_dfd}) shows the implementation specifics, including the web server, application server, and database, illustrating the physical flow of data when a user performs an action like adding a new expense.
+The main screens are designed to provide everything you need through clean layouts and intuitive interactions, making it easy to find what you're looking for and take action quickly:
+
+\begin{itemize}
+    \item \textbf{Dashboard}: This is your financial overview at a glance. It shows you key details like total income, expenses, and your current balance. You’ll also see interactive charts that give you a quick sense of your spending trends.
+    
+    \item \textbf{Income}: Here, you can view your income over time with easy-to-read line and bar charts. The \texttt{Add Income} button makes it simple to add new earnings, and you can filter the chart to show data for specific time periods—weekly, monthly, or yearly.
+    
+    \item \textbf{Expenses}: This section helps you visualize your spending. It includes doughnut charts that break down your expenses by category, along with a list of recent expenses and an \texttt{Add Expense} button for quick updates. You can also filter the charts based on different time periods to track spending trends.
+\end{itemize}
+
+\vspace{20pt}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.2]{dashboard.png}
+    \caption{Dashboard of personal expense tracker}
+    \label{fig:dashboard}
+\end{figure}
+
+\newpage
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=0.6]{physical_dfd.png} % Replace with your Physical DFD
+    \includegraphics[scale=0.2]{income_page.png}
+    \caption{Income page of personal expense tracker}
+    \label{fig:Income page}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.2]{expense_page.png}
+    \caption{Expense page of personal expense tracker}
+    \label{fig:Expense page}
+\end{figure}
+
+\newpage
+
+\subsection{Physical DFD}
+The Physical DFD (Figure~\ref{fig:physical_dfd}) shows the implementation specifics, including the web server, application server, and database, illustrating the physical flow of data when a user performs an action like adding a new expense.
+\vspace{20pt}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.6]{physical_dfd.png}
     \caption{Physical Data Flow Diagram}
     \label{fig:physical_dfd}
 \end{figure}
@@ -444,7 +516,7 @@ The backend system is implemented using Node.js with the Express.js framework an
 
 \begin{itemize}
     \item \textbf{Authentication Module} \\
-    Manages user registration and login via \textbf{POST /register} and \textbf{POST /login} endpoints. Passwords are currently stored in plain text (suitable for academic prototype; hashing recommended in production). Upon successful login, a JSON Web Token (JWT) is generated using \textbf{jwt.sign()} with a secret key and 100-hour expiry. This token must be included in the \textbf{Authorization: Bearer token} header for all protected routes.
+    Manages user registration and login via \textbf{POST /register} and \textbf{POST /login} endpoints. Passwords are currently stored in plain text. Upon successful login, a JSON Web Token (JWT) is generated using \textbf{jwt.sign()} with a secret key and 100-hour expiry. This token must be included in the \textbf{Authorization: Bearer token} header for all protected routes.
 
     \item \textbf{Expense Management Module} \\
     Provides full CRUD functionality:
@@ -480,8 +552,10 @@ The backend system is implemented using Node.js with the Express.js framework an
     All data is stored in a single SQLite database file located at \textbf{./db/database.db}. Tables (\textbf{users}, \textbf{expense}, \textbf{income}) are created automatically on server startup if they do not exist. Prepared statements from separate modules (\textbf{login\_statements.js}, \textbf{expense.js}, \textbf{income.js}) ensure clean separation of SQL logic.
 \end{itemize}
 
+\noindent
 The frontend (running on \textbf{http://localhost:5173}) communicates with the backend via RESTful APIs over HTTP, with CORS explicitly enabled for local development.
 
+\newpage
 \noindent
 \textbf{Code Snippet:} \textbf{add.expense} function (Backend - Node.js/Express)
 \begin{verbatim}
@@ -491,7 +565,8 @@ app.post('/expense', authenticateJWT, (req, res) => {
   const user_id = req.user.id;
 
   if (!amount || !categories || !subcategories || !date) {
-    return res.status(400).json({ message: "Categories, Amount and Date are required" });
+    return res.status(400).json({ message: "Categories, Amount and Date
+      are required" });
   }
 
   try {
@@ -499,12 +574,14 @@ app.post('/expense', authenticateJWT, (req, res) => {
     res.status(200).json({ message: 'Inserted expense successfully' });
   } catch (err) {
     console.error("Error during insertion of expenses", err);
-    return res.status(500).json({ message: "Internal Server Error", error: err.message });
+    return res.status(500).json({ message: "Internal Server Error",
+      error: err.message });
   }
 });
 
 \end{verbatim}
 
+\newpage
 \section{Testing}
 
 \subsection{Test Cases for Unit Testing}
@@ -557,6 +634,7 @@ The final outcome is a fully functional web application that allows users to eff
 \section{Conclusion}
 The Personal Expense Tracker project successfully addresses the problem of inefficient personal finance management by providing a digital, user-friendly platform. The system enables users to record income and expenses, categorize transactions, and visualize their financial data through interactive charts. The use of a modern technology stack (React, Node.js, SQLite) resulted in a responsive, reliable, and maintainable application. This project demonstrates that a well-designed expense tracking tool can empower individuals to gain better control over their finances, promote saving habits, and make informed financial decisions.
 
+\newpage
 \section{Future Recommendations}
 While the current system is functional, there are several avenues for future enhancement:
 \begin{itemize}
