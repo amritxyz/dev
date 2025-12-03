@@ -15,6 +15,8 @@
 \usepackage{listings}                % ← fixed: was "listing"
 \usepackage{chngcntr}
 \usepackage[numbers,compress]{natbib}
+\usepackage{booktabs}   % for \toprule, \midrule, \bottomrule
+\usepackage{array}      % already loaded by most templates, but safe to add
 
 % ----------------- FIGURE NUMBERING: Figure 1.1, 1.2, 3.1 etc. -----------------
 \counterwithin{figure}{chapter}
@@ -84,85 +86,130 @@
 
 \thispagestyle{empty} % no page number here
 \begin{center}
-    % --- Logo at top ---
-    \includegraphics[width=3cm]{logo.png} \\[1.0cm] % replace logo.png with your file name
-    
+    % --- Logo ---
+    \includegraphics[width=2.5cm]{logo.png}\\[0.8cm]  % reduced from 3cm
 
-    % --- University & Faculty Info ---
-    \Large \textbf{Tribhuvan University} \\[0.1cm]
-    \Large \textbf {Faculty of Humanities and Social Science} \\[1.1cm]
-
-    
+    % --- University & Faculty ---
+    \large\textbf{Tribhuvan University}\\[0.15cm]
+    \large\textbf{Faculty of Humanities and Social Sciences}\\[0.8cm]
 
     % --- Project Title ---
-    \large \textbf{Personal Expense Tracker} \\[1.2cm]
-     \textbf{A PROJECT REPORT} \\[1.2cm]
+    \Large\textbf{Personal Expense Tracker}\\[0.4cm]
+    \textbf{A PROJECT REPORT}\\[0.8cm]
 
-    
+    % --- Submitted to ---
+    \large\textbf{Submitted to}\\[0.1cm]
+    \large\textbf{Department of Computer Application}\\[0.1cm]
+    \large\textbf{Butwal Kalika Campus}\\[0.8cm]
 
-    % --- Submission Info ---
-    \large \textbf{Submitted to}  \\[0.1cm]
-    \large \textbf {Department of Computer Application} \\[0.1cm]
-    \large \textbf {Butwal Kalika Campus} \\[1.1cm]
+    \normalsize
+    \textbf{\textit{In partial fulfillment of the requirements for the}}\\[0.15cm]
+    \textbf{\textit{Bachelor’s in Computer Application}}\\[1.0cm]
 
+    % --- Submitted by ---
+    \large{Submitted by:}\\[0.1cm]
+    \normalsize
+    Susma Tandan [6-2-1055-199-2023]\\[0.1cm]
+    Amrit Bhattarai [6-2-1055-139-2023]\\[1.0cm]
 
-    
+    \large{Under the Supervision of}\\[0.1cm]
+    \textbf{Nirmal Aryal}\\[1.0cm]
 
-    \textbf{In partial fulfillment of the requirements for the} \\[0.1cm]
-    \textbf{Bachelors in Computer Application} \\[1.1cm]
-
-
-
-    % --- Authors ---
-    \large \textbf{Submitted by:}  \\[0.2cm]
-    \textbf{Susma Tandan} \\[0cm]
-    \textbf{Amrit Bhattarai} \\[1.2cm]
-    
-
-    % --- Date at bottom ---
-    \Large \textbf {\today}
+    \large\textbf{\today}
 \end{center}
+\clearpage
 \newpage
 
 \pagestyle{plain} % bottom center
 
-%\renewcommand{\contentsname}{ Table of Contents}
-\centering\renewcommand{\contentsname}{\Huge \bfseries Table of Contents}
+
+% =============== ABSTRACT ===============
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Abstract}
+\chapter*{Abstract}
+
+The Personal Expense Tracker is a web-based application developed to simplify personal financial management by enabling users to record, categorize, and analyze income and expenses through an intuitive interface. Built with React for the frontend, Node.js and Express for the backend, and SQLite3 for data storage, the system supports user authentication, CRUD operations on transactions, and visualizations like doughnut charts and bar graphs to reveal spending patterns and support budgeting decisions.
+
+Key features include secure login via JWT, category-based transaction tracking, real-time dashboards, and reports filtered by date or category, addressing challenges like manual record-keeping errors and lack of insights from notebooks or spreadsheets.
+
+The project demonstrates technical feasibility with a modular MVC architecture, ensuring usability, performance under 3 seconds per action, and cross-browser compatibility, while limitations such as manual entry and no bank integration highlight areas for future enhancements like API syncing and mobile apps.
+
+This tool promotes financial literacy by providing actionable insights, helping users avoid overspending, set goals, and achieve stability across personal and small-scale business use.
+
+% ==============================================
+\newpage
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Acknowledgement}
+\chapter*{Acknowledgement}
+\thispagestyle{plain}
+
+We would like to sincerely thank everyone who played a role in the successful completion of our project, \textbf{Personal Expense Tracker}.
+
+First and foremost, we express our heartfelt gratitude to our supervisor, \textbf{Mr. Nirmal Aryal}, for his invaluable guidance, constructive feedback, and continuous encouragement throughout the project. His expertise and insights have been instrumental in helping us shape and complete this work successfully.
+
+We are also deeply grateful to \textbf{Butwal Kalika Campus} and the \textbf{Department of Computer Applications} for providing us with the resources, opportunities, and a supportive environment that allowed us to turn our ideas into reality.
+
+Finally, we would like to recognize and appreciate the dedication and collaboration of our project team. The teamwork, perseverance, and shared efforts were crucial in bringing this project to completion.
+
+Thank you all for your contributions and for being a part of this journey with us.
+
+\newpage
+% ==============================================
+
+% Table of Contents title in 16pt bold
+\centering\renewcommand{\contentsname}{\bfseries\fontsize{16pt}{18pt}\selectfont Table of Contents}
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Table of Contents}
 \tableofcontents
 \newpage
 % === ADD THESE LINES JUST AFTER \tableofcontents AND BEFORE \pagenumbering{arabic} ===
 
 
+% Make List of Figures and List of Tables titles also 16pt bold
+\renewcommand{\listfigurename}{\centering\bfseries\fontsize{16pt}{18pt}\selectfont List of Figures}
+\renewcommand{\listtablename}{\centering\bfseries\fontsize{16pt}{18pt}\selectfont List of Tables}
+
 \cleardoublepage
 \phantomsection
-\addcontentsline{toc}{chapter}{\listfigurename}   % "List of Figures"
+\addcontentsline{toc}{chapter}{List of Figures}
 \listoffigures
 \newpage
 
 \cleardoublepage
 \phantomsection
-\addcontentsline{toc}{chapter}{\listtablename}    % "List of Tables"
+\addcontentsline{toc}{chapter}{List of Tables}
 \listoftables
 \newpage
+
 
 % === LIST OF ABBREVIATIONS (custom) ===
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{List of Abbreviations}
 \chapter*{List of Abbreviations}
-\begin{tabular}{@{}p{3cm}p{10cm}@{}}
-DFD   & Data Flow Diagram \\
-ERD   & Entity Relationship Diagram \\
-CRUD  & Create, Read, Update, Delete \\
-API   & Application Programming Interface \\
-MVC   & Model-View-Controller \\
-JWT   & JSON Web Token \\
-UI    & User Interface \\
-UX    & User Experience \\
-SQL   & Structured Query Language \\
-HTML  & HyperText Markup Language \\
-CSS   & Cascading Style Sheets \\
-JS    & JavaScript \\
+\normalsize
+\begin{tabular}{@{}p{3.5cm} p{9.5cm}@{}}
+\toprule[1.5pt]  % thick top line
+\textbf{Abbreviation} & \textbf{Full Form} \\
+\midrule[1pt]    % medium line after header
+API  & Application Programming Interface \\
+CRUD & Create, Read, Update, Delete \\
+CSS  & Cascading Style Sheets \\
+DFD  & Data Flow Diagram \\
+ERD  & Entity Relationship Diagram \\
+HTML & HyperText Markup Language \\
+JS   & JavaScript \\
+JWT  & JSON Web Token \\
+MVC  & Model-View-Controller \\
+SQL  & Structured Query Language \\
+UI   & User Interface \\
+UX   & User Experience \\
+\bottomrule[1.5pt]  % thick bottom line
 \end{tabular}
 \newpage
 
@@ -298,6 +345,7 @@ This report is organized into five chapters, each addressing a specific aspect o
     \item \textbf{Chapter 5: Conclusion and Future Recommendations} — Summarizes the outcomes, conclusions, and suggestions for future work.
 \end{itemize}
 
+\noindent
 This organization helps readers easily follow the project from its motivation and design stages through implementation and final conclusions.
 
 % ==============================================
@@ -307,17 +355,17 @@ This organization helps readers easily follow the project from its motivation an
 \chapter{Background Study and Literature Review}
 
 \section{Background Study}
-Personal finance management is an essential aspect of modern-day life, as it involves the process of planning and controlling how an individual spends and saves their money. Historically, managing personal finances was a manual process, with individuals keeping written records of their income and expenditures. As technology progressed, these manual methods evolved into more sophisticated approaches, with the development of tools like spreadsheets and, more recently, digital personal finance management systems. These tools aim to help individuals gain control over their financial activities, plan for the future, and make informed financial decisions.
+Personal finance management is an essential aspect of modern-day life, as it involves the process of planning and controlling how an individual spends and saves their money. Historically, managing personal finances was a manual process, with individuals keeping written records of their income and expenditures. As technology progressed, these manual methods evolved into more sophisticated approaches, with the development of tools like spreadsheets and, more recently, digital personal finance management systems \cite{chandini2019online, manchanda2012expense}. These tools aim to help individuals gain control over their financial activities, plan for the future, and make informed financial decisions.
 
-In today's fast-paced world, the ability to manage personal finances has become more critical due to various factors such as the rise of digital payment methods, credit cards, mobile wallets, online shopping, and an increasingly diverse array of income sources. People are earning money from different channels, including salaries, freelance work, investments, and side businesses. At the same time, they are spending money on various categories such as food, transportation, housing, entertainment, and health. The rapid growth of e-commerce and digital transactions has added to the complexity, making it harder for individuals to track their daily expenditures effectively. This underscores the importance of utilizing modern tools that can streamline financial tracking and help individuals stay on top of their financial goals.
+In today's fast-paced world, the ability to manage personal finances has become more critical due to various factors such as the rise of digital payment methods, credit cards, mobile wallets, online shopping, and an increasingly diverse array of income sources. People are earning money from different channels, including salaries, freelance work, investments, and side businesses. At the same time, they are spending money on various categories such as food, transportation, housing, entertainment, and health. The rapid growth of e-commerce and digital transactions has added to the complexity, making it harder for individuals to track their daily expenditures effectively. This underscores the importance of utilizing modern tools that can streamline financial tracking and help individuals stay on top of their financial goals \citep{singh2021spending}.
 
-Expense tracking tools have emerged as a solution to these challenges. These tools allow individuals to systematically record their income and expenses, categorize them, and provide real-time insights into their spending patterns. They enable users to track every transaction, whether it is a small coffee purchase or a larger monthly bill, helping them gain a better understanding of their financial health. Unlike traditional methods, which often rely on manual record-keeping and are prone to human error, digital expense trackers offer a more reliable, automated approach to managing personal finances. This is especially useful for individuals who struggle with consistency and accuracy when maintaining paper records or spreadsheets.
+Expense tracking tools have emerged as a solution to these challenges. These tools allow individuals to systematically record their income and expenses, categorize them, and provide real-time insights into their spending patterns \citep{chandini2019online, singh2021spending}. They enable users to track every transaction, whether it is a small coffee purchase or a larger monthly bill, helping them gain a better understanding of their financial health. Unlike traditional methods, which often rely on manual record-keeping and are prone to human error, digital expense trackers offer a more reliable, automated approach to managing personal finances. This is especially useful for individuals who struggle with consistency and accuracy when maintaining paper records or spreadsheets.
 
 One fundamental concept in personal finance management is budgeting. Budgeting refers to the process of allocating a set amount of money for specific categories of expenses within a given time period. A well-structured budget helps individuals prioritize essential expenses, minimize wasteful spending, and achieve their financial goals. Budgeting is based on the principle of income versus expenses, where the goal is to ensure that expenditures do not exceed the available income, promoting financial stability and reducing the risk of debt.
 
 %Another key concept in financial management is cash flow, which refers to the movement of money into and out of an individual's or business’s finances. Positive cash flow occurs when income exceeds expenses, allowing individuals to save or invest. On the other hand, negative cash flow indicates that expenditures surpass income, often leading to debt accumulation. By tracking cash flow through expense management tools, users can better anticipate financial challenges and plan accordingly.
 
-The advancement of technology has played a significant role in shaping modern personal finance tools. With the rise of smartphones, mobile applications, and cloud-based platforms, users can now access their financial data from anywhere, at any time. These tools also incorporate features like real-time data synchronization, automated transaction categorization, and expense forecasting, which make it easier to manage finances on a daily basis. Data visualization techniques, such as charts and graphs, are often integrated into these systems to provide users with clear insights into their spending habits, helping them make informed decisions. Furthermore, cloud storage ensures that data is securely backed up and accessible across multiple devices, reducing the risk of losing important financial information.
+The advancement of technology has played a significant role in shaping modern personal finance tools. With the rise of smartphones, mobile applications, and cloud-based platforms, users can now access their financial data from anywhere, at any time \citep{verma2024research}. These tools also incorporate features like real-time data synchronization, automated transaction categorization, and expense forecasting, which make it easier to manage finances on a daily basis. Data visualization techniques, such as charts and graphs, are often integrated into these systems to provide users with clear insights into their spending habits, helping them make informed decisions. Furthermore, cloud storage ensures that data is securely backed up and accessible across multiple devices, reducing the risk of losing important financial information.
 
 Expense tracking tools also emphasize the importance of saving. These tools often allow users to set financial goals, track their progress, and receive alerts when they are approaching their budget limits. By helping users visualize their spending and savings, these tools foster a greater sense of financial discipline and encourage users to stick to their budgets.
 
@@ -326,9 +374,9 @@ The evolution of personal expense tracking tools has been significant over the p
 Overall, personal expense trackers have become a vital part of modern financial management, enabling individuals to take control of their finances, make informed decisions, and work toward long-term financial goals. The integration of automation, data analysis, and mobile accessibility has made these tools more user-friendly and effective in helping individuals stay on top of their finances.
 
 \section{Literature Review}
-Many researchers and developers have studied ways to help people manage their personal finances more effectively. Traditional methods, such as writing expenses in a notebook or using basic spreadsheets, are often time-consuming, prone to mistakes, and do not provide clear insights into spending habits. To address these issues, several digital expense tracker systems have been developed.
+Many researchers and developers have studied ways to help people manage their personal finances more effectively. Traditional methods, such as writing expenses in a notebook or using basic spreadsheets, are often time-consuming, prone to mistakes, and do not provide clear insights into spending habits \cite{manchanda2012expense}. To address these issues, several digital expense tracker systems have been developed.
 
-Mobile applications like Mint, YNAB (You Need a Budget), and PocketGuard allow users to categorize transactions, track income and expenses, and visualize data through charts and graphs. Some studies show that using these tools helps individuals save more money, understand spending patterns, and plan budgets efficiently. Other research focuses on building simple web-based systems that provide CRUD functionality for income and expenses, making it easier for users to maintain accurate records.
+Mobile applications like Mint, YNAB (You Need a Budget), and PocketGuard allow users to categorize transactions, track income and expenses, and visualize data through charts and graphs \cite{chandini2019online}. Some studies show that using these tools helps individuals save more money, understand spending patterns, and plan budgets efficiently. Other research focuses on building simple web-based systems that provide CRUD functionality for income and expenses, making it easier for users to maintain accurate records \cite{verma2024research}.
 
 \noindent
 Recent research has explored innovative approaches to expense tracking.
@@ -361,14 +409,21 @@ The functional requirements describe what the system should do. For the Personal
     \item \textbf{Data Visualization:} The system shall generate charts and graphs (e.g., pie charts, bar graphs) to visualize spending patterns and income vs. expenses.
     \item \textbf{View Reports:} Users shall be able to view financial summaries and reports filtered by date and category.
 \end{enumerate}
-\textbf{Use Case Diagram:} The use case diagram (Figure~\ref{fig:usecase}) illustrates the interactions between the user (actor) and the system.
+
+\newpage
+
+\subsubsection{Use Case Modeling (Use Case Diagram)}
+The Use Case Diagram (Figure~\ref{fig:usecase}) captures the functional requirements of the Personal Finance Management System from the user’s perspective. It illustrates the interactions between the primary actor (User) and the system.
+
+\vspace{20pt}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=0.5]{use_case_diagram.png} % Replace with your use case diagram
+    \includegraphics[scale=0.6]{use_case_diagram.png} % Replace with your use case diagram
     \caption{Use Case Diagram for Personal Expense Tracker}
     \label{fig:usecase}
 \end{figure}
+\newpage
 
 \subsubsection{Non-Functional Requirements}
 The non-functional requirements describe how the system should perform:
@@ -394,10 +449,8 @@ Developing the system requires minimal resources, as the development team alread
 \subsubsection{Schedule Feasibility}
 The project was planned with a realistic timeline (see Gantt Chart in Chapter 1 Appendix). The scope was well-defined, and the technologies used are familiar to the development team, making it feasible to complete the project within the allotted time frame.
 
-\newpage
-
 \subsection{Data Modeling (ER-Diagram)}
-The Entity-Relationship (ER) Diagram (Figure~\ref{fig:er_diagram}) represents the data entities and their relationships. The main entities are \textbf{User}, \textbf{Transaction}, and \textbf{Category}. A User can have many Transactions, and each Transaction belongs to one Category.
+The Entity-Relationship (ER) Diagram (Figure~\ref{fig:er_diagram}) represents the data entities and their relationships. The main entities are \textbf{User}, \textbf{Income}, and \textbf{Expense}. A User can have many Transactions, and each Transaction belongs to one Category.
 
 \vspace{40pt}
 
@@ -445,7 +498,7 @@ The database schema consists of the following tables:
 The \textbf{income} and \textbf{expense} table has foreign keys referencing \textbf{login\_users(id)}.
 
 \subsection{Interface Design}
-The design of the interface focuses on being clear, easy to navigate, and making key financial insights immediately accessible. It’s built to create a welcoming experience, so managing your money feels simple and not overwhelming [web:21][web:23].
+The design of the interface focuses on being clear, easy to navigate, and making key financial insights immediately accessible. It’s built to create a welcoming experience, so managing your money feels simple and not overwhelming.
 
 The main screens are designed to provide everything you need through clean layouts and intuitive interactions, making it easy to find what you're looking for and take action quickly:
 
@@ -456,32 +509,6 @@ The main screens are designed to provide everything you need through clean layou
     
     \item \textbf{Expenses}: This section helps you visualize your spending. It includes doughnut charts that break down your expenses by category, along with a list of recent expenses and an \texttt{Add Expense} button for quick updates. You can also filter the charts based on different time periods to track spending trends.
 \end{itemize}
-
-\vspace{20pt}
-\begin{figure}[h!]
-    \centering
-    \includegraphics[scale=0.2]{dashboard.png}
-    \caption{Dashboard of personal expense tracker}
-    \label{fig:dashboard}
-\end{figure}
-
-\newpage
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[scale=0.2]{income_page.png}
-    \caption{Income page of personal expense tracker}
-    \label{fig:Income page}
-\end{figure}
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[scale=0.2]{expense_page.png}
-    \caption{Expense page of personal expense tracker}
-    \label{fig:Expense page}
-\end{figure}
-
-\newpage
 
 \subsection{Physical DFD}
 The Physical DFD (Figure~\ref{fig:physical_dfd}) shows the implementation specifics, including the web server, application server, and database, illustrating the physical flow of data when a user performs an action like adding a new expense.
@@ -542,7 +569,7 @@ The backend system is implemented using Node.js with the Express.js framework an
     Allows authenticated users to view and update their profile information:
     \begin{itemize}
         \item \textbf{GET /profile}: Returns current user's name and email
-        \item \textbf{PUT /profile}: Updates name and email (password update not implemented in current version)
+        \item \textbf{PUT /profile}: Updates name, email, password and avatar.
     \end{itemize}
 
     \item \textbf{Security \& Middleware Layer} \\
@@ -644,6 +671,58 @@ While the current system is functional, there are several avenues for future enh
     \item \textbf{Mobile App:} Develop a dedicated mobile application using React Native for a native mobile experience.
     \item \textbf{Advanced Analytics:} Incorporate machine learning to provide predictive insights and spending forecasts.
 \end{itemize}
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Appendices}
+\chapter*{Appendices}
+\thispagestyle{plain}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.23]{dashboard.png}
+    \caption{Dashboard of Personal Expense Tracker}
+    \label{fig:dashboard}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.23]{profile.png}
+    \caption{Profile Section of Personal Expense Tracker}
+    \label{fig:profile}
+\end{figure}
+\newpage
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.23]{income_page.png}
+    \caption{Income Page of Personal Expense Tracker}
+    \label{fig:Income page}
+\end{figure}
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.23]{add_income_modal.png}
+    \caption{Form / Modal to Add Income}
+    \label{fig:Add income}
+\end{figure}
+
+\newpage
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.23]{expense_page.png}
+    \caption{Expense Page of Personal Expense Tracker}
+    \label{fig:Expense page}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.23]{add_expense_modal.png}
+    \caption{Form / Modal to Add Expense}
+    \label{fig:Expense page}
+\end{figure}
 
 % ==============================================
 % REFERENCES
