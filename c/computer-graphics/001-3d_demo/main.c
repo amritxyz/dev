@@ -1,9 +1,7 @@
 #include "main.h"
-#include <raylib.h>
 
 void
 main_loop(Vector3 *position, Rotation *rotation, Camera3D camera)
-
 {
 	while (!WindowShouldClose()) { /* translate */
 		if (IsKeyDown(KEY_W)) position->z -= 0.1f;
@@ -14,12 +12,12 @@ main_loop(Vector3 *position, Rotation *rotation, Camera3D camera)
 		if (IsKeyDown(KEY_E)) position->y -= 0.1f;
 
 		/* rotate */
-		if (IsKeyDown(KEY_K)) rotation->x += 0.9f;
-		if (IsKeyDown(KEY_J)) rotation->x -= 0.9f;
-		if (IsKeyDown(KEY_H)) rotation->y += 0.9f;
-		if (IsKeyDown(KEY_L)) rotation->y -= 0.9f;
-		if (IsKeyDown(KEY_N)) rotation->z += 0.9f;
-		if (IsKeyDown(KEY_P)) rotation->z -= 0.9f;
+		if (IsKeyDown(KEY_J)) rotation->x += 0.9f;
+		if (IsKeyDown(KEY_K)) rotation->x -= 0.9f;
+		if (IsKeyDown(KEY_L)) rotation->y += 0.9f;
+		if (IsKeyDown(KEY_H)) rotation->y -= 0.9f;
+		if (IsKeyDown(KEY_P)) rotation->z += 0.9f;
+		if (IsKeyDown(KEY_N)) rotation->z -= 0.9f;
 
 		/* init_cube() with camera, position and rot_*(x, y, z) */
 		init_cube(camera, *position, *rotation);
